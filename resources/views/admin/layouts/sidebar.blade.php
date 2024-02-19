@@ -12,7 +12,7 @@
 
 
         <li class="">
-            <a href="#" class="waves-effect" aria-expanded="false">
+            <a href="{{ route('job-types.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-home-circle"></i>
                 <span key="t-job-type">Job Type</span>
             </a>

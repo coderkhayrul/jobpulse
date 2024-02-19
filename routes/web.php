@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,11 @@ Route::delete('/category-delete', [CategoryController::class, 'CategoryDelete'])
 
 
 
+
+Route::resource('job-types', JobTypeController::class);
+
+
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,13 +34,6 @@ Route::delete('/category-delete', [CategoryController::class, 'CategoryDelete'])
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-
-// ADMIN ROUTE LIST ==========>
-// Route::prefix('admin')->name('admin.')->group(function () {
-
-//     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 // });
 
 

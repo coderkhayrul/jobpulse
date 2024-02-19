@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         return view('admin.pages.category');
     }
-    
+
      public function CategoryList(Request $request)
     {
         return Category::get();

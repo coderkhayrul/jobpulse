@@ -474,11 +474,10 @@
                                 <span key="t-invoices">Pages</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="invoices-list.html" key="t-invoice-list">Home</a></li>
                                 <li><a href="invoices-detail.html" key="t-invoice-detail">About</a></li>
-                                <li><a href="invoices-detail.html" key="t-invoice-detail">About</a></li>
-                                <li><a href="invoices-detail.html" key="t-invoice-detail">About</a></li>
-                                <li><a href="invoices-detail.html" key="t-invoice-detail">About</a></li>
+                                <li><a href="invoices-detail.html" key="t-invoice-detail">Blog</a></li>
+                                <li><a href="invoices-detail.html" key="t-invoice-detail">Contact</a></li>
+
                             </ul>
                         </li>
 
@@ -507,6 +506,7 @@
                         </li>
 
 
+
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="bx bxs-user-detail"></i>
@@ -522,10 +522,22 @@
 
 
                         </li>
+
+                    </ul>
+
+
+                </div>
+                <div class="bottom d-flex align-items-end">
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="index.html" key="t-default">Account</a></li>
+                        <li><a href="dashboard-saas.html" key="t-saas">Profile</a></li>
                     </ul>
                 </div>
+
                 <!-- Sidebar -->
             </div>
+
+
         </div>
         <!-- Left Sidebar End -->
 

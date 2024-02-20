@@ -4,7 +4,7 @@
         <li class="menu-title" key="t-menu">Menu</li>
 
         <li class="">
-            <a href="#" class="waves-effect" aria-expanded="false">
+            <a href="" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-home-circle"></i>
                 <span key="t-dashboard">Dashboard</span>
             </a>
@@ -13,8 +13,15 @@
 
         <li class="">
             <a href="{{ route('job-types.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bx-home-circle"></i>
+                <i class="bx bx-briefcase-alt"></i>
                 <span key="t-job-type">Job Type</span>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="{{ route('category.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bx-purchase-tag-alt"></i>
+                <span key="t-category">Category</span>
             </a>
         </li>
 

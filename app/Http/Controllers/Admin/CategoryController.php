@@ -2,45 +2,86 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
-     public function categoryPage()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        return view('admin.pages.category');
+        $categories=Category::get(); 
+        return view('admin.components.category.index', compact('categories'));
     }
 
-     public function CategoryList(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        return Category::get();
+        
+        
     }
 
-    public function CategoryCreate(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        return Category::create([
-            'name' => $request->input('name'),
-            'user_id' => 1,
+       
+         $category = new Category();
+        $category->name = $request->name;
+        $category->user_id = $request->user_id;
+        $notification = array(
+            'message' => 'Category Created Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+       
+        
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Category $category)
+    {
+
+     
+        // $category= Category::all();
+        //  return $category;
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Category $category)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Category $category)
+    {
+        return $category-> update([
+            'name'=>'name',
         ]);
     }
 
-    public function CategoryUpdate(Request $request)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Category $category)
     {
-        $category_id = $request->input('id');
-        return Category::where('id', $category_id)->update([
-            'name' => $request->input('name'),
-        ]);
+        return Category::where('id', $category->input('id'))->delete();
     }
 
-    public function CategoryDelete(Request $request)
-    {
-        $category_id = $request->input('id');
-        return Category::where('id', $category_id)->delete();
-    }
-
-    public function CategoryId(Request $request)
+     public function CategoryId(Request $request)
     {
         $categoryId = $request->input('id');
         return Category::where('id', $categoryId)->first();
@@ -48,3 +89,12 @@ class CategoryController extends Controller
 }
 
 
+     
+
+  
+
+   
+
+ 
+
+   

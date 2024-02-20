@@ -12,16 +12,7 @@ Route::get('/', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/category', [CategoryController::class, 'categoryPage'])->name('categoryPage');
-Route::post('/category-create', [CategoryController::class, 'CategoryCreate'])->name('categoryCreate');
-Route::get('/category-list', [CategoryController::class, 'CategoryList'])->name('CategoryList');
-Route::post('/category-update', [CategoryController::class, 'CategoryUpdate'])->name('categoryDelete');
-Route::delete('/category-delete', [CategoryController::class, 'CategoryDelete'])->name('categoryDelete');
-
-
-
-
-
+Route::resource('category', CategoryController::class);
 Route::resource('job-types', JobTypeController::class);
 
 
@@ -45,5 +36,5 @@ Route::resource('job-types', JobTypeController::class);
 
 
 require __DIR__ . '/auth.php';
-require __DIR__ . '/company.php';
+// require __DIR__ . '/company.php';
 // require __DIR__ . '/candidate.php';

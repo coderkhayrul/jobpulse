@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
@@ -29,12 +31,14 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-       
-         $category = new Category();
-        $category->name = $request->name;
-        $category->user_id = $request->user_id;
+        Category::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'remark' =>$request->remark,
+
+        ]);
         $notification = array(
             'message' => 'Category Created Successfully',
             'alert-type' => 'success'

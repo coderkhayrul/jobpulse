@@ -25,7 +25,7 @@ class JobTypeController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

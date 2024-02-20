@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::get(); 
+        $categories = Category::get();
         return view('admin.components.category.index', compact('categories'));
     }
 
@@ -24,8 +24,6 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        
-        
     }
 
     /**
@@ -36,27 +34,14 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-            'remark' =>$request->remark,
-
+            'remarks' => $request->remarks,
         ]);
+
         $notification = array(
             'message' => 'Category Created Successfully',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
-       
-        
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-
-     
-        // $category= Category::all();
-        //  return $category;
     }
 
     /**
@@ -64,7 +49,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return response()->json($category);
     }
 
     /**
@@ -72,9 +57,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        return $category-> update([
-            'name'=>'name',
+        $category->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'remarks' => $request->remarks,
         ]);
+
+        $notification = array(
+            'message' => 'Category Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -82,23 +75,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        return Category::where('id', $category->input('id'))->delete();
-    }
-
-     public function CategoryId(Request $request)
-    {
-        $categoryId = $request->input('id');
-        return Category::where('id', $categoryId)->first();
+        $category->delete();
+        return response()->json([
+            'status' => true,
+            'message' => 'Category Deleted Successfully'
+        ]);
     }
 }
-
-
-     
-
-  
-
-   
-
- 
-
-   

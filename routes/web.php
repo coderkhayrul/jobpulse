@@ -12,7 +12,7 @@ Route::get('/', function () {
     return view('admin.dashboard');
 });
 
-Route::resource('category', CategoryController::class);
+Route::resource('categories', CategoryController::class);
 Route::resource('job-types', JobTypeController::class);
 
 

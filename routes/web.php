@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('admin.dashboard');
+})->name('admin.dashboard');
+
+Route::name('admin.')->group(function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('job-types', JobTypeController::class);
 });
-
-Route::resource('categories', CategoryController::class);
-Route::resource('job-types', JobTypeController::class);
-
 
 
 // Route::get('/dashboard', function () {

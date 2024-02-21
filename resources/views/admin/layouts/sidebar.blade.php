@@ -12,16 +12,16 @@
 
 
         <li class="">
-            <a href="{{ route('job-types.index') }}" class="waves-effect" aria-expanded="false">
+            <a href="{{ route('admin.job-types.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-briefcase-alt"></i>
                 <span key="t-job-type">Job Type</span>
             </a>
         </li>
 
         <li class="">
-            <a href="{{ route('category.index') }}" class="waves-effect" aria-expanded="false">
+            <a href="{{ route('admin.categories.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-purchase-tag-alt"></i>
-                <span key="t-category">Category</span>
+                <span key="t-categories">Categories</span>
             </a>
         </li>
 

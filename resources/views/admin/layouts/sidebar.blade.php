@@ -25,6 +25,13 @@
             </a>
         </li>
 
+        <li class="">
+            <a href="{{ route('admin.blogs.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bx-detail"></i>
+                <span key="t-blogs">Blogs</span>
+            </a>
+        </li>
+
 
         <li>
             <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">

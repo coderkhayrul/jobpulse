@@ -1,29 +1,34 @@
 @extends('admin.layouts.app')
-@section('title', 'Users Manage')
+@section('title', 'Blogs')
 @section('content')
     <div class="col-md-8 col-sm-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3>Total {{ count($jobTypes) }} Type</h3>
+                <h3>Total {{ count($blogs) }} Blogs</h3>
             </div>
             <div class="card-body">
                 <table id="datatable" class="table table-bordered dt-responsive wrap w-100  dataTable" role="grid"
                     aria-describedby="datatable_info" style="width: 1048px;">
                     <thead>
                         <tr class="text-primary" role="row">
-                            <th width="20%"> Name</th>
-                            <th class="text-center" width="10%"> Created At</th>
+                            <th width="10%"> Photo</th>
+                            <th width="20%"> Title</th>
+                            <th class="text-center" width="20%"> Created At</th>
+                            <th width="30%"> Description</th>
+
                             <th width="10%" class="text-center text-dark">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($jobTypes as $user)
+                        @foreach ($blogs as $blog)
                             <tr>
-
-                                <td>{{ $user->name }}</td>
+                                <td><img class="w-15 h-auto" alt="" src="{{ $blog->img_url }}"></td>
+                                <td>{{ $blog->title }}</td>
                                 <td class="text-center">
-                                    {{ $user->created_at->format('d-M-Y') }}
+                                    {{ $blog->created_at->format('d-M-Y') }}
                                 </td>
+
+                                <td>{{ Str::limit($blog->body, 35, '...') }}</td>
 
                                 <td class="text-center">
                                     <div class="btn-group">
@@ -34,10 +39,13 @@
                                             <i class="mdi mdi-chevron-down"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <button onclick="jobTypeEdit({{ $user->id }})" class="dropdown-item">
+                                            <button onclick="blogView({{ $blog->id }})" class="dropdown-item">
+                                                <i class="bx bx-show align-middle me-2"></i> View
+                                            </button>
+                                            <button onclick="blogEdit({{ $blog->id }})" class="dropdown-item">
                                                 <i class="bx bx-edit align-middle me-2"></i> Edit
                                             </button>
-                                            <button onclick="jobTypeDelete({{ $user->id }})" class="dropdown-item"
+                                            <button onclick="blogDelete({{ $blog->id }})" class="dropdown-item"
                                                 href="#">
                                                 <i class="bx bx-trash-alt align-middle me-2"></i> Delete
                                             </button>
@@ -54,20 +62,34 @@
     <div class="col-md-4 col-sm-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3>Create A Type</h3>
+                <h3>Create A blog</h3>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.job-types.store') }}">
+                <form method="POST" action="{{ route('admin.blogs.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input name="name" type="text" class="form-control" id="name"
-                            placeholder="Enter Type Name">
+                        <label for="img" class="form-label">Image</label>
+                        <input type="file" id="img" class="form-control " name="img">
+                        @error('img')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
-                    {{-- <div class="mb-3">
-                        <label for="remarks" class="form-label">Remarks</label>
-                        <textarea name="remarks" class="form-control" id="remarks" rows="3" placeholder="Enter Remarks"></textarea>
-                    </div> --}}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input name="title" type="text" class="form-control" id="title"
+                            placeholder="Enter Type Title">
+                        @error('title')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="body" class="form-label">description</label>
+                        <textarea name="body" class="form-control" id="body" rows="10" placeholder="Enter description"></textarea>
+                        @error('body')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="btn btn-primary w-md">Submit</button>
                 </form>
             </div>
@@ -75,12 +97,12 @@
     </div>
     </div>
 
-    @include('admin.components.jobType.editModal')
+    @include('admin.components.blog.editModal')
 @endsection
 @push('scripts')
     <script>
-        function jobTypeEdit(id) {
-            var url = "{{ route('admin.job-types.edit', ':id') }}";
+        function blogEdit(id) {
+            var url = "{{ route('admin.blogs.edit', ':id') }}";
             url = url.replace(':id', id);
 
             $.ajax({
@@ -90,23 +112,24 @@
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
-                    $('#jobTypeName').val(response.name);
-                    // $('#jobTypeRemarks').val(response.remarks);
-                    $('#jobTypeEditModal form').attr('action', 'job-types/' + response.id);
-                    $('#jobTypeEditModal').modal('show');
+
+                    $('#blogTitle').val(response.title);
+                    $('#blogdescription').val(response.body);
+                    $('#blogEditModal form').attr('action', 'blog/' + response.id);
+                    $('#blogEditModal').modal('show');
                 }
             });
         }
 
 
 
-        function jobTypeDelete(id) {
+        function blogDelete(id) {
             let url = "";
             url = url.replace(':id', id);
 
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You want to delete this user!",
+                text: "You want to delete this blog!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#2f4cdd',
@@ -115,7 +138,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     event.preventDefault();
-                    let url = "{{ route('admin.job-types.destroy', ':id') }}";
+                    let url = "{{ route('admin.blogs.destroy', ':id') }}";
                     url = url.replace(':id', id);
                     $.ajax({
                         url: url,
@@ -127,7 +150,7 @@
                             if (response.status) {
                                 Swal.fire(
                                     'Deleted!',
-                                    'User has been deleted.',
+                                    'blog has been deleted.',
                                     'success'
                                 ).then((result) => {
                                     if (result.isConfirmed) {
@@ -137,7 +160,7 @@
                             } else {
                                 Swal.fire(
                                     'Deleted!',
-                                    'User has not been deleted.',
+                                    'blog has not been deleted.',
                                     'error'
                                 )
                             }
@@ -145,6 +168,20 @@
                     });
                 }
             })
+        }
+
+        function blogView(id) {
+            var url = "{{ route('admin.blogs.show', ':id') }}";
+            url = url.replace(':id', id);
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: {
+                    _token: "{{ csrf_token() }}",
+                },
+
+            });
         }
     </script>
 @endpush

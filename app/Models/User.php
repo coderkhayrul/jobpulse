@@ -13,7 +13,9 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     const ADMIN = 1;
+
     const COMPANY = 2;
+
     const CANDIDATE = 3;
 
     /**

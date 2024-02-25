@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -16,6 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
+
         return view('admin.components.category.index', compact('categories'));
     }
 
@@ -37,10 +38,11 @@ class CategoryController extends Controller
             'remarks' => $request->remarks,
         ]);
 
-        $notification = array(
+        $notification = [
             'message' => 'Category Created Successfully',
-            'alert-type' => 'success'
-        );
+            'alert-type' => 'success',
+        ];
+
         return redirect()->back()->with($notification);
     }
 
@@ -63,10 +65,11 @@ class CategoryController extends Controller
             'remarks' => $request->remarks,
         ]);
 
-        $notification = array(
+        $notification = [
             'message' => 'Category Updated Successfully',
-            'alert-type' => 'success'
-        );
+            'alert-type' => 'success',
+        ];
+
         return redirect()->back()->with($notification);
     }
 
@@ -76,9 +79,10 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+
         return response()->json([
             'status' => true,
-            'message' => 'Category Deleted Successfully'
+            'message' => 'Category Deleted Successfully',
         ]);
     }
 }

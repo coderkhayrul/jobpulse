@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\JobType;
-use Illuminate\Contracts\Queue\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
 
 class JobTypeController extends Controller
 {
@@ -17,6 +15,7 @@ class JobTypeController extends Controller
     public function index()
     {
         $jobTypes = JobType::get();
+
         return view('admin.components.jobType.index', compact('jobTypes'));
     }
 
@@ -25,7 +24,7 @@ class JobTypeController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -38,10 +37,11 @@ class JobTypeController extends Controller
         $jobType->slug = Str::slug($request->name);
         $jobType->remarks = $request->remarks;
         $jobType->save();
-        $notification = array(
+        $notification = [
             'message' => 'Job Type Created Successfully',
-            'alert-type' => 'success'
-        );
+            'alert-type' => 'success',
+        ];
+
         return redirect()->back()->with($notification);
     }
 
@@ -58,7 +58,7 @@ class JobTypeController extends Controller
      */
     public function edit(JobType $jobType)
     {
-        //
+        return response()->json($jobType);
     }
 
     /**
@@ -66,7 +66,18 @@ class JobTypeController extends Controller
      */
     public function update(Request $request, JobType $jobType)
     {
-        //
+        $jobType->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'remarks' => $request->remarks,
+        ]);
+
+        $notification = [
+            'message' => 'JobType Updated Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -74,6 +85,11 @@ class JobTypeController extends Controller
      */
     public function destroy(JobType $jobType)
     {
-        //
+        $jobType->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Job Type Deleted Successfully',
+        ]);
     }
 }

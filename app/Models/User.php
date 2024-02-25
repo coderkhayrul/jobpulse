@@ -27,6 +27,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'mobile',
+        'status',
     ];
 
     /**
@@ -62,5 +65,30 @@ class User extends Authenticatable
     public function isCandidate(): bool
     {
         return $this->role === 3;
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
+
+    public function education()
+    {
+        return $this->hasMany(Education::class);
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class);
+    }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
+
+    public function awards()
+    {
+        return $this->hasMany(Award::class);
     }
 }

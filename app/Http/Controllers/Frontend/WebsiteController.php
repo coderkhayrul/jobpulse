@@ -11,4 +11,19 @@ class WebsiteController extends Controller
     {
         return view('frontend.home');
     }
+
+    public function jobs()
+    {
+        return view('frontend.jobs');
+    }
+
+    public function about()
+    {
+        return view('frontend.about');
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
 }

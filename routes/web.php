@@ -18,20 +18,20 @@ Route::name('web.')->group(function () {
     Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
 });
 
-
+// ADMIN ROUTE LIST =======================>
 Route::name('admin.')->group(function () {
-
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('categories', CategoryController::class);
     Route::resource('job-types', JobTypeController::class);
     Route::resource('blogs', BlogController::class);
 });
 
-
+// COMPANY ROUTE LIST =====================>
 Route::name('company.')->group(function () {
     Route::get('/company', [CompanyController::class, 'dashboard'])->name('dashboard');
 });
 
+// CANDIDATE ROUTE LIST ===================>
 Route::name('candidate.')->group(function () {
     Route::get('/candidate', [CandidateController::class, 'dashboard'])->name('dashboard');
 });

@@ -74,103 +74,35 @@
                         <div class="section-title">
                             <h4 class="text-center">Login to Your Account</h4>
                         </div>
-                        <fieldset>
-                            <legend class="px-2">Choose your Account Type</legend>
-                            <ul class="nav nav-tabs nav-tabs-border d-flex" role="tablist">
-                                <li class="nav-item me-4">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#candidate" role="tab"
-                                        aria-selected="false">
-                                        <div class="d-flex">
-                                            <div class="tab-icon">
-                                                <i class="flaticon-users"></i>
-                                            </div>
-                                            <div class="ms-3">
-                                                <h6 class="mb-0">Candidate</h6>
-                                                <p class="mb-0">Log in as Candidate</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#employer" role="tab"
-                                        aria-selected="false">
-                                        <div class="d-flex">
-                                            <div class="tab-icon">
-                                                <i class="flaticon-suitcase"></i>
-                                            </div>
-                                            <div class="ms-3">
-                                                <h6 class="mb-0">Employer</h6>
-                                                <p class="mb-0">Log in as Employer</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </fieldset>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="candidate" role="tabpanel">
-                                <form class="mt-4" method="POST" action="{{ route('login') }}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="mb-3 col-12">
-                                            <label class="form-label" for="Email2">Username / Email Address</label>
-                                            <input name="email" type="text" class="form-control" id="Email22">
-                                            @error('email')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-3 col-12">
-                                            <label class="form-label" for="password2">Password*</label>
-                                            <input name="password" type="password" class="form-control" id="password32">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <button class="btn btn-primary d-grid" type="submit">Sign In</button>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mt-3 mt-md-0 forgot-pass">
-                                                <a href="#">Forgot Password?</a>
-                                                <p class="mt-1">Don't have account? <a href="{{ route('register') }}">Sign
-                                                        Up
-                                                        here</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                        <form class="mt-4" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="mb-3 col-12">
+                                    <label class="form-label" for="Email2">Username / Email Address</label>
+                                    <input name="email" type="text" class="form-control" id="Email22">
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 col-12">
+                                    <label class="form-label" for="password2">Password*</label>
+                                    <input name="password" type="password" class="form-control" id="password32">
+                                </div>
                             </div>
-
-                            <div class="tab-pane fade" id="employer" role="tabpanel">
-                                <form class="mt-4">
-                                    <div class="row">
-                                        <div class="mb-3 col-12">
-                                            <label class="form-label" for="Email2">Username / Email Address</label>
-                                            <input type="text" class="form-control" id="Email2">
-                                        </div>
-                                        <div class="mb-3 col-12">
-                                            <label class="form-label" for="password2">Password *</label>
-                                            <input type="password" class="form-control" id="password2">
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-primary d-grid" type="submit">Sign In</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mt-3 mt-md-0 forgot-pass">
+                                        <a href="#">Forgot Password?</a>
+                                        <p class="mt-1">Don't have account? <a href="{{ route('register') }}">Sign
+                                                Up
+                                                here</a></p>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <button class="btn btn-primary d-grid">Sign In</button>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="ms-md-3 mt-3 mt-md-0">
-                                                <a href="#">Forgot Password?</a>
-                                                <div class="form-check mt-2">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="Remember-02">
-                                                    <label class="form-check-label" for="Remember-02">Remember
-                                                        Password</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <div class="mt-4">
                             <fieldset>
                                 <legend class="px-2">Login or Sign up with</legend>

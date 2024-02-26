@@ -16,16 +16,16 @@
                         <a class="nav-link" href="{{ route('web.home') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">Jobs</a>
+                        <a class="nav-link" href="{{ route('web.jobs') }}">Jobs</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="{{ route('web.about') }}">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="{{ route('web.contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>

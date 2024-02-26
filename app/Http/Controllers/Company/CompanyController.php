@@ -9,6 +9,6 @@ class CompanyController extends Controller
 {
     public function dashboard()
     {
-        return view('company.dashboard');
+        return view('frontend.company.dashboard');
     }
 }

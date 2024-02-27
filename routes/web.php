@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\JobTypeController;
+use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Candidate\CandidateController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Frontend\WebsiteController;
@@ -25,6 +26,7 @@ Route::name('admin.')->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('job-types', JobTypeController::class);
     Route::resource('blogs', BlogController::class);
+    Route::resource('position', PositionController::class);
 });
 
 // COMPANY ROUTE LIST =====================>

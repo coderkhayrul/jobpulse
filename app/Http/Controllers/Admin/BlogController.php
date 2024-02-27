@@ -34,6 +34,7 @@ class BlogController extends Controller
      */
     public function store(BlogStoreRequest $request)
     {
+        dd($request->all());
 
         if ($request->hasFile('img')) {
             $img = $request->file('img');
@@ -72,7 +73,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return response()->json($blog);
     }
 
     /**

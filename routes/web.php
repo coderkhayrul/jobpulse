@@ -15,6 +15,7 @@ Route::name('web.')->group(function () {
     Route::get('/', [WebsiteController::class, 'home'])->name('home');
     Route::get('/jobs', [WebsiteController::class, 'jobs'])->name('jobs');
     Route::get('/about', [WebsiteController::class, 'about'])->name('about');
+    Route::get('/blogs', [WebsiteController::class, 'blogs'])->name('blogs');
     Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
 });
 

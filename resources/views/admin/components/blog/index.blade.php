@@ -22,7 +22,8 @@
                     <tbody>
                         @foreach ($blogs as $blog)
                             <tr>
-                                <td><img class="w-15 h-auto" alt="" src="{{ $blog->img_url }}"></td>
+                                <td><img class="rounded" alt="" src="{{ asset($blog->img) }}" style="width:15px">
+                                </td>
                                 <td>{{ $blog->title }}</td>
                                 <td class="text-center">
                                     {{ $blog->created_at->format('d-M-Y') }}
@@ -105,6 +106,7 @@
             var url = "{{ route('admin.blogs.edit', ':id') }}";
             url = url.replace(':id', id);
 
+            console.log(url, id);
             $.ajax({
                 type: "GET",
                 url: url,
@@ -112,7 +114,7 @@
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
-
+                    $('#blogImg').attr('src', response.img);
                     $('#blogTitle').val(response.title);
                     $('#blogdescription').val(response.body);
                     $('#blogEditModal form').attr('action', 'blog/' + response.id);

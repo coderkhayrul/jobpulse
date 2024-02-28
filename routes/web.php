@@ -16,7 +16,7 @@ use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\Admin\UserProfileController;
 use App\Http\Controllers\Candidate\CandidateController;
-
+use App\Http\Middleware\AdminMiddleware;
 
 Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('/', 'home')->name('home');
@@ -28,8 +28,8 @@ Route::name('web.')->controller(WebsiteController::class)->group(function () {
 });
 
 // ADMIN ROUTE LIST =======================>
-Route::name('admin.')->group(function () {
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('categories', CategoryController::class);
     Route::resource('job-types', JobTypeController::class);
     Route::resource('blogs', BlogController::class);
@@ -42,13 +42,25 @@ Route::name('admin.')->group(function () {
 });
 
 // COMPANY ROUTE LIST =====================>
-Route::name('company.')->group(function () {
-    Route::get('/company', [CompanyController::class, 'dashboard'])->name('dashboard');
+Route::name('company.')->prefix('company')->controller(CompanyController::class)->middleware(['auth', 'company'])->group(function () {
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/my-profile', 'myProfile')->name('my-profile');
+    Route::post('/my-profile', 'myProfileStore')->name('my-profile.store');
+    Route::get('/change-password', 'changePassword')->name('password-change');
+    Route::get('/manage-candidate', 'manageCandidate')->name('manage-candidate');
+    Route::get('/manage-jobs', 'manageJobs')->name('manage-jobs');
+    Route::get('/job-post', 'jobPost')->name('job-post');
+    Route::get('/logout', 'logout')->name('logout');
 });
 
 // CANDIDATE ROUTE LIST ===================>
-Route::name('candidate.')->group(function () {
-    Route::get('/candidate', [CandidateController::class, 'dashboard'])->name('dashboard');
+Route::name('candidate.')->prefix('candidate')->controller(CandidateController::class)->middleware(['auth', 'candidate'])->group(function () {
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/my-profile', 'myProfile')->name('my-profile');
+    Route::get('/change-password', 'changePassword')->name('change-password');
+    Route::get('/my-resume', 'myResume')->name('my-resume');
+    Route::get('/manage-jobs', 'manageJobs')->name('manage-jobs');
+    Route::get('/logout', 'logout')->name('logout');
 });
 
 

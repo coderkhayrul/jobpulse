@@ -41,7 +41,8 @@
             @auth
                 <div class="add-listing">
                     <div class="login d-inline-block me-4">
-                        <a href="#"><i class="far fa-user pe-2"></i>My Account</a>
+                        <a href="{{ Auth::user()->role == 2 ? route('company.dashboard') : route('candidate.dashboard') }}"><i
+                                class="far fa-user pe-2"></i>My Account</a>
                     </div>
                     <a class="btn btn-white btn-md" href="{{ route('web.sign-out') }}"> <i
                             class="fas fa-sign-out-alt"></i>Logout</a>

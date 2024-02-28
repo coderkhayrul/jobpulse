@@ -7,7 +7,7 @@
     @yield('frontend_content')
 
     <!-- Feature info section -->
-    <section class="feature-info-section">
+    {{-- <section class="feature-info-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-lg-0 mb-4">
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Feature info section -->
 
     <!-- Footer -->

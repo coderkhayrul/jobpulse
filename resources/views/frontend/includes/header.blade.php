@@ -25,7 +25,9 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl-carousel/owl.carousel.min.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/subtle-slideshow.css" />
 
+    @stack('frontend_styles')
     <!-- Template Style -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css" />
+
 
 </head>

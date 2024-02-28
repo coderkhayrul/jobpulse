@@ -56,3 +56,13 @@ function deleteImage($image): void
         File::delete(public_path() . $image);
     }
 }
+
+function roleName($role_id)
+{
+    $roles = [
+        1 => 'Admin',
+        2 => 'Company',
+        3 => 'Candidate',
+    ];
+    return $roles[$role_id];
+}

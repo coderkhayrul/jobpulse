@@ -40,9 +40,9 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.userProfile.index') }}" class="waves-effect" aria-expanded="false">
+            <a href="{{ route('admin.user.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-user"></i>
-                <span key="t-positions">Users</span>
+                <span key="t-users">Users</span>
             </a>
         </li>
         <li>

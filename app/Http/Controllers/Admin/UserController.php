@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use function Ramsey\Uuid\v1;
+
 class UserController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('admin.components.user.index', compact('users'));
     }
 
     /**

@@ -30,4 +30,10 @@ class WebsiteController extends Controller
     {
         return view('frontend.contact');
     }
+
+    public function signOut()
+    {
+        auth()->logout();
+        return redirect()->route('web.home');
+    }
 }

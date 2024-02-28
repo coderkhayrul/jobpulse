@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Position;
+use App\Models\Skill;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PositionController extends Controller
+class SkillController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(
+    )
     {
-        $positions = Position::all();
-        return view('admin.components.position.index', compact('positions'));
+        $skills = Skill::all();
+        return view('admin.components.skill.index', compact('skills'));
     }
 
     /**
@@ -31,14 +32,14 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-         Position::create([
+         Skill::create([
             'name' => $request->name,
-            'slug' => Str::slug($request->name),
-            'remarks' => $request->remarks,
+            'percentage' => $request->percentage,
+            'color' => $request->color,
         ]);
 
         $notification = [
-            'message' => 'Position Created Successfully',
+            'message' => 'Color Created Successfully',
             'alert-type' => 'success',
         ];
 
@@ -48,7 +49,7 @@ class PositionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Position $position)
+    public function show(Skill $skill)
     {
         //
     }
@@ -56,40 +57,42 @@ class PositionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Position $position)
+    public function edit(Skill $skill)
     {
-        return view('admin.components.position.edit', compact('position'));
+        return view('admin.components.skill.edit', compact('skill'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Position $position)
+    public function update(Request $request, Skill $skill)
     {
-        $request->validate([
+         $request->validate([
             'name' => 'required',
-            'remarks' => 'required',
+            'percentage' => 'required',
+
+
         ]);
 
-        $position->update($request->all());
+        $skill->update($request->all());
         $notification = [
-            'message' => 'Position Created Successfully',
+            'message' => 'Skill Created Successfully',
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('admin.position.index')->with($notification);
+        return redirect()->route('admin.skill.index')->with($notification);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Position $position)
+    public function destroy(Skill $skill)
     {
-        $position->delete();
+        $skill->delete();
 
         return response()->json([
             'status' => true,
-            'message' => 'Position Deleted Successfully',
+            'message' => 'Skill Deleted Successfully',
         ]);
     }
 }

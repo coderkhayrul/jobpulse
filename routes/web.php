@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\CategoryController;
+
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\JobTypeController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\PositionController;
-use App\Http\Controllers\Candidate\CandidateController;
+use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Frontend\WebsiteController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserProfileController;
+use App\Http\Controllers\Candidate\CandidateController;
 
 
 Route::name('web.')->group(function () {
@@ -27,6 +30,9 @@ Route::name('admin.')->group(function () {
     Route::resource('job-types', JobTypeController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('position', PositionController::class);
+    Route::resource('userProfile', UserProfileController::class);
+    Route::resource('skill', SkillController::class);
+    Route::resource('education', EducationController::class);
 });
 
 // COMPANY ROUTE LIST =====================>

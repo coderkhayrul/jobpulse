@@ -35,8 +35,26 @@
 
         <li>
             <a href="{{ route('admin.position.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bx-user"></i>
+                <i class="bx bx-map"></i>
                 <span key="t-positions">Positions</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.userProfile.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bx-user"></i>
+                <span key="t-positions">Users</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.skill.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bxs-brightness"></i>
+                <span key="t-positions">Skills</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.education.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bxs-school"></i>
+                <span key="t-positions">Educations</span>
             </a>
         </li>
     </ul>

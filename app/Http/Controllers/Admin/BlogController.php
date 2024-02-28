@@ -34,7 +34,7 @@ class BlogController extends Controller
      */
     public function store(BlogStoreRequest $request)
     {
-        dd($request->all());
+   
 
         if ($request->hasFile('img')) {
             $img = $request->file('img');
@@ -81,7 +81,34 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        if ($request->hasFile('img')) {
+            $img = $request->file('img');
+            $imgName = 'BlogPhoto- ' . md5(uniqid()) . '.' . $img->getClientOriginalExtension();
+            $img_url = "backend/assets/uploads/{$imgName}";
+            $img->move(public_path('backend/assets/uploads'), $img_url);
+            //delete file:
+            $filePath = $request->$img_url;
+            File::delete($filePath);
+            $blog->update([
+                'title' => $request->title,
+                'slug' => Str::slug($request->title),
+                'img' => $request->img_url,
+                'body' => $request->body,
+            ]);
+            dd($blog->img);
+        }else{
+            $blog->update([
+                'title' => $request->title,
+                'slug' => Str::slug($request->title),
+                'body' => $request->body,
+            ]);
+        }
+        $notification = [
+            'message' => 'Blog Updated Successfully',
+            'alert-type' => 'success',
+        ];
+
+         return redirect()->route('admin.blogs.index')->with($notification);
     }
 
     /**
@@ -89,8 +116,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        $file_path = 'file_path';
-        File::delete($file_path);
+        
+        File::delete($blog);
         $blog->delete();
 
         return response()->json([

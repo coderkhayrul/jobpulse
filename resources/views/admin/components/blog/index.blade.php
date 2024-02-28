@@ -22,7 +22,7 @@
                     <tbody>
                         @foreach ($blogs as $blog)
                             <tr>
-                                <td><img class="rounded" alt="" src="{{ asset($blog->img) }}" style="width:15px">
+                                <td><img class="rounded" alt="" src="{{ asset($blog->img) }}" style="width:100px ">
                                 </td>
                                 <td>{{ $blog->title }}</td>
                                 <td class="text-center">
@@ -114,10 +114,10 @@
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response) {
-                    $('#blogImg').attr('src', response.img);
+                    $('#blogImg' ?? 'img').attr('src', response.img);
                     $('#blogTitle').val(response.title);
                     $('#blogdescription').val(response.body);
-                    $('#blogEditModal form').attr('action', 'blog/' + response.id);
+                    $('#blogEditModal form').attr('action', 'blogs/' + response.id);
                     $('#blogEditModal').modal('show');
                 }
             });

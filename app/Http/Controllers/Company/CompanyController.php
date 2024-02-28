@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function dashboard()
+   public function dashboard()
     {
         return view('frontend.company.dashboard');
     }

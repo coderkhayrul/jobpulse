@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class CandidateController extends Controller
 {
-    public function dashboard()
+
+      public function dashboard()
     {
         return view('frontend.candidate.dashboard');
     }
+   
 }

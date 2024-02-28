@@ -12,11 +12,11 @@
                     @method('PUT')
                     <div class="mb-3">
                         <label for="img" class="form-label">Preview Image</label>
-                        <img src="" alt="" id="blogImg" style="width:150px">
+                        <img src="" id="blogImg" style="width:100px">
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Photo</label>
-                        <input id="blogImg" name="img" type="file"
+                        <input id="img" name="img" type="file"
                             class="form-control @error('img') is-invalid @enderror" id="img">
                         @error('img')
                             <div class="text-danger">{{ $message }}</div>

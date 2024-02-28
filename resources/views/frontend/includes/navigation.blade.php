@@ -7,7 +7,7 @@
                 <span></span>
                 <span></span>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ route('web.home') }}">
                 <img class="img-fluid" src="{{ asset('frontend') }}/images/logo.svg" alt="logo">
             </a>
             <div class="navbar-collapse collapse justify-content-start">
@@ -19,7 +19,7 @@
                         <a class="nav-link" href="{{ route('web.jobs') }}">Jobs</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" href="">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="{{ route('web.about') }}">About</a>

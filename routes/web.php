@@ -1,21 +1,27 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\CategoryController;
+
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AwardController;
 use App\Http\Controllers\Admin\JobTypeController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\PositionController;
-use App\Http\Controllers\Candidate\CandidateController;
+use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Frontend\WebsiteController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserProfileController;
+use App\Http\Controllers\Candidate\CandidateController;
 
 
 Route::name('web.')->group(function () {
     Route::get('/', [WebsiteController::class, 'home'])->name('home');
     Route::get('/jobs', [WebsiteController::class, 'jobs'])->name('jobs');
     Route::get('/about', [WebsiteController::class, 'about'])->name('about');
+    Route::get('/blogs', [WebsiteController::class, 'blogs'])->name('blogs');
     Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
 });
 
@@ -26,6 +32,11 @@ Route::name('admin.')->group(function () {
     Route::resource('job-types', JobTypeController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('position', PositionController::class);
+    Route::resource('userProfile', UserProfileController::class);
+    Route::resource('skill', SkillController::class);
+    Route::resource('education', EducationController::class);
+     Route::resource('experience', ExperienceController::class);
+      Route::resource('award', AwardController::class);
 });
 
 // COMPANY ROUTE LIST =====================>

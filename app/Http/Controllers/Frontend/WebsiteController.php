@@ -16,6 +16,10 @@ class WebsiteController extends Controller
     {
         return view('frontend.jobs');
     }
+    public function blogs()
+    {
+        return view('frontend.blogs');
+    }
 
     public function about()
     {

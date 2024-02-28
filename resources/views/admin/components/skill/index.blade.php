@@ -4,7 +4,7 @@
     <div class="col-md-8 col-sm-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3>Total {{ count($positions) }} Position</h3>
+                <h3>Total {{ count($skills) }} Skill</h3>
             </div>
             <div class="card-body">
                 <table id="datatable" class="table table-bordered dt-responsive wrap w-100  dataTable" role="grid"
@@ -12,18 +12,20 @@
                     <thead>
                         <tr class="text-primary" role="row">
                             <th width="20%"> Name</th>
-                            <th width="20%"> Reamrks</th>
+                            <th width="20%"> percentage</th>
+                            <th width="20%"> color</th>
                             <th class="text-center" width="10%"> Created At</th>
                             <th width="10%" class="text-center text-dark">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($positions as $position)
+                        @foreach ($skills as $skill)
                             <tr>
-                                <td>{{ $position->name }}</td>
-                                <td>{{ $position->remarks }}</td>
+                                <td>{{ $skill->name }}</td>
+                                <td>{{ $skill->percentage }}</td>
+                                <td>{{ $skill->color }}</td>
                                 <td class="text-center">
-                                    {{ $position->created_at->format('d-M-Y') }}
+                                    {{ $skill->created_at->format('d-M-Y') }}
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group">
@@ -34,11 +36,11 @@
                                             <i class="mdi mdi-chevron-down"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a href="{{ route('admin.position.edit', $position) }}" class="dropdown-item">
+                                            <a href="{{ route('admin.skill.edit', $skill) }}" class="dropdown-item">
                                                 <i class="bx bx-edit align-middle me-2"></i> Edit
                                             </a>
-                                            <button onclick="positionDelete({{ $position->id }})" class="dropdown-item"
-                                                href="">
+                                            <button onclick="skillDelete({{ $skill->id }})" class="dropdown-item"
+                                                href="#">
                                                 <i class="bx bx-trash-alt align-middle me-2"></i> Delete
                                             </button>
                                         </div>
@@ -54,10 +56,10 @@
     <div class="col-md-4 col-sm-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3>Create A Type</h3>
+                <h3>Create A Skill</h3>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.position.store') }}">
+                <form method="POST" action="{{ route('admin.skill.store') }}">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -65,8 +67,12 @@
                             placeholder="Enter Type Name">
                     </div>
                     <div class="mb-3">
-                        <label for="remarks" class="form-label">Remarks</label>
-                        <textarea name="remarks" class="form-control" id="remarks" rows="3" placeholder="Enter Remarks"></textarea>
+                        <label for="percentage" class="form-label">percentage</label>
+                        <textarea name="percentage" class="form-control" id="percentage" rows="3" placeholder="Enter percentage"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="color" class="form-label">Color</label>
+                        <textarea name="color" class="form-control" id="color" rows="3" placeholder="Enter color"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary w-md">Submit</button>
                 </form>
@@ -77,7 +83,7 @@
 @endsection
 @push('scripts')
     <script>
-        function positionDelete(id) {
+        function skillDelete(id) {
             let url = "";
             url = url.replace(':id', id);
 
@@ -92,7 +98,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     event.preventDefault();
-                    let url = "{{ route('admin.position.destroy', ':id') }}";
+                    let url = "{{ route('admin.skill.destroy', ':id') }}";
                     url = url.replace(':id', id);
                     $.ajax({
                         url: url,
@@ -104,7 +110,7 @@
                             if (response.status) {
                                 Swal.fire(
                                     'Deleted!',
-                                    'User has been deleted.',
+                                    'skill has been deleted.',
                                     'success'
                                 ).then((result) => {
                                     if (result.isConfirmed) {

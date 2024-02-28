@@ -53,8 +53,20 @@
         </li>
         <li>
             <a href="{{ route('admin.education.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bxs-school"></i>
+                <i class="bx bxs-institution"></i>
                 <span key="t-positions">Educations</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.experience.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bx-calendar"></i>
+                <span key="t-positions">Experiences</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.award.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bxs-badge-check"></i>
+                <span key="t-positions">Awards</span>
             </a>
         </li>
     </ul>

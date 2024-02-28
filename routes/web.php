@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BlogController;
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AwardController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Company\CompanyController;
@@ -33,6 +35,8 @@ Route::name('admin.')->group(function () {
     Route::resource('userProfile', UserProfileController::class);
     Route::resource('skill', SkillController::class);
     Route::resource('education', EducationController::class);
+     Route::resource('experience', ExperienceController::class);
+      Route::resource('award', AwardController::class);
 });
 
 // COMPANY ROUTE LIST =====================>

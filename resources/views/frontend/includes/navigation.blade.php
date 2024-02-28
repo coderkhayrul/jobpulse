@@ -29,13 +29,24 @@
                     </li>
                 </ul>
             </div>
-            <div class="add-listing">
-                <div class="login d-inline-block me-4">
-                    <a href="{{ route('login') }}"><i class="far fa-user pe-2"></i>Sign in</a>
+            @guest
+                <div class="add-listing">
+                    <div class="login d-inline-block me-4">
+                        <a href="{{ route('login') }}"><i class="far fa-user pe-2"></i>Sign in</a>
+                    </div>
+                    <a class="btn btn-white btn-md" href="{{ route('register') }}"> <i
+                            class="fas fa-plus-circle"></i>Register</a>
                 </div>
-                <a class="btn btn-white btn-md" href="#"> <i class="fas fa-plus-circle"></i>Post a
-                    job</a>
-            </div>
+            @endguest
+            @auth
+                <div class="add-listing">
+                    <div class="login d-inline-block me-4">
+                        <a href="#"><i class="far fa-user pe-2"></i>My Account</a>
+                    </div>
+                    <a class="btn btn-white btn-md" href="{{ route('web.sign-out') }}"> <i
+                            class="fas fa-sign-out-alt"></i>Logout</a>
+                </div>
+            @endauth
         </div>
     </nav>
 </header>

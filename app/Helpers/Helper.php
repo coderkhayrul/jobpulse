@@ -2,6 +2,7 @@
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 
 
@@ -66,4 +67,27 @@ function roleName($role_id)
         3 => 'Candidate',
     ];
     return $roles[$role_id];
+}
+
+function routeMatch($route, $output = "active")
+{
+    if (Route::currentRouteName() == $route) return $output;
+}
+
+
+function countryList()
+{
+    return [
+        'Bangladesh',
+        'Afghanistan',
+        'Albania',
+        'Algeria',
+        'Andorra',
+        'Angola',
+        'Antigua and Barbuda',
+        'Argentina',
+        'Armenia',
+        'Australia',
+        'Austria',
+    ];
 }

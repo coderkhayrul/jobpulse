@@ -1,17 +1,106 @@
 @extends('frontend.layouts.app')
 @section('frontend_content')
-    @include('frontend.company.company-nav')
+    <!--=================================
+                                        inner banner -->
+    <div class="header-inner bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="candidates-user-info">
+                        <div class="jobber-user-info">
+                            <div class="profile-avatar">
+                                <img class="img-fluid " src="{{ asset('frontend') }}/images/avatar/04.jpg" alt="">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <div class="profile-avatar-info ms-4">
+                                <h3>Felica Queen</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width:85%" aria-valuenow="85" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <span class="progress-bar-number">85%</span>
+                        </div>
+                    </div>
+                    <div class="candidates-skills">
+                        <div class="candidates-skills-info">
+                            <h3 class="text-primary">85%</h3>
+                            <span class="d-block">Skills increased by job Title.</span>
+                        </div>
+                        <div class="candidates-required-skills ms-auto mt-sm-0 mt-3">
+                            <a class="btn btn-dark" href="#">Complete Required Skills</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=================================
+                                          inner banner -->
+
+    <!--=================================
+                                          Dashboard Nav -->
+    @include('frontend.candidate.candidate-nav')
+    <!--=================================
+                                          Dashboard Nav -->
+
+    <!--=================================
+                                          Candidates Dashboard -->
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="user-dashboard-info-box pb-0">
+                    <div class="row mb-3 mb-lg-5 mt-3 mt-lg-0">
+                        <div class="col-lg-4 mb-4 mb-lg-0">
+                            <div class="candidates-feature-info bg-dark">
+                                <div class="candidates-info-icon text-white">
+                                    <i class="fas fa-globe-asia"></i>
+                                </div>
+                                <div class="candidates-info-content">
+                                    <h6 class="candidates-info-title text-white">Total Applications</h6>
+                                </div>
+                                <div class="candidates-info-count">
+                                    <h3 class="mb-0 text-white">01</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 mb-lg-0">
+                            <div class="candidates-feature-info bg-success">
+                                <div class="candidates-info-icon text-white">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </div>
+                                <div class="candidates-info-content">
+                                    <h6 class="candidates-info-title text-white">Shortlisted Applications</h6>
+                                </div>
+                                <div class="candidates-info-count">
+                                    <h3 class="mb-0 text-white">00</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 mb-lg-0">
+                            <div class="candidates-feature-info bg-danger">
+                                <div class="candidates-info-icon text-white">
+                                    <i class="fas fa-thumbs-down"></i>
+                                </div>
+                                <div class="candidates-info-content">
+                                    <h6 class="candidates-info-title text-white">Rejected Applications</h6>
+                                </div>
+                                <div class="candidates-info-count">
+                                    <h3 class="mb-0 text-white">00</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-dashboard-info-box">
                         <div id="chart">
                         </div>
                     </div>
-                    <div class="user-dashboard-info-box mb-0">
-                        <div class="section-title-02 mb-4">
-                            <h4>Job List</h4>
+                    <div class="user-dashboard-info-box mb-0 pb-4">
+                        <div class="section-title">
+                            <h4>Recent Applied Jobs</h4>
                         </div>
                         <div class="row">
                             <div class="col-12">
@@ -38,7 +127,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="job-list-favourite-time"> <a class="order-2 mb-3 d-block" href="#"><i
+                                    <div class="job-list-favourite-time"> <a class="mb-3 d-block order-2" href="#"><i
                                                 class="far fa-edit"></i></a> <span class="job-list-time order-1"><i
                                                 class="far fa-clock pe-1"></i>1M ago</span> </div>
                                 </div>
@@ -66,9 +155,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="job-list-favourite-time"> <a class="order-2 mb-3 d-block" href="#"><i
-                                                class="far fa-edit"></i></a> <span class="job-list-time order-1"><i
-                                                class="far fa-clock pe-1"></i>3D ago</span> </div>
+                                    <div class="job-list-favourite-time"> <a class="mb-3 d-block order-2"
+                                            href="#"><i class="far fa-edit"></i></a> <span
+                                            class="job-list-time order-1"><i class="far fa-clock pe-1"></i>3D ago</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -85,8 +175,8 @@
                                             </div>
                                             <div class="job-list-option">
                                                 <ul class="list-unstyled">
-                                                    <li> <span>via</span> <a href="employer-detail.html">Wight Sound Hearing
-                                                            LLC</a> </li>
+                                                    <li> <span>via</span> <a href="employer-detail.html">Wight Sound
+                                                            Hearing LLC</a> </li>
                                                     <li><i class="fas fa-map-marker-alt pe-1"></i>New Castle, PA</li>
                                                     <li><i class="fas fa-filter pe-1"></i>Banking</li>
                                                     <li><a class="temporary" href="#"><i
@@ -95,9 +185,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="job-list-favourite-time"> <a class="order-2 mb-3 d-block" href="#"><i
-                                                class="far fa-edit"></i></a> <span class="job-list-time order-1"><i
-                                                class="far fa-clock pe-1"></i>2W ago</span>
+                                    <div class="job-list-favourite-time"> <a class="mb-3 d-block order-2"
+                                            href="#"><i class="far fa-edit"></i></a> <span
+                                            class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W ago</span>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +215,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="job-list-favourite-time"> <a class="order-2 mb-3 d-block"
+                                    <div class="job-list-favourite-time"> <a class="mb-3 d-block order-2"
                                             href="#"><i class="far fa-edit"></i></a> <span
                                             class="job-list-time order-1"><i class="far fa-clock pe-1"></i>3M ago</span>
                                     </div>
@@ -155,7 +245,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="job-list-favourite-time"> <a class="order-2 mb-3 d-block"
+                                    <div class="job-list-favourite-time"> <a class="mb-3 d-block order-2"
                                             href="#"><i class="far fa-edit"></i></a> <span
                                             class="job-list-time order-1"><i class="far fa-clock pe-1"></i>6D ago</span>
                                     </div>
@@ -163,8 +253,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-center mt-5">
-                                <ul class="pagination justify-content-center">
+                            <div class="col-12 text-center mt-4 mt-md-5">
+                                <ul class="pagination justify-content-center mb-md-4 mb-0">
                                     <li class="page-item disabled"> <span class="page-link b-radius-none">Prev</span>
                                     </li>
                                     <li class="page-item active" aria-current="page"><span class="page-link">1 </span>
@@ -184,5 +274,5 @@
         </div>
     </section>
     <!--=================================
-                                                Employer Dashboard -->
+                                          Change Password -->
 @endsection

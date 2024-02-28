@@ -11,6 +11,8 @@
 <!-- Template Scripts (Do not remove)-->
 <script src="{{ asset('frontend') }}/js/custom.js"></script>
 
+@stack('frontend_scripts')
+
 </body>
 
 </html>

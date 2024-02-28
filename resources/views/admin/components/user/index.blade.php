@@ -29,11 +29,11 @@
                             role="grid" aria-describedby="datatable_info" style="width: 1048px;">
                             <thead class="table-light">
                                 <tr class="text-primary" role="row">
-                                    <th width="20%">Image</th>
+                                    <th width="10%">Image</th>
                                     <th width="20%">Name</th>
                                     <th width="20%">Email</th>
-                                    <th width="20%">Role</th>
-                                    <th width="20%">Status</th>
+                                    <th width="10%">Role</th>
+                                    <th width="10%">Status</th>
                                     <th class="text-center" width="10%"> Created At</th>
                                     <th width="10%" class="text-center text-dark">Action</th>
                                 </tr>
@@ -43,6 +43,7 @@
                                     <tr>
                                         <td>Image</td>
                                         <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
                                             {{ roleName($user->role) }}
@@ -60,7 +61,7 @@
                                                     <i class="mdi mdi-chevron-down"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a href="" class="dropdown-item">
+                                                    <a href="{{ route('admin.user.edit', $user) }}" class="dropdown-item">
                                                         <i class="bx bx-edit align-middle me-2"></i> Edit
                                                     </a>
                                                     <button onclick="" class="dropdown-item" href="#">

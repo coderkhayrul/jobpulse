@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.components.user.edit', compact('user'));
     }
 
     /**

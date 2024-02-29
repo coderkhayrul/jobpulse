@@ -46,7 +46,7 @@
                                 class="{{ Auth::user()->role == 1 ? 'fas fa-tachometer-alt' : 'far fa-user' }} pe-2"></i>{{ Auth::user()->role == 1 ? 'Dashboard' : 'My Account' }}</a>
                     </div>
                     @if (Auth::user()->role == 2)
-                        <a class="btn btn-white btn-md" href="#"> <i class="fas fa-sign-out-alt"></i>Post New Job</a>
+                        <a class="btn btn-white btn-md" href="#"> <i class="fas fa-sign-out-alt"></i>Post Job</a>
                     @else
                         <a class="btn btn-white btn-md" href="{{ route('web.sign-out') }}"> <i
                                 class="fas fa-sign-out-alt"></i>Logout</a>

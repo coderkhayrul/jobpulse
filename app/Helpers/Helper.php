@@ -91,3 +91,30 @@ function countryList()
         'Austria',
     ];
 }
+
+function salaryType()
+{
+    return [
+        'Hourly',
+        'Daily',
+        'Weekly',
+        'Monthly',
+        'Yearly',
+    ];
+}
+
+function currencyList()
+{
+    return [
+        'BDT',
+        'USD',
+        'EUR',
+        'GBP',
+        'JPY',
+        'CNY',
+        'INR',
+        'RUB',
+        'KRW',
+        'TRY',
+    ];
+}

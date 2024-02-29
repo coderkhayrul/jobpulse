@@ -1,126 +1,200 @@
 @extends('frontend.layouts.app')
 @section('frontend_content')
     @include('frontend.company.company-nav')
-    <!--=================================
-                          Dashboard Nav -->
-
-    <!--=================================
-                          Post New Job -->
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="user-dashboard-info-box">
-                        <div class="section-title-02 mb-4 d-inline-block">
-                            <h4>Post a New Job</h4>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <form class="row">
-                                    <div class="form-group mt-0 mb-3 col-md-12">
-                                        <label class="form-label">Job Title</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-                                    <div class="form-group mt-0 mb-3 col-md-12">
-                                        <label class="form-label">Job Description</label>
-                                        <textarea class="form-control" rows="4"></textarea>
-                                    </div>
-                                    <div class="form-group mt-0 mb-3 col-md-6 datetimepickers">
-                                        <label class="form-label">Job Expire Date</label>
-                                        <div class="input-group date" id="datetimepicker-01" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input"
-                                                placeholder="Date" data-target="#datetimepicker-01">
-                                            <div class="input-group-append d-flex" data-target="#datetimepicker-01"
-                                                data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group mt-0 mb-3 col-md-6 select-border">
-                                        <label class="form-label">Job Type</label>
-                                        <select class="form-control basic-select">
-                                            <option value="value 01" selected="selected">Energy</option>
-                                            <option value="value 02">Human Resources</option>
-                                            <option value="value 03">IT & Telecoms</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mt-0 mb-3 col-md-6 select-border">
-                                        <label class="form-label">Job Sector</label>
-                                        <select class="form-control basic-select">
-                                            <option value="value 01" selected="selected">Select Sector</option>
-                                            <option value="value 02">Human Resources</option>
-                                            <option value="value 03">IT & Telecoms</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mt-0 mb-3 col-md-6 select-border">
-                                        <label class="form-label">Application Type</label>
-                                        <select class="form-control basic-select">
-                                            <option value="value 01" selected="selected">External</option>
-                                            <option value="value 02">Human Resources</option>
-                                            <option value="value 03">IT & Telecoms</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mt-0 mb-3 col-md-6 select-border">
-                                        <label class="form-label">Salary Type</label>
-                                        <select class="form-control basic-select">
-                                            <option value="value 02">Yearly</option>
-                                            <option value="value 01">Monthly</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mt-0 mb-3 col-md-6">
-                                        <label class="form-label">Salary Min.</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-                                    <div class="form-group mt-0 col-md-6 mb-3 mb-md-0">
-                                        <label class="form-label">Salary Max</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-                                    <div class="form-group mt-0 col-md-6 mb-0">
-                                        <label class="form-label">Job skill</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-                                </form>
+                    <form action="{{ route('company.job-post.store') }}" method="POST">
+                        @csrf
+                        <div class="user-dashboard-info-box">
+                            <div class="section-title-02 mb-4 d-inline-block">
+                                <h4>Post a New Job</h4>
                             </div>
-                        </div>
-                    </div>
-                    <div class="user-dashboard-info-box">
-                        <form>
                             <div class="row">
                                 <div class="col-12">
-                                    <h4 class="mb-3">File attachment</h4>
-                                    <div class="upload-file mb-0">
-                                        <label for="formFile" class="form-label">Upload File</label>
-                                        <input class="form-control" type="file" id="formFile">
+                                    <div class="row">
+                                        <div class="form-group mt-0 mb-3 col-md-12">
+                                            <label class="form-label">Job Title</label>
+                                            <input name="title" type="text" class="form-control"
+                                                value="{{ old('title') }}">
+                                            @error('title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 mb-3 col-md-12">
+                                            <label class="form-label">Job Description</label>
+                                            <textarea name="description" class="form-control" rows="4">{{ old('description') }}</textarea>
+                                            @error('description')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 mb-3 col-md-6 datetimepickers">
+                                            <label class="form-label">Job Expire Date</label>
+                                            <div class="input-group date" id="datetimepicker-01"
+                                                data-target-input="nearest">
+                                                <input value="{{ old('expireDate') }}" name="expireDate" type="text"
+                                                    class="form-control datetimepicker-input" placeholder="Date"
+                                                    data-target="#datetimepicker-01">
+                                                <div class="input-group-append d-flex" data-target="#datetimepicker-01"
+                                                    data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                </div>
+                                            </div>
+                                            @error('expireDate')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 mb-3 col-md-6 select-border">
+                                            <label class="form-label">Job Type</label>
+                                            <select name="job_type_id" class="form-control basic-select">
+                                                <option value="" selected disabled>Select Type</option>
+                                                @foreach ($jobTypes as $jobType)
+                                                    <option value="{{ $jobType->id }}">{{ $jobType->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('job_type_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 mb-3 col-md-6 select-border">
+                                            <label class="form-label">Job Category</label>
+                                            <select name="category_id" class="form-control basic-select">
+                                                <option value="" selected disabled>Select Category</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('category_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 mb-3 col-md-6 select-border">
+                                            <label class="form-label">Job Position</label>
+                                            <select name="position_id" class="form-control basic-select">
+                                                <option value="" selected disabled>Select Position</option>
+                                                @foreach ($positions as $position)
+                                                    <option value="{{ $position->id }}">{{ $position->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('position_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 mb-3 col-md-6 select-border">
+                                            <label class="form-label">Salary Type</label>
+                                            <select name="salaryType" class="form-control basic-select">
+                                                <option value="" disabled selected>Select Type</option>
+                                                @foreach (salaryType() as $salaryType)
+                                                    <option value="{{ $salaryType }}">{{ $salaryType }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('salaryType')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 mb-3 col-md-6">
+                                            <label class="form-label">Salary Min.</label>
+                                            <input name="minSalary" type="text" class="form-control"
+                                                value="{{ old('minSalary') }}">
+                                            @error('minSalary')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 col-md-6 mb-3 mb-md-0">
+                                            <label class="form-label">Salary Max</label>
+                                            <input name="maxSalary" type="text" class="form-control"
+                                                value="{{ old('maxSalary') }}">
+                                            @error('maxSalary')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 mb-3 col-md-6 select-border">
+                                            <label class="form-label">Salary Currency</label>
+                                            <select name="currency" class="form-control basic-select">
+                                                <option value="" disabled selected>Select Currency</option>
+                                                @foreach (currencyList() as $currency)
+                                                    <option value="{{ $currency }}">{{ $currency }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('currency')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="user-dashboard-info-box">
-                        <div class="form-group mb-0">
-                            <h4 class="mb-4">Address</h4>
-                            <div class="form-group mb-3">
-                                <label class="form-label">Enter Your Location</label>
-                                <input type="text" class="form-control" value="" placeholder="Enter Your location">
-                            </div>
-                            <div class="company-address-map">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.95373531590414!3d-37.817323442021134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1559039794237!5m2!1sen!2sin"
-                                    height="400" allowfullscreen></iframe>
+                        </div>
+                        <div class="user-dashboard-info-box">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="form-group mt-0 mb-3 col-md-6">
+                                            <label class="form-label">Qualification</label>
+                                            <input name="qualification" type="text" class="form-control"
+                                                value="{{ old('qualification') }}">
+                                            @error('qualification')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 col-md-6 mb-0">
+                                            <label class="form-label">Experience</label>
+                                            <input name="experience" type="text" class="form-control"
+                                                value="{{ old('experience') }}">
+                                            @error('experience')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 col-md-6 mb-3 mb-md-0">
+                                            <label class="form-label">Gender</label>
+                                            <select name="gender" class="form-control basic-select">
+                                                <option value="" disabled selected>Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                            @error('gender')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-0 col-md-6 mb-3 mb-md-0">
+                                            <label class="form-label">Country</label>
+                                            <select name="country" class="form-control basic-select">
+                                                <option value="" disabled selected>Select Country</option>
+                                                @foreach (countryList() as $country)
+                                                    <option value="{{ $country }}">{{ $country }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('country')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <a class="btn btn-lg btn-primary" href="#">Save</a>
+                        <div class="user-dashboard-info-box">
+                            <div class="form-group mb-0">
+                                <h4 class="mb-4">Address</h4>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Enter Your Location</label>
+                                    <input name="address" type="text" class="form-control"
+                                        value="{{ old('address') }}" placeholder="Enter Your location">
+                                    @error('address')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary" type="submit">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-    <!--=================================
-                          Post New Job -->
 @endsection
 
 @push('frontend_styles')
-    <!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature)-->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/datetimepicker/datetimepicker.min.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/select2/select2.css" />
 @endpush

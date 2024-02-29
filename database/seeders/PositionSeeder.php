@@ -21,8 +21,8 @@ class PositionSeeder extends Seeder
                 'remarks' => 'Web Developer',
             ],
             [
-                'name' => $dd = 'Web Designer',
-                'slug' => Str::slug($dd),
+                'name' => $positionName = 'Web Designer',
+                'slug' => Str::slug($positionName),
                 'remarks' => 'Web Designer',
             ],
         ];

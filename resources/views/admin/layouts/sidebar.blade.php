@@ -48,25 +48,31 @@
         <li>
             <a href="{{ route('admin.skill.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bxs-brightness"></i>
-                <span key="t-positions">Skills</span>
+                <span key="t-skills">Skills</span>
             </a>
         </li>
         <li>
             <a href="{{ route('admin.education.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bxs-institution"></i>
-                <span key="t-positions">Educations</span>
+                <span key="t-educations">Educations</span>
             </a>
         </li>
         <li>
             <a href="{{ route('admin.experience.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-calendar"></i>
-                <span key="t-positions">Experiences</span>
+                <span key="t-experiences">Experiences</span>
             </a>
         </li>
         <li>
             <a href="{{ route('admin.award.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bxs-badge-check"></i>
-                <span key="t-positions">Awards</span>
+                <span key="t-awards">Awards</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.pages.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bxs-badge-check"></i>
+                <span key="t-pages">Pages</span>
             </a>
         </li>
     </ul>

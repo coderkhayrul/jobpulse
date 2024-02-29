@@ -9,14 +9,13 @@ use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Frontend\WebsiteController;
-use App\Http\Controllers\Admin\UserProfileController;
 use App\Http\Controllers\Candidate\CandidateController;
-use App\Http\Middleware\AdminMiddleware;
 
 Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('/', 'home')->name('home');
@@ -39,6 +38,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('education', EducationController::class);
     Route::resource('experience', ExperienceController::class);
     Route::resource('award', AwardController::class);
+    Route::resource('pages', PageController::class);
 });
 
 // COMPANY ROUTE LIST =====================>

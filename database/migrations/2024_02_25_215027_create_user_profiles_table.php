@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('companyName')->nullable();
             $table->string('firstName')->nullable();
             $table->string('lastName')->nullable();
-            $table->date('dateOfBirth')->nullable();
-            $table->date('dateOfFounded')->nullable();
+            $table->string('dateOfBirth')->nullable();
+            $table->string('dateOfFounded')->nullable();
             $table->string('companyType')->nullable();
             $table->string('address')->nullable();
             $table->string('country')->nullable();

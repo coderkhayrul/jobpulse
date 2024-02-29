@@ -5,7 +5,8 @@
                 <div class="candidates-user-info">
                     <div class="jobber-user-info">
                         <div class="profile-avatar">
-                            <img class="img-fluid " src="{{ asset('frontend') }}/images/avatar/04.jpg" alt="">
+                            <img class="img-fluid " src="{{ Auth::user()?->profile?->profileImage }}" alt="Profile">
+                            {{-- <img class="img-fluid " src="{{ asset('frontend') }}/images/avatar/04.jpg" alt=""> --}}
                             <i class="fas fa-pencil-alt"></i>
                         </div>
                         <div class="profile-avatar-info ms-4">

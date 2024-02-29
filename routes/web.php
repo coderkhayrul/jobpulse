@@ -65,5 +65,5 @@ Route::name('candidate.')->prefix('candidate')->controller(CandidateController::
 
 
 require __DIR__ . '/auth.php';
-require __DIR__ . '/company.php';
+// require __DIR__ . '/company.php';
 // require __DIR__ . '/candidate.php';

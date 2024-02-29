@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Company\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::name('company.')->prefix('company')->controller(CompanyController::class)->middleware(['auth', 'company'])->group(function () {
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/my-profile', 'myProfile')->name('my-profile');
+    Route::post('/my-profile', 'myProfileStore')->name('my-profile.store');
+    Route::get('/change-password', 'changePassword')->name('password-change');
+    Route::get('/manage-candidate', 'manageCandidate')->name('manage-candidate');
+    Route::get('/manage-jobs', 'manageJobs')->name('manage-jobs');
+    Route::get('/job-post', 'jobPost')->name('job-post');
+    Route::get('/logout', 'logout')->name('logout');
+});

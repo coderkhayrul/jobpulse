@@ -44,10 +44,10 @@
                                         <td>Image</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->email }}</td>
                                         <td>
                                             {{ roleName($user->role) }}
                                         </td>
+                                        <td>{{ $user->status }}</td>
                                         <td class="text-center">
                                             {{ $user->created_at->format('d-M-Y') }}
                                         </td>

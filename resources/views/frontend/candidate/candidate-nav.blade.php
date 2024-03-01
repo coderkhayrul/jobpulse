@@ -35,8 +35,8 @@
                                     href="{{ route('candidate.my-profile') }}">My Profile</a>
                             </li>
                             <li>
-                                <a class="{{ routeMatch('candidate.change-password') }}"
-                                    href="{{ route('candidate.change-password') }}">Change Password</a>
+                                <a class="{{ routeMatch('candidate.change-password-page') }}"
+                                    href="{{ route('candidate.change-password-page') }}">Change Password</a>
                             </li>
                             <li>
                                 <a class="{{ routeMatch('candidate.my-resume') }}"

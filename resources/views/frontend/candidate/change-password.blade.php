@@ -1,8 +1,6 @@
 @extends('frontend.layouts.app')
 @section('frontend_content')
     @include('frontend.candidate.candidate-nav')
-    <!--=================================
-                                                              Dashboard Nav -->
     <section>
         <div class="container">
             <div class="row">

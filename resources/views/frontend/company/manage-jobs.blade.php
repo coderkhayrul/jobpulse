@@ -1,11 +1,6 @@
 @extends('frontend.layouts.app')
 @section('frontend_content')
     @include('frontend.company.company-nav')
-    <!--=================================
-                              Dashboard Nav -->
-
-    <!--=================================
-                              Manage Jobs -->
     <section>
         <div class="container">
             <div class="row">
@@ -17,12 +12,6 @@
                                     <h4 class="mb-0">Manage Jobs</h4>
                                 </div>
                             </div>
-                            <div class="col-md-5 col-sm-7 mt-3 mt-sm-0">
-                                <div class="search">
-                                    <i class="fas fa-search"></i>
-                                    <input type="text" class="form-control" placeholder="Search...">
-                                </div>
-                            </div>
                         </div>
                         <div class="user-dashboard-table table-responsive">
                             <table class="table table-bordered">
@@ -30,86 +19,38 @@
                                     <tr>
                                         <th scope="col">Job Title</th>
                                         <th scope="col">Applications</th>
-                                        <th scope="col">Featured</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">Job 01
-                                            <p class="mb-1 mt-2">Expiry: 2020-04-15</p>
-                                            <p class="mb-0">Address: Wellesley Rd, London</p>
-                                        </th>
-                                        <td>Applications</td>
-                                        <td><i class="far fa-star"></i></td>
-                                        <td>
-                                            <ul class="list-unstyled mb-0 d-flex">
-                                                <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                        title="view"><i class="far fa-eye"></i></a></li>
-                                                <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                        title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Job 02
-                                            <p class="mb-1 mt-2">Expiry: 2020-10-20</p>
-                                            <p class="mb-0">Address: Ormskirk Rd, Wigan</p>
-                                        </th>
-                                        <td>Applications</td>
-                                        <td><i class="far fa-star"></i></td>
-                                        <td>
-                                            <ul class="list-unstyled mb-0 d-flex">
-                                                <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                        title="view"><i class="far fa-eye"></i></a></li>
-                                                <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                        title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Job 03
-                                            <p class="mb-1 mt-2">Expiry: 2020-11-30</p>
-                                            <p class="mb-0">Address: New Castle, PA</p>
-                                        </th>
-                                        <td>Applications</td>
-                                        <td><i class="far fa-star"></i></td>
-                                        <td>
-                                            <ul class="list-unstyled mb-0 d-flex">
-                                                <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                        title="view"><i class="far fa-eye"></i></a></li>
-                                                <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                        title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Job 04
-                                            <p class="mb-1 mt-2">Expiry: 2020-12-14</p>
-                                            <p class="mb-0">Address: Ormskirk Rd, Wigan</p>
-                                        </th>
-                                        <td>Applications</td>
-                                        <td><i class="far fa-star"></i></td>
-                                        <td>
-                                            <ul class="list-unstyled mb-0 d-flex">
-                                                <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                        title="view"><i class="far fa-eye"></i></a></li>
-                                                <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                        title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                    @foreach ($jobs as $job)
+                                        <tr>
+                                            <th scope="row">{{ $job->title }}
+                                                <p class="mb-1 mt-2">Expiry:
+                                                    {{ $job->expireDate }}</p>
+                                                <p class="mb-0">Address: {{ $job->address }}</p>
+                                            </th>
+                                            <td>Applications</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                            <td>
+                                                <ul class="list-unstyled mb-0 d-flex">
+                                                    <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
+                                                            title="view"><i class="far fa-eye"></i></a></li>
+                                                    <li><a href="#" class="text-info" data-bs-toggle="tooltip"
+                                                            title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
+                                                    <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
+                                                            title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="row justify-content-center">
                             <div class="col-12 text-center">
                                 <ul class="pagination mt-3">
@@ -132,6 +73,4 @@
             </div>
         </div>
     </section>
-    <!--=================================
-                              Manage Jobs -->
 @endsection

@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->role === 3;
     }
 
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+
     public function profile()
     {
         return $this->hasOne(UserProfile::class);

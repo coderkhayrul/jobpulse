@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\JobType;
+use App\Models\Position;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CompanyController extends Controller
 {
@@ -31,12 +36,58 @@ class CompanyController extends Controller
 
     public function manageJobs()
     {
-        return view('frontend.company.manage-jobs');
+        $jobs = Auth::user()->jobs()->latest()->paginate(10);
+        return view('frontend.company.manage-jobs', compact('jobs'));
     }
 
     public function jobPost()
     {
-        return view('frontend.company.job-post');
+        $jobTypes = JobType::all();
+        $categories = Category::all();
+        $positions = Position::all();
+        return view('frontend.company.job-post', compact('jobTypes', 'categories', 'positions'));
+    }
+
+    public function jobPostStore(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'category_id' => 'required',
+            'job_type_id' => 'required',
+            'position_id' => 'required',
+            'expireDate' => 'required',
+            'description' => 'required',
+            'salaryType' => 'required',
+            'minSalary' => 'required',
+            'maxSalary' => 'required',
+            'currency' => 'required',
+            'qualification' => 'required',
+            'experience' => 'required',
+            'gender' => 'required',
+            'country' => 'required',
+            'address' => 'required',
+        ]);
+
+        Auth::user()->jobs()->create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'category_id' => $request->category_id,
+            'job_type_id' => $request->job_type_id,
+            'position_id' => $request->position_id,
+            'expireDate' => Carbon::parse($request->expireDate)->format('m-d-Y'),
+            'description' => $request->description,
+            'salaryType' => $request->salaryType,
+            'minSalary' => $request->minSalary,
+            'maxSalary' => $request->maxSalary,
+            'currency' => $request->currency,
+            'qualification' => $request->qualification,
+            'experience' => $request->experience,
+            'gender' => $request->gender,
+            'country' => $request->country,
+            'address' => $request->address,
+        ]);
+
+        return redirect()->back();
     }
 
     public function changePassword()

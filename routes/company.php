@@ -22,5 +22,6 @@ Route::name('company.')->prefix('company')->controller(CompanyController::class)
     Route::get('/manage-candidate', 'manageCandidate')->name('manage-candidate');
     Route::get('/manage-jobs', 'manageJobs')->name('manage-jobs');
     Route::get('/job-post', 'jobPost')->name('job-post');
+    Route::post('/job-post', 'jobPostStore')->name('job-post.store');
     Route::get('/logout', 'logout')->name('logout');
 });

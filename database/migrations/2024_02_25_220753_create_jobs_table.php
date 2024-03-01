@@ -19,19 +19,17 @@ return new class extends Migration
             $table->foreignId('position_id')->constrained('positions')->onDelete('cascade');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->date('expireDate');
+            $table->string('expireDate');
+            $table->string('salaryType')->nullable();
             $table->string('minSalary')->nullable();
             $table->string('maxSalary')->nullable();
             $table->string('currency')->nullable();
             $table->string('country')->nullable();
-            $table->string('city')->nullable();
             $table->string('address')->nullable();
             $table->string('gender')->nullable();
             $table->string('experience')->nullable();
-            $table->string('career_level')->nullable();
             $table->string('qualification')->nullable();
             $table->longText('description')->nullable();
-
             $table->timestamps();
         });
     }

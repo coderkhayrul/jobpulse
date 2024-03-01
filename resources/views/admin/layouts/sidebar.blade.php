@@ -10,6 +10,19 @@
             </a>
         </li>
 
+        <li>
+            <a href="javascript: void(0);" class="waves-effect has-arrow"">
+                <i class="bx bx-briefcase-alt"></i>
+                <span key="t-jobs">Jobs</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="job-list.html" key="t-job-list">Job List</a></li>
+                <li><a href="job-grid.html" key="t-job-grid">Job Grid</a></li>
+                <li><a href="job-apply.html" key="t-apply-job">Apply Job</a></li>
+                <li><a href="job-details.html" key="t-job-details">Job Details</a></li>
+                <li><a href="job-categories.html" key="t-Jobs-categories">Jobs Categories</a></li>
+            </ul>
+        </li>
 
         <li class="">
             <a href="{{ route('admin.job-types.index') }}" class="waves-effect" aria-expanded="false">
@@ -40,10 +53,15 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.user.index') }}" class="waves-effect" aria-expanded="false">
+            <a href="#" class="waves-effect has-arrow" aria-expanded="false">
                 <i class="bx bx-user"></i>
                 <span key="t-users">Users</span>
             </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('admin.user.index') }}" key="t-user">All User</a></li>
+                <li><a href="{{ route('admin.user.index') }}?role=2" key="t-company">Company</a></li>
+                <li><a href="{{ route('admin.user.index') }}?role=3" key="t-candidate">Candidate</a></li>
+            </ul>
         </li>
         <li>
             <a href="{{ route('admin.skill.index') }}" class="waves-effect" aria-expanded="false">

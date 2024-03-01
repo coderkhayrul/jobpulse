@@ -13,8 +13,14 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $role = $request->role;
+        if ($role) {
+            $users = User::where('role', $role)->get();
+            return view('admin.components.user.index', compact('users'));
+        }
+
         $users = User::all();
         return view('admin.components.user.index', compact('users'));
     }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Candidate;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class CandidateController extends Controller
 {
@@ -76,9 +78,28 @@ class CandidateController extends Controller
         return redirect()->back();
     }
 
-    public function changePassword()
+    public function changePasswordPage()
     {
         return view('frontend.candidate.change-password');
+    }
+      public function changePassword(Request $request)
+    {
+        $request->validate([
+        'current_password' => ['required', 'string'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+      $user = auth()->user();
+
+      if (!Hash::check($request->current_password, $user->password)) {
+        throw ValidationException::withMessages(['current_password' => 'The provided current password is incorrect.']);
+       }
+
+      $user->update([
+        'password' => Hash::make($request->password),
+      ]);
+
+      return redirect()->route('candidate.dashboard')->withMessages('success', 'Password changed successfully.');
     }
 
     public function myResume()

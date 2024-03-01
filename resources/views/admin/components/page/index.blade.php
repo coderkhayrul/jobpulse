@@ -5,8 +5,8 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h3>Total {{ count($pages) }} Page</h3>
-                <a href="{{ route('admin.pages.create') }}" class="btn btn-primary">
-                    <i class="fas fa-plus me-2"></i>Add Page</a>
+                {{-- <a href="{{ route('admin.pages.create') }}" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Add Page</a> --}}
             </div>
             <div class="card-body">
                 <table id="datatable" class="table table-bordered dt-responsive wrap w-100  dataTable" role="grid"

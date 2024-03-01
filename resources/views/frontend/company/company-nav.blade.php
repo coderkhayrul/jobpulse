@@ -26,8 +26,8 @@
                                     href="{{ route('company.dashboard') }}">Dashboard</a></li>
                             <li><a class="{{ routeMatch('company.my-profile') }}"
                                     href="{{ route('company.my-profile') }}">My Profile</a></li>
-                            <li><a class="{{ routeMatch('company.password-change') }}"
-                                    href="{{ route('company.password-change') }}">Change Password</a></li>
+                            <li><a class="{{ routeMatch('company.change-password-page') }}"
+                                    href="{{ route('company.change-password-page') }}">Change Password</a></li>
                             <li><a class="{{ routeMatch('company.manage-candidate') }}"
                                     href="{{ route('company.manage-candidate') }}">Manage Candidates</a></li>
                             <li><a class="{{ routeMatch('company.manage-jobs') }}"

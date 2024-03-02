@@ -24,6 +24,12 @@ class WebsiteController extends Controller
         return view('frontend.blogs', compact('blogs'));
         
     }
+    public function blogShow(Blog $blog)
+    {
+        return view('frontend.blogShow', compact('blog'));
+
+    }
+
 
     public function about()
     {

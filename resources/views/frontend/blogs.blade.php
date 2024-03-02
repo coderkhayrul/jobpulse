@@ -1,6 +1,5 @@
 @extends('frontend.layouts.app')
 @section('frontend_content')
-    inner banner -->
     <div class="header-inner bg-light text-center">
         <div class="container">
             <div class="row">
@@ -44,7 +43,9 @@
                                                     </p>
                                                 </div>
                                                 <div class="blog-post-link justify-content-center d-flex">
-                                                    <a class="btn btn-link p-0" href="#">Continue read</a>
+                                                    <a class="btn btn-link p-0"
+                                                        href={{ route('web.blogShow', $blog) }}>Continue
+                                                        read</a>
                                                 </div>
                                             </div>
                                             <div class="blog-post-footer">
@@ -74,9 +75,6 @@
             </div>
         </div>
     </div>
-
-
-
     <section class="feature-info-section">
         <div class="container">
             <div class="row">

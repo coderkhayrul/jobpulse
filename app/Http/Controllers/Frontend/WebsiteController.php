@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class WebsiteController extends Controller
 {
@@ -18,7 +19,10 @@ class WebsiteController extends Controller
     }
     public function blogs()
     {
-        return view('frontend.blogs');
+         $blogs = Blog::get();
+
+        return view('frontend.blogs', compact('blogs'));
+        
     }
 
     public function about()

@@ -19,7 +19,7 @@
                         <a class="nav-link" href="{{ route('web.jobs') }}">Jobs</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="">Blog</a>
+                        <a class="nav-link" href="{{ route('web.blogs') }}">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="{{ route('web.about') }}">About</a>

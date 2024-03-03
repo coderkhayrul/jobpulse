@@ -37,6 +37,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('experience', ExperienceController::class);
     Route::resource('award', AwardController::class);
     Route::resource('pages', PageController::class);
+    Route::resource('jobs', PageController::class);
 });
 
 

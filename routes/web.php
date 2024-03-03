@@ -20,6 +20,7 @@ Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('/jobs', 'jobs')->name('jobs');
     Route::get('/about', 'about')->name('about');
     Route::get('/blogs', 'blogs')->name('blogs');
+    Route::get('/blogShow', 'blogShow')->name('blogShow');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('sign-out', 'signOut')->name('sign-out');
 });

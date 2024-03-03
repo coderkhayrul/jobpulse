@@ -20,7 +20,8 @@
                 <li><a href="job-grid.html" key="t-job-grid">Job Grid</a></li>
                 <li><a href="job-apply.html" key="t-apply-job">Apply Job</a></li>
                 <li><a href="job-details.html" key="t-job-details">Job Details</a></li>
-                <li><a href="job-categories.html" key="t-Jobs-categories">Jobs Categories</a></li>
+                <li><a href="{{ route('admin.categories.index') }}" key="t-Jobs-categories"> <i
+                            class="bx bx-purchase-tag-alt"></i>Jobs Categories</a></li>
             </ul>
         </li>
 
@@ -31,12 +32,12 @@
             </a>
         </li>
 
-        <li class="">
+        {{-- <li class="">
             <a href="{{ route('admin.categories.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-purchase-tag-alt"></i>
                 <span key="t-categories">Categories</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="">
             <a href="{{ route('admin.blogs.index') }}" class="waves-effect" aria-expanded="false">
@@ -69,7 +70,14 @@
                 <span key="t-skills">Skills</span>
             </a>
         </li>
+
         <li>
+            <a href="{{ route('admin.pages.index') }}" class="waves-effect" aria-expanded="false">
+                <i class="bx bxs-badge-check"></i>
+                <span key="t-pages">Pages</span>
+            </a>
+        </li>
+        {{-- <li>
             <a href="{{ route('admin.education.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bxs-institution"></i>
                 <span key="t-educations">Educations</span>
@@ -86,12 +94,6 @@
                 <i class="bx bxs-badge-check"></i>
                 <span key="t-awards">Awards</span>
             </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.pages.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bxs-badge-check"></i>
-                <span key="t-pages">Pages</span>
-            </a>
-        </li>
+        </li> --}}
     </ul>
 </div>

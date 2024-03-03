@@ -7,7 +7,7 @@
                 <div class="col-12">
                     <h2 class="text-primary">Contact Us</h2>
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('web.home') }}"> Home </a></li>
                         <li class="breadcrumb-item active"> <i class="fas fa-chevron-right"></i> <span> Contact us </span>
                         </li>
                     </ol>

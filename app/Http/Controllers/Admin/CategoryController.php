@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryStoreRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use App\Http\Requests\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
@@ -25,6 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        return view('admin.components.category.create');
     }
 
     /**
@@ -32,8 +34,15 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
+        //  if ($request->hasFile('img')) {
+        //     $img = $request->file('img');
+        //     $imgName = 'CategoryPhoto- '.md5(uniqid()).'.'.$img->getClientOriginalExtension();
+        //     $img_url = "backend/assets/uploads/{$imgName}";
+        //     $img->move(public_path('backend/assets/uploads'), $img_url);
+        // }
         Category::create([
             'name' => $request->name,
+            'img' => $request->img,
             'slug' => Str::slug($request->name),
             'remarks' => $request->remarks,
         ]);
@@ -59,11 +68,29 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->update([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-            'remarks' => $request->remarks,
-        ]);
+        if ($request->hasFile('img')) {
+            $img = $request->file('img');
+            $imgName = 'CategoryPhoto- ' . md5(uniqid()) . '.' . $img->getClientOriginalExtension();
+            $img_url = "backend/assets/uploads/{$imgName}";
+            $img->move(public_path('backend/assets/uploads'), $img_url);
+    
+            
+            $filePath = $request->$img_url;
+            File::delete($filePath);
+            $category->update([
+                 'name' => $request->name,
+                'img' => $img_url,
+                'slug' => Str::slug($request->name),
+                'remarks' => $request->remarks,
+            ]);
+           
+        }else{
+            $category->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'remarks' => $request->remarks,
+            ]);
+        }
 
         $notification = [
             'message' => 'Category Updated Successfully',
@@ -78,6 +105,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        File::delete($category);
         $category->delete();
 
         return response()->json([

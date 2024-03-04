@@ -18,7 +18,9 @@ class CompanyController extends Controller
 {
     public function dashboard()
     {
-        return view('frontend.company.dashboard');
+         $jobs = Auth::user()->jobs()->latest()->paginate(5);
+       
+        return view('frontend.company.dashboard' , compact('jobs'));
     }
 
     public function myProfile()

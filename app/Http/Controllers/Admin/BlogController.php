@@ -26,7 +26,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.components.blog.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class BlogController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('admin.blogs.index')->with($notification);
     }
 
     /**
@@ -95,7 +95,7 @@ class BlogController extends Controller
                 'img' => $request->img_url,
                 'body' => $request->body,
             ]);
-            dd($blog->img);
+           
         }else{
             $blog->update([
                 'title' => $request->title,

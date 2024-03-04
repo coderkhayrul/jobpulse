@@ -56,152 +56,51 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row mt-4">
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="job-list job-grid">
-                                        <div class="job-list-logo ">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/10.svg"
-                                                alt="">
-                                        </div>
-                                        <div class="job-list-details">
-                                            <div class="job-list-info">
-                                                <div class="job-list-title">
-                                                    <h6><a href="job-detail.html">Marketing and Communications</a></h6>
-                                                </div>
-                                                <div class="job-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <span>via</span>
-                                                            <a href="employer-detail.html">Wight Sound Hearing LLC</a>
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>New Castle, PA
-                                                        </li>
-                                                        <li><i class="fas fa-filter pe-1"></i>Banking</li>
-                                                        <li><a class="temporary" href="#"><i
-                                                                    class="fas fa-suitcase pe-1"></i>Temporary</a></li>
-                                                    </ul>
+                                @foreach ($jobs as $job)
+                                    <div class="col-lg-6 col-sm-6">
+                                        <div class="job-list job-grid">
+                                            <div class="job-list-logo ">
+                                                <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/10.svg"
+                                                    alt="">
+                                            </div>
+                                            <div class="job-list-details">
+                                                <div class="job-list-info">
+                                                    <div class="job-list-title">
+                                                        <h6><a href="job-detail.html">{{ $job->title }}</a></h6>
+                                                    </div>
+                                                    <div class="job-list-option">
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <span>via</span>
+                                                                <a href="employer-detail.html">Wight Sound Hearing LLC</a>
+                                                            </li>
+                                                            <li><i
+                                                                    class="fas fa-map-marker-alt pe-1"></i>{{ $job->address }}
+                                                            </li>
+                                                            <li><i class="fas fa-filter pe-1"></i>{{ $job->category->name }}
+                                                            </li>
+                                                            <li><a class="temporary" href="#"><i
+                                                                        class="fas fa-suitcase pe-1"></i>{{ $job->jobType->name }}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="job-list-favourite-time">
-                                            <a class="job-list-favourite order-2" href="#"><i
-                                                    class="far fa-heart"></i></a>
-                                            <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W
-                                                ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="job-list job-grid">
-                                        <div class="job-list-logo ">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/11.svg"
-                                                alt="">
-                                        </div>
-                                        <div class="job-list-details">
-                                            <div class="job-list-info">
-                                                <div class="job-list-title">
-                                                    <h6><a href="job-detail.html">Group Marketing Manager</a></h6>
-                                                </div>
-                                                <div class="job-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <span class="job-list-via">via</span>
-                                                            <a class="job-list-company-name" href="#">Bright
-                                                                Sparks PLC</a>
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Botchergate,
-                                                            Carlisle</li>
-                                                        <li><i class="fas fa-filter pe-1"></i>Customer Service</li>
-                                                        <li><a class="part-time" href="#"><i
-                                                                    class="fas fa-suitcase pe-1"></i>Part-Time</a></li>
-                                                    </ul>
-                                                </div>
+                                            <div class="job-list-favourite-time">
+                                                <a class="job-list-favourite order-2" href="#"><i
+                                                        class="far fa-heart"></i></a>
+                                                <span class="job-list-time order-1"><i
+                                                        class="far fa-clock pe-1"></i>{{ $job->created_at->diffForHumans() }}</span>
                                             </div>
                                         </div>
-                                        <div class="job-list-favourite-time">
-                                            <a class="job-list-favourite order-2" href="#"><i
-                                                    class="far fa-heart"></i></a>
-                                            <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W
-                                                ago</span>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="job-list job-grid">
-                                        <div class="job-list-logo ">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/12.svg"
-                                                alt="">
-                                        </div>
-                                        <div class="job-list-details">
-                                            <div class="job-list-info">
-                                                <div class="job-list-title">
-                                                    <h6><a href="job-detail.html">Senior rolling stock technician</a>
-                                                    </h6>
-                                                </div>
-                                                <div class="job-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <span>via</span>
-                                                            <a href="employer-detail.html">Carphone Warehouse</a>
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Canyon Village,
-                                                            Ramon</li>
-                                                        <li><i class="fas fa-filter pe-1"></i>IT &amp; Telecoms</li>
-                                                        <li><a class="part-time" href="#"><i
-                                                                    class="fas fa-suitcase pe-1"></i>Part-Time</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="job-list-favourite-time">
-                                            <a class="job-list-favourite order-2" href="#"><i
-                                                    class="far fa-heart"></i></a>
-                                            <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W
-                                                ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="job-list job-grid">
-                                        <div class="job-list-logo ">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/17.svg"
-                                                alt="">
-                                        </div>
-                                        <div class="job-list-details">
-                                            <div class="job-list-info">
-                                                <div class="job-list-title">
-                                                    <h6><a href="job-detail.html">Operational manager part-time</a>
-                                                    </h6>
-                                                </div>
-                                                <div class="job-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <span>via</span>
-                                                            <a href="employer-detail.html">Bright Sparks PLC</a>
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Canyon Village,
-                                                            Ramon</li>
-                                                        <li><i class="fas fa-filter pe-1"></i>Financial Services</li>
-                                                        <li><a class="freelance" href="#"><i
-                                                                    class="fas fa-suitcase pe-1"></i>Freelance</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="job-list-favourite-time">
-                                            <a class="job-list-favourite order-2" href="#"><i
-                                                    class="far fa-heart"></i></a>
-                                            <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W
-                                                ago</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="col-12 justify-content-center d-flex mt-4">
                                 <a class="btn btn-white btn-lg" href="#">View More Jobs</a>
                             </div>
                         </div>
-                        <div class="tab-pane fade active show" id="contact" role="tabpanel"
-                            aria-labelledby="contact-tab">
+                        <div class="tab-pane fade active show" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="row mt-4">
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="job-list job-grid">
@@ -500,62 +399,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="category-style text-center">
-                        <a href="#" class="category-item">
-                            <div class="category-icon mb-4">
-                                <i class="flaticon-account"></i>
-                            </div>
-                            <h6>Accountancy</h6>
-                            <span class="mb-0">301 Open Position </span>
-                        </a>
-                        <a href="#" class="category-item">
-                            <div class="category-icon mb-4">
-                                <i class="flaticon-conversation"></i>
-                            </div>
-                            <h6>Apprenticeships</h6>
-                            <span class="mb-0">287 Open Position </span>
-                        </a>
-                        <a href="#" class="category-item">
-                            <div class="category-icon mb-4">
-                                <i class="flaticon-money"></i>
-                            </div>
-                            <h6>Banking</h6>
-                            <span class="mb-0">542 Open Position </span>
-                        </a>
-                        <a href="#" class="category-item">
-                            <div class="category-icon mb-4">
-                                <i class="flaticon-mortarboard"></i>
-                            </div>
-                            <h6>Education</h6>
-                            <span class="mb-0">785 Open Position </span>
-                        </a>
-                        <a href="#" class="category-item">
-                            <div class="category-icon mb-4">
-                                <i class="flaticon-worker"></i>
-                            </div>
-                            <h6>Engineering</h6>
-                            <span class="mb-0">862 Open Position </span>
-                        </a>
-                        <a href="#" class="category-item">
-                            <div class="category-icon mb-4">
-                                <i class="flaticon-businessman"></i>
-                            </div>
-                            <h6>Estate Agency</h6>
-                            <span class="mb-0">423 Open Position </span>
-                        </a>
-                        <a href="#" class="category-item">
-                            <div class="category-icon mb-4">
-                                <i class="flaticon-coding"></i>
-                            </div>
-                            <h6>IT & Telecoms</h6>
-                            <span class="mb-0">253 Open Position </span>
-                        </a>
-                        <a href="#" class="category-item">
-                            <div class="category-icon mb-4">
-                                <i class="flaticon-balance"></i>
-                            </div>
-                            <h6>Legal</h6>
-                            <span class="mb-0">689 Open Position </span>
-                        </a>
+
+                        @foreach ($categories as $category)
+                            <a href="#" class="category-item">
+                                <div class="category-icon mb-4">
+                                    <i class="flaticon-money"></i>
+                                </div>
+                                <h6>{{ $category->name }}</h6>
+                                <span class="mb-0">542 Open Position </span>
+                            </a>
+                        @endforeach
+
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@
             </a>
         </li>
 
-        {{-- <li>
+        <li>
             <a href="javascript: void(0);" class="waves-effect has-arrow"">
                 <i class="bx bx-briefcase-alt"></i>
                 <span key="t-jobs">Jobs</span>
@@ -29,7 +29,7 @@
                 <li><a href="{{ route('admin.categories.index') }}" key="t-Jobs-categories"> <i
                             class="bx bx-purchase-tag-alt"></i>Jobs Categories</a></li>
             </ul>
-        </li> --}}
+        </li>
 
         <li class="">
             <a href="{{ route('admin.job-types.index') }}" class="waves-effect" aria-expanded="false">

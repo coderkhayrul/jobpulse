@@ -13,28 +13,26 @@ class WebsiteController extends Controller
 {
     public function home()
     {
-         $jobs = Job::all();
+        $jobs = Job::all();
         $categories = Category::all();
-        $positions =Position::all();
-        return view('frontend.home', compact('jobs','categories', 'positions'));
+        $positions = Position::all();
+        return view('frontend.home', compact('jobs', 'categories', 'positions'));
     }
 
     public function jobs()
     {
-          $jobs = Job::get();
-        return view('frontend.jobs',compact('jobs'));
+        $jobs = Job::get();
+        return view('frontend.jobs', compact('jobs'));
     }
     public function blogs()
     {
-         $blogs = Blog::get();
+        $blogs = Blog::get();
         return view('frontend.blogs', compact('blogs'));
-        
     }
     public function singleBlog($slug)
     {
         $blog = Blog::where('slug', $slug)->first();
         return view('frontend.singleBlog', compact('blog'));
-
     }
 
 

@@ -33,7 +33,8 @@
                                                     <a class="mb-1" href="#"></a>
                                                 </div>
                                                 <div class="blog-post-title">
-                                                    <h5><a href="blog-detail.html">{{ $blog->title }}</a>
+                                                    <h5><a
+                                                            href="{{ route('web.blog.single', $blog->slug) }}">{{ $blog->title }}</a>
                                                     </h5>
                                                 </div>
                                                 <div class="blog-post-description mb-0">

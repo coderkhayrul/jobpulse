@@ -32,17 +32,12 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CategoryStoreRequest $request)
+    public function store(Request $request)
     {
-        //  if ($request->hasFile('img')) {
-        //     $img = $request->file('img');
-        //     $imgName = 'CategoryPhoto- '.md5(uniqid()).'.'.$img->getClientOriginalExtension();
-        //     $img_url = "backend/assets/uploads/{$imgName}";
-        //     $img->move(public_path('backend/assets/uploads'), $img_url);
-        // }
+
         Category::create([
             'name' => $request->name,
-            'img' => $request->img,
+            'img' => saveImage($request->img, 'uploads/category/'),
             'slug' => Str::slug($request->name),
             'remarks' => $request->remarks,
         ]);
@@ -73,18 +68,17 @@ class CategoryController extends Controller
             $imgName = 'CategoryPhoto- ' . md5(uniqid()) . '.' . $img->getClientOriginalExtension();
             $img_url = "backend/assets/uploads/{$imgName}";
             $img->move(public_path('backend/assets/uploads'), $img_url);
-    
-            
+
+
             $filePath = $request->$img_url;
             File::delete($filePath);
             $category->update([
-                 'name' => $request->name,
+                'name' => $request->name,
                 'img' => $img_url,
                 'slug' => Str::slug($request->name),
                 'remarks' => $request->remarks,
             ]);
-           
-        }else{
+        } else {
             $category->update([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),

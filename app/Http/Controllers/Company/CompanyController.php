@@ -18,9 +18,9 @@ class CompanyController extends Controller
 {
     public function dashboard()
     {
-         $jobs = Auth::user()->jobs()->latest()->paginate(5);
-       
-        return view('frontend.company.dashboard' , compact('jobs'));
+        $jobs = Auth::user()->jobs()->latest()->paginate(5);
+
+        return view('frontend.company.dashboard', compact('jobs'));
     }
 
     public function myProfile()
@@ -31,7 +31,63 @@ class CompanyController extends Controller
 
     public function myProfileStore(Request $request)
     {
-        return $request->all();
+
+        $this->validate($request, [
+            'companyName' => 'required',
+            'dateOfFounded' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
+            'gender' => 'required',
+            'country' => 'required',
+            'dateOfBirth' => 'required',
+            'salary' => 'required',
+            'address' => 'required',
+        ]);
+
+        if (Auth::user()->profile) {
+            Auth::user()->update([
+                'name' => $request->firstName . ' ' . $request->lastName,
+                'mobile' => $request->mobile,
+            ]);
+            Auth::user()->profile->update([
+                'companyName' => $request->companyName,
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'title' => $request->title,
+                'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'socialFacebook' => $request->socialFacebook,
+                'socialTwitter' => $request->socialTwitter,
+                'socialLinkedin' => $request->socialLinkedin,
+                'details' => $request->details,
+            ]);
+        } else {
+            Auth::user()->update([
+                'name' => $request->firstName . ' ' . $request->lastName,
+                'mobile' => $request->mobile,
+            ]);
+            Auth::user()->profile()->create([
+                'companyName' => $request->companyName,
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'title' => $request->title,
+                'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'socialFacebook' => $request->socialFacebook,
+                'socialTwitter' => $request->socialTwitter,
+                'socialLinkedin' => $request->socialLinkedin,
+                'details' => $request->details,
+            ]);
+        }
+        notyf()->addSuccess('Profile has been updated successfully.');
+        return redirect()->back();
     }
 
     public function manageCandidate()
@@ -51,7 +107,7 @@ class CompanyController extends Controller
         $categories = Category::all();
         $positions = Position::all();
         $userProfiles = UserProfile::all();
-        return view('frontend.company.job-post', compact('jobTypes', 'categories', 'positions','userProfiles'));
+        return view('frontend.company.job-post', compact('jobTypes', 'categories', 'positions', 'userProfiles'));
     }
 
     public function jobPostStore(Request $request)
@@ -100,24 +156,26 @@ class CompanyController extends Controller
     {
         return view('frontend.company.change-password');
     }
-     public function changePassword(Request $request)
+    public function changePassword(Request $request)
     {
         $request->validate([
-        'current_password' => ['required', 'string'],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'current_password' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-      $user = auth()->user();
+        $user = auth()->user();
 
-      if (!Hash::check($request->current_password, $user->password)) {
-        throw ValidationException::withMessages(['current_password' => 'The provided current password is incorrect.']);
-       }
+        if (!Hash::check($request->current_password, $user->password)) {
+            notyf()->addError('Current password does not match.');
+            return redirect()->back();
+        }
 
-      $user->update([
-        'password' => Hash::make($request->password),
-      ]);
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
 
-      return redirect()->route('company.dashboard')->withMessages('success', 'Password changed successfully.');
+        notyf()->addSuccess('Password has been changed successfully.');
+        return redirect()->route('company.dashboard');
     }
     public function logout()
     {
@@ -125,6 +183,3 @@ class CompanyController extends Controller
         return redirect()->route('web.home');
     }
 }
-
-
-    

@@ -6,7 +6,7 @@
             <div class="card-header d-flex justify-content-between">
                 <h3>Total {{ count($categories) }} Category</h3>
                 <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
-                    <i class="fas fa-edit m-2"></i>Create Category</a>
+                    <i class="fas fa-plus m-2"></i>Add New</a>
             </div>
             <div class="card-body">
                 <table id="datatable" class="table table-bordered dt-responsive wrap w-100  dataTable" role="grid"

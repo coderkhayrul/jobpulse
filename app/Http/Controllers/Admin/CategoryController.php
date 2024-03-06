@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return response()->json($category);
+        return view('admin.components.category.edit', compact('category'));
     }
 
     /**

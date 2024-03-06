@@ -14,7 +14,8 @@ class CandidateController extends Controller
 
     public function dashboard()
     {
-        return view('frontend.candidate.dashboard');
+        
+        return view('frontend.candidate.dashboard', compact('jobs'));
     }
 
     public function myProfile()

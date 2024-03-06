@@ -226,5 +226,5 @@
         </div>
     </section>
     <!--=================================
-                                          Change Password -->
+                                                      Change Password -->
 @endsection

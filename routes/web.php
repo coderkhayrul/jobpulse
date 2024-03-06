@@ -20,7 +20,7 @@ Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('/jobs', 'jobs')->name('jobs');
     Route::get('/about', 'about')->name('about');
     Route::get('/blogs', 'blogs')->name('blogs');
-    Route::get('/blog/{$blog}', 'singleBlog')->name('blog.single');
+    Route::get('/blogs/{slug}', 'singleBlog')->name('blog.single');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('sign-out', 'signOut')->name('sign-out');
 });
@@ -38,6 +38,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('experience', ExperienceController::class);
     Route::resource('award', AwardController::class);
     Route::resource('pages', PageController::class);
+    Route::resource('jobs', PageController::class);
 });
 
 

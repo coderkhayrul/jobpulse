@@ -31,21 +31,20 @@
             </div> --}}
             <div class="navbar-collapse collapse justify-content-start">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link {{ routeMatch('web.home') }}" href="{{ route('web.home') }} ">Home</a>
+                    <li class="nav-item dropdown  {{ routeMatch('web.home') }}">
+                        <a class="nav-link" href="{{ route('web.home') }} ">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link {{ routeMatch('web.jobs') }}" href="{{ route('web.jobs') }}">Jobs</a>
+                    <li class="nav-item dropdown {{ routeMatch('web.jobs') }}">
+                        <a class="nav-link" href="{{ route('web.jobs') }}">Jobs</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link {{ routeMatch('web.blogs') }}" href="{{ route('web.blogs') }}">Blog</a>
+                    <li class="nav-item dropdown {{ routeMatch('web.blogs') }}">
+                        <a class="nav-link" href="{{ route('web.blogs') }}">Blog</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link {{ routeMatch('web.about') }}" href="{{ route('web.about') }}">About</a>
+                    <li class="nav-item dropdown {{ routeMatch('web.about') }}">
+                        <a class="nav-link" href="{{ route('web.about') }}">About</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link {{ routeMatch('web.contact') }}"
-                            href="{{ route('web.contact') }}">Contact</a>
+                    <li class="nav-item dropdown {{ routeMatch('web.contact') }}">
+                        <a class="nav-link" href="{{ route('web.contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>

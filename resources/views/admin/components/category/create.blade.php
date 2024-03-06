@@ -7,7 +7,7 @@
                 <h3>Create A Category</h3>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.categories.store') }}">
+                <form method="POST" action="{{ route('admin.categories.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="img" class="form-label">Image</label>

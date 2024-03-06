@@ -15,18 +15,17 @@
     </div>
     <div class="container">
         <div class="blog-post-content mt-4">
-            <div class="m-4">
+            <div class="m-2">
                 <h5 class="mb-3">Related Post</h5>
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
                             @foreach ($blogs as $blog)
-                                <div class=" item col-6 p-2">
-
+                                <div class=" item col-6 p-3">
                                     <div class="blog-post text-center">
                                         <div class="blog-post-image">
                                             <img class="img-fluid" alt="" src="{{ asset($blog->img) }}"
-                                                style="width:450px ">
+                                                style="width:550px; height:350px">
                                         </div>
                                         <div class="blog-post-content">
                                             <div class="blog-post-details">
@@ -44,7 +43,7 @@
                                                 </div>
                                                 <div class="blog-post-link justify-content-center d-flex">
                                                     <a class="btn btn-link p-0"
-                                                        href={{ route('web.blogShow', $blog) }}>Continue
+                                                        href={{ route('web.blog.single', $blog->slug) }}>Continue
                                                         read</a>
                                                 </div>
                                             </div>

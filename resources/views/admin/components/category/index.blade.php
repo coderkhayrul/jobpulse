@@ -1,26 +1,29 @@
 @extends('admin.layouts.app')
 @section('title', 'Categories Manage')
 @section('content')
-    <div class="col-md-8 col-sm-12">
+    <div class="col-md-12 col-sm-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h3>Total {{ count($categories) }} Category</h3>
+                <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
+                    <i class="fas fa-edit m-2"></i>Create Category</a>
             </div>
             <div class="card-body">
                 <table id="datatable" class="table table-bordered dt-responsive wrap w-100  dataTable" role="grid"
                     aria-describedby="datatable_info" style="width: 1048px;">
                     <thead>
                         <tr class="text-primary" role="row">
+                            <th width="10%"> Image</th>
                             <th width="20%"> Name</th>
-                            <th width="20%"> Remark</th>
-                            <th class="text-center" width="10%"> Created At</th>
-                            <th width="10%" class="text-center text-dark">Action</th>
+                            <th width="10%"> Remark</th>
+                            <th class="text-center" width="20%"> Created At</th>
+                            <th width="20%" class="text-center text-dark">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
                             <tr>
-
+                                <td>{{ $category->img_url }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ Str::limit($category->remarks, 35, '...') ?? 'N/A' }}</td>
                                 <td class="text-center">
@@ -53,36 +56,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-sm-12">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <h3>Create A Category</h3>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{ route('admin.categories.store') }}">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                            id="name" placeholder="Enter Type Name">
-                        @error('name')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="remarks" class="form-label">Remarks</label>
-                        <textarea name="remarks" class="form-control @error('remarks') is-invalid @enderror" id="remarks" rows="3"
-                            placeholder="Enter Remarks"></textarea>
-                        @error('remarks')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <button type="submit" class="btn btn-primary w-md">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    </div>
+
+
     @include('admin.components.category.editModal')
 @endsection
 @push('scripts')

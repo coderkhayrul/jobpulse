@@ -95,11 +95,16 @@
                 <span key="t-experiences">Experiences</span>
             </a>
         </li>
+         --}}
         <li>
-            <a href="{{ route('admin.award.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bxs-badge-check"></i>
-                <span key="t-awards">Awards</span>
+            <a href="javascript: void(0);" class="waves-effect has-arrow"">
+                <i class="bx bx-cog"></i>
+                <span key="t-setting">Setting</span>
             </a>
-        </li> --}}
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('admin.general-setting') }}" key="t-genaral">General</a></li>
+                <li><a href="#" key="t-banner">Banner</a></li>
+            </ul>
+        </li>
     </ul>
 </div>

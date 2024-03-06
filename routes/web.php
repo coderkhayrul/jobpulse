@@ -39,6 +39,8 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('award', AwardController::class);
     Route::resource('pages', PageController::class);
     Route::resource('jobs', PageController::class);
+
+    Route::get('general-setting', [AdminController::class, 'generalSetting'])->name('general-setting');
 });
 
 

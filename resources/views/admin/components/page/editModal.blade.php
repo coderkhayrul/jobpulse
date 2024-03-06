@@ -10,6 +10,7 @@
                 <div class="modal-body">
                     @csrf
                     @method('PUT')
+                    <input type="hiddin" name="old_Img" value="{{ $page->thumbnail }}">
                     <div class="mb-3">
                         <label for="title" class="form-label">Page Title</label>
                         <input id="pagetitle" name="title" type="text"

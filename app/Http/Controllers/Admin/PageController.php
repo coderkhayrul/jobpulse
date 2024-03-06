@@ -35,7 +35,7 @@ class PageController extends Controller
         Page::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
-            'thumbnail' => $request->thumbnail,
+            'thumbnail' => saveImage($request->thumbnail,'uploads/pages/'),
             'content' => $request->content,
 
         ]);
@@ -69,10 +69,16 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
+        if ($request->old_Img !== '') {
+            deleteImage($page->thumbnail);
+            $image = saveImage($request->thumbnail,'uploads/pages/');
+        }else{
+            $image = $page->thumbnail;
+        }
             $page->update([
                 'title' => $request->title,
                 'slug' => Str::slug($request->title),
-                'thumbnail' => $request->thumbnail,
+                'thumbnail' => $image,
                
             ]);
     

@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    @include('admin.components.page.editModal')
+    {{-- @include('admin.components.page.editModal') --}}
 @endsection
 @push('scripts')
     <script>

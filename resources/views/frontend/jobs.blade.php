@@ -190,8 +190,9 @@
                                             </div>
                                             <div class="job-list-option">
                                                 <ul class="list-unstyled">
-                                                    <li> <span>via</span> <a href="employer-detail.html">Fast Systems
-                                                            Consultants</a> </li>
+                                                    <li> <span>via</span> <a {{-- href="employer-detail.html">{{ $job->user->profile->companyName }}</a> --}}
+                                                            href="employer-detail.html">{{ $job->userProfile->companyName }}</a>
+                                                    </li>
                                                     <li><i class="fas fa-map-marker-alt pe-1"></i>{{ $job->address }}</li>
                                                     <li><i class="fas fa-filter pe-1"></i>{{ $job->category->name }}</li>
                                                     <li><a class="freelance" href="#"><i

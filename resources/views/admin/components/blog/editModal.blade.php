@@ -7,12 +7,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
                 <div class="modal-body">
-                    @csrf
-                    @method('PUT')
                     <div class="mb-3">
                         <label for="img" class="form-label">Preview Image</label>
-                        <img src="" id="blogImg" style="width:100px">
+                        <img src="" id="blogImg" style="width:100px" name="old_Img">
+
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Photo</label>

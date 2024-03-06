@@ -39,9 +39,9 @@
                                             <i class="mdi mdi-chevron-down"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <button onclick="categoryEdit({{ $category->id }})" class="dropdown-item">
+                                            <a href="{{ route('admin.categories.edit', $category) }}" class="dropdown-item">
                                                 <i class="bx bx-edit align-middle me-2"></i> Edit
-                                            </button>
+                                            </a>
                                             <button onclick="categoryDelete({{ $category->id }})" class="dropdown-item"
                                                 href="#">
                                                 <i class="bx bx-trash-alt align-middle me-2"></i> Delete
@@ -58,31 +58,10 @@
     </div>
 
 
-    @include('admin.components.category.editModal')
+
 @endsection
 @push('scripts')
     <script>
-        function categoryEdit(id) {
-            var url = "{{ route('admin.categories.edit', ':id') }}";
-            url = url.replace(':id', id);
-
-            $.ajax({
-                type: "GET",
-                url: url,
-                data: {
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(response) {
-                    $('#categoryName').val(response.name);
-                    $('#categoryRemarks').val(response.remarks);
-                    $('#categoryEditModal form').attr('action', 'categories/' + response.id);
-                    $('#categoryEditModal').modal('show');
-                }
-            });
-        }
-
-
-
         function categoryDelete(id) {
             console.log(id);
             Swal.fire({

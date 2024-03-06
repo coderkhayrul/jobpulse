@@ -35,12 +35,40 @@
         </div>
     </section>
     <!-- banner -->
+    <section class="space-ptb">
+        <div class="container">
+            <div class="section-title center">
+                <h2 class="title">Choose Your Category</h2>
+                <p class="mb-0">What made each of these people so successful? Motivation.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="category-style text-center">
 
+                        @foreach ($categories as $category)
+                            <a href="#" class="category-item">
+                                <div class="category-icon mb-1 ">
+                                    <i class="flaticon-money"></i>
+                                </div>
+                                <h6>{{ $category->name }}</h6>
+                                <span class="mb-0">542 Open Position </span>
+                            </a>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- job-grid -->
     <section class="space-ptb">
         <div class="container">
+            <div class="section-title center">
+                <h2 class="title">Find Jobs</h2>
+                <p class="mb-0">What made each of these people so successful? Motivation.</p>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <!-- sidebar -->
@@ -190,15 +218,21 @@
                                             </div>
                                             <div class="job-list-option">
                                                 <ul class="list-unstyled">
-                                                    <li> <span>via</span> <a {{-- href="employer-detail.html">{{ $job->user->profile->companyName }}</a> --}}
-                                                            href="employer-detail.html">{{ $job->userProfile->companyName }}</a>
-                                                    </li>
+                                                    <li> <span>via</span> <a {{-- href="employer-detail.html">{{ $job->user->profile->companyName }}</a> --}} </li>
                                                     <li><i class="fas fa-map-marker-alt pe-1"></i>{{ $job->address }}</li>
                                                     <li><i class="fas fa-filter pe-1"></i>{{ $job->category->name }}</li>
                                                     <li><a class="freelance" href="#"><i
                                                                 class="fas fa-suitcase pe-1"></i>{{ $job->jobType->name }}</a>
                                                     </li>
+                                                    <li><span
+                                                            class="job-list-time order-1">${{ $job->minSalary }}</span>-${{ $job->maxSalary }}/{{ $job->salaryType }}
+                                                    </li>
                                                 </ul>
+                                                <div class="job-found ms-auto">
+                                                    <a href=""><span
+                                                            class="badge badge-lg bg-primary">Apply</span></a>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

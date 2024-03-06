@@ -14,6 +14,7 @@ class CandidateController extends Controller
 
     public function dashboard()
     {
+        
         return view('frontend.candidate.dashboard');
     }
 
@@ -92,14 +93,16 @@ class CandidateController extends Controller
       $user = auth()->user();
 
       if (!Hash::check($request->current_password, $user->password)) {
-        throw ValidationException::withMessages(['current_password' => 'The provided current password is incorrect.']);
+        notyf()->addError('Current password does not match.');
+            return redirect()->back();
        }
 
       $user->update([
         'password' => Hash::make($request->password),
       ]);
-
-      return redirect()->route('candidate.dashboard')->withMessages('success', 'Password changed successfully.');
+       notyf()->addSuccess('Password has been changed successfully.');
+      return redirect()->route('candidate.dashboard');
+      
     }
 
     public function myResume()

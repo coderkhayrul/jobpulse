@@ -27,8 +27,8 @@
                             </div>
                             <div class="blog-post-footer border-0 justify-content-start">
                                 <div class="blog-post-time">
-                                    {{-- <a href="#"> <i
-                                            class="far fa-clock"></i>{{ $blog->created_at->format('d-M-Y') }}</a> --}}
+                                    <a href="#"> <i
+                                            class="far fa-clock"></i>{{ $blog->created_at->diffForHumans() }}</a>
                                 </div>
                                 <div class="blog-post-author">
                                     <span> By <a href="#"> <img class="img-fluid"
@@ -43,14 +43,9 @@
                                 <img class="img-fluid" src="{{ asset($blog->img) }}" alt="">
                             </div>
                             <div class="blog-post-content mt-4">
-                                <div class="blog-post-description">
-                                    <p class="mb-0">{{ $blog->title }}.</p>
-                                </div>
-                                <i class="text-primary d-block lead my-3">There are basically six key areas to higher
-                                    achievement. Some people will tell you there are four while others may tell you there
-                                    are eight. One thing for certain though, is that.</i>
-                                <p>If success is a process with a number of defined steps, then it is just like any other
-                                    process. So, what is the first step in any process?</p>
+
+                                <i class="text-primary d-block lead my-3">{{ $blog->title }}..</i>
+                                <p>{{ $blog->body }}.</p>
 
                                 <p>Making a decision to do something – this is the first step. We all know that nothing
                                     moves until someone makes a decision. The first action is always in making the decision
@@ -134,12 +129,12 @@
                                                                     <a class="mb-1" href="#">Recruitment</a>
                                                                 </div>
                                                                 <div class="blog-post-title">
-                                                                    <h5><a href="blog-detail.html">Hype or Helpful to the
-                                                                            Jobs Market?</a></h5>
+                                                                    <h5><a href="blog-detail.html">{{ $blog->title }}.</a>
+                                                                    </h5>
                                                                 </div>
                                                                 <div class="blog-post-description mb-0">
-                                                                    <p class="mb-0">So, how can we stay on course with
-                                                                        all the distractions in our lives? Willpower.</p>
+                                                                    <p class="mb-0">
+                                                                        {{ Str::limit($blog->body, 35, '...') }}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="blog-post-footer">

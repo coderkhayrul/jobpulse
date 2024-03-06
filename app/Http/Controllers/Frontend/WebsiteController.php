@@ -16,13 +16,15 @@ class WebsiteController extends Controller
         $jobs = Job::all();
         $categories = Category::all();
         $positions = Position::all();
+      
         return view('frontend.home', compact('jobs', 'categories', 'positions'));
     }
 
     public function jobs()
     {
         $jobs = Job::get();
-        return view('frontend.jobs', compact('jobs'));
+        $categories = Category::latest()->paginate(4);
+        return view('frontend.jobs', compact('jobs', 'categories'));
     }
     public function blogs()
     {

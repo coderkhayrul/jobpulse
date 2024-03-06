@@ -205,7 +205,7 @@
     </section>
     <!-- counter -->
 
-    <!-- Testimonial -->
+    <!--Testimonial -->
     <section class="space-pb">
         <div class="container">
             <div class="row justify-content-center">
@@ -215,8 +215,7 @@
                         <div class="item">
                             <div class="testimonial-item text-center">
                                 <div class="avatar">
-                                    <img class="img-fluid rounded-circle"
-                                        src="{{ asset('frontend') }}/images/avatar/04.jpg" alt="">
+                                    <img class="img-fluid rounded-circle" src="images/avatar/04.jpg" alt="">
                                 </div>
                                 <div class="testimonial-content">
                                     <p>The Jobber database has been one of our current sources for recruitment, backed by a
@@ -233,8 +232,7 @@
                         <div class="item">
                             <div class="testimonial-item text-center">
                                 <div class="avatar">
-                                    <img class="img-fluid rounded-circle"
-                                        src="{{ asset('frontend') }}/images/avatar/02.jpg" alt="">
+                                    <img class="img-fluid rounded-circle" src="images/avatar/02.jpg" alt="">
                                 </div>
                                 <div class="testimonial-content">
                                     <p>Portal is very user-friendly in terms of searching for resumes and job postings.
@@ -253,5 +251,4 @@
             </div>
         </div>
     </section>
-    <!-- Testimonial -->
 @endsection

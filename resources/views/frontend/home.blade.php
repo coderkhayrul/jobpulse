@@ -21,6 +21,50 @@
         </div>
     </section>
     <!-- Action-box -->
+    <!-- Top Companies -->
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="section-title center">
+                        <h2 class="title">Top Companies</h2>
+                        <p>Data trends and insights, tips for employers, product updates and best practices</p>
+                    </div>
+                    <div class="owl-carousel owl-nav-bottom-center" data-nav-arrow="false" data-nav-dots="true"
+                        data-items="4" data-md-items="3" data-sm-items="2" data-xs-items="1" data-xx-items="1"
+                        data-space="15" data-autoheight="true">
+
+                        <div class="item">
+                            <div class="employers-grid mb-4 mb-lg-0">
+                                <div class="employers-list-logo">
+                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/07.svg" alt="">
+                                </div>
+                                <div class="employers-list-details">
+                                    <div class="employers-list-info">
+                                        <div class="employers-list-title">
+                                            <h5 class="mb-0"><a href="employer-detail.html">Trout Design Ltd</a>
+                                            </h5>
+                                        </div>
+                                        <div class="employers-list-option">
+                                            <ul class="list-unstyled">
+                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Wellesley Rd, London</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="employers-list-position">
+                                    <a class="btn btn-sm btn-dark" href="#">30 Open position</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Top Companies -->
 
     <!-- Browse listing -->
     <section class="space-ptb bg-light">
@@ -42,10 +86,7 @@
                                     <a class="nav-link  active" id="profile-tab" data-bs-toggle="tab" href="#profile"
                                         role="tab" aria-controls="profile" aria-selected="false">Recent Jobs</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab"
-                                        aria-controls="contact" aria-selected="false">Popular Jobs</a>
-                                </li>
+
                             </ul>
                         </div>
                         <div class="job-found ms-auto">
@@ -54,7 +95,7 @@
                         </div>
                     </div>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row mt-4">
                                 @foreach ($jobs as $job)
                                     <div class="col-lg-6 col-sm-6">
@@ -74,178 +115,43 @@
                                                                 <span>via</span>
                                                                 <a href="employer-detail.html">Wight Sound Hearing LLC</a>
                                                             </li>
-                                                            <li><i
-                                                                    class="fas fa-map-marker-alt pe-1"></i>{{ $job->address }}
+                                                            <li><i class="fas fa-map-marker-alt pe-1"></i>
+                                                                {{ $job->address }}
                                                             </li>
-                                                            <li><i class="fas fa-filter pe-1"></i>{{ $job->category->name }}
+                                                            <li><i class="fas fa-filter pe-1"></i>
+                                                                {{ $job->category->name }}
                                                             </li>
                                                             <li><a class="temporary" href="#"><i
-                                                                        class="fas fa-suitcase pe-1"></i>{{ $job->jobType->name }}</a>
+                                                                        class="fas fa-suitcase pe-1"></i>
+                                                                    {{ $job->jobType->name }}</a>
+                                                            </li>
+                                                            <li><span
+                                                                    class="job-list-time order-1">${{ $job->minSalary }}</span>-${{ $job->maxSalary }}/{{ $job->salaryType }}
                                                             </li>
                                                         </ul>
+                                                        <div class="job-found ms-auto">
+                                                            <a href=""><span
+                                                                    class="badge badge-lg bg-primary">Apply</span></a>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="job-list-favourite-time">
                                                 <a class="job-list-favourite order-2" href="#"><i
                                                         class="far fa-heart"></i></a>
-                                                <span class="job-list-time order-1"><i
-                                                        class="far fa-clock pe-1"></i>{{ $job->created_at->diffForHumans() }}</span>
+                                                <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>
+                                                    {{ $job->created_at->diffForHumans() }}</span>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
                             <div class="col-12 justify-content-center d-flex mt-4">
-                                <a class="btn btn-white btn-lg" href="#">View More Jobs</a>
+                                <a class="btn btn-white btn-lg" href="{{ route('web.jobs') }}"">View More Jobs</a>
                             </div>
                         </div>
-                        <div class="tab-pane fade active show" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                            <div class="row mt-4">
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="job-list job-grid">
-                                        <div class="job-list-logo ">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/13.svg"
-                                                alt="">
-                                        </div>
-                                        <div class="job-list-details">
-                                            <div class="job-list-info">
-                                                <div class="job-list-title">
-                                                    <h6><a href="job-detail.html">Communications Trainee Scheme</a>
-                                                    </h6>
-                                                </div>
-                                                <div class="job-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <span class="job-list-via">via</span>
-                                                            <a class="job-list-company-name" href="#">Bright
-                                                                Sparks PLC</a>
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Botchergate,
-                                                            Carlisle</li>
-                                                        <li><i class="fas fa-filter pe-1"></i>Customer Service</li>
-                                                        <li><a class="part-time" href="#"><i
-                                                                    class="fas fa-suitcase pe-1"></i>Part-Time</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="job-list-favourite-time">
-                                            <a class="job-list-favourite order-2" href="#"><i
-                                                    class="far fa-heart"></i></a>
-                                            <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W
-                                                ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="job-list job-grid">
-                                        <div class="job-list-logo ">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/14.svg"
-                                                alt="">
-                                        </div>
-                                        <div class="job-list-details">
-                                            <div class="job-list-info">
-                                                <div class="job-list-title">
-                                                    <h6><a href="job-detail.html">Part-Time Sales Assistant</a></h6>
-                                                </div>
-                                                <div class="job-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <span>via</span>
-                                                            <a href="employer-detail.html">Tan Electrics Ltd</a>
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Park Avenue,
-                                                            Mumbai</li>
-                                                        <li><i class="fas fa-filter pe-1"></i>Charity &amp; Voluntary
-                                                        </li>
-                                                        <li><a class="full-time" href="#"><i
-                                                                    class="fas fa-suitcase pe-1"></i>Full-time</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="job-list-favourite-time">
-                                            <a class="job-list-favourite order-2" href="#"><i
-                                                    class="far fa-heart"></i></a>
-                                            <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W
-                                                ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="job-list job-grid">
-                                        <div class="job-list-logo ">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/15.svg"
-                                                alt="">
-                                        </div>
-                                        <div class="job-list-details">
-                                            <div class="job-list-info">
-                                                <div class="job-list-title">
-                                                    <h6><a href="job-detail.html">Customer Service Assistant</a></h6>
-                                                </div>
-                                                <div class="job-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <span>via</span>
-                                                            <a href="employer-detail.html">Wight Sound Hearing LLC</a>
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>New Castle, PA
-                                                        </li>
-                                                        <li><i class="fas fa-filter pe-1"></i>Banking</li>
-                                                        <li><a class="temporary" href="#"><i
-                                                                    class="fas fa-suitcase pe-1"></i>Temporary</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="job-list-favourite-time">
-                                            <a class="job-list-favourite order-2" href="#"><i
-                                                    class="far fa-heart"></i></a>
-                                            <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W
-                                                ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="job-list job-grid">
-                                        <div class="job-list-logo ">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/16.svg"
-                                                alt="">
-                                        </div>
-                                        <div class="job-list-details">
-                                            <div class="job-list-info">
-                                                <div class="job-list-title">
-                                                    <h6><a href="job-detail.html">Data Entry Administrator</a></h6>
-                                                </div>
-                                                <div class="job-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li>
-                                                            <span>via</span>
-                                                            <a href="employer-detail.html">Fast Systems Consultants</a>
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Wellesley Rd,
-                                                            London</li>
-                                                        <li><i class="fas fa-filter pe-1"></i>Automotive Jobs</li>
-                                                        <li><a class="freelance" href="#"><i
-                                                                    class="fas fa-suitcase pe-1"></i>Freelance</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="job-list-favourite-time">
-                                            <a class="job-list-favourite order-2" href="#"><i
-                                                    class="far fa-heart"></i></a>
-                                            <span class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W
-                                                ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 justify-content-center d-flex mb-4">
-                                <a class="btn btn-white btn-lg" href="#">View More Jobs</a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-1">
@@ -388,260 +294,4 @@
         </div>
     </section>
     <!-- Browse listing -->
-
-    <!-- Category-style -->
-    <section class="space-ptb">
-        <div class="container">
-            <div class="section-title center">
-                <h2 class="title">Choose Your Sector</h2>
-                <p class="mb-0">What made each of these people so successful? Motivation.</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="category-style text-center">
-
-                        @foreach ($categories as $category)
-                            <a href="#" class="category-item">
-                                <div class="category-icon mb-4">
-                                    <i class="flaticon-money"></i>
-                                </div>
-                                <h6>{{ $category->name }}</h6>
-                                <span class="mb-0">542 Open Position </span>
-                            </a>
-                        @endforeach
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Category-style -->
-
-    <!-- Top Companies -->
-    <section class="space-ptb">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center">
-                    <div class="section-title center">
-                        <h2 class="title">Top Companies</h2>
-                        <p>Data trends and insights, tips for employers, product updates and best practices</p>
-                    </div>
-                    <div class="owl-carousel owl-nav-bottom-center" data-nav-arrow="false" data-nav-dots="true"
-                        data-items="4" data-md-items="3" data-sm-items="2" data-xs-items="1" data-xx-items="1"
-                        data-space="15" data-autoheight="true">
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-lg-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/07.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Trout Design Ltd</a>
-                                            </h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Wellesley Rd, London</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="employers-list-position">
-                                    <a class="btn btn-sm btn-dark" href="#">30 Open position</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-md-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/08.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Lawn Hopper</a></h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Needham, MA</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="employers-list-position">
-                                    <a class="btn btn-sm btn-dark" href="#">35 Open position</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-lg-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/09.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Trout Design Ltd</a>
-                                            </h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Wellesley Rd, London</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="employers-list-position">
-                                    <a class="btn btn-sm btn-dark" href="#">30 Open position</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-md-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/10.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Lawn Hopper</a></h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Needham, MA</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="employers-list-position">
-                                    <a class="btn btn-sm btn-dark" href="#">35 Open position</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-lg-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/11.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Rippin LLC</a></h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Park Avenue, Mumbai</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="employers-list-position">
-                                        <a class="btn btn-sm btn-dark" href="#">20 Open position</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-lg-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/12.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Trophy and Sons</a></h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Green Lanes, London</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="employers-list-position">
-                                        <a class="btn btn-sm btn-dark" href="#">25 Open position</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-md-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/13.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Lawn Hopper</a></h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Needham, MA</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="employers-list-position">
-                                    <a class="btn btn-sm btn-dark" href="#">35 Open position</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-lg-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/14.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Rippin LLC</a></h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Park Avenue, Mumbai</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="employers-list-position">
-                                        <a class="btn btn-sm btn-dark" href="#">20 Open position</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-lg-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/15.svg"
-                                        alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Trophy and Sons</a></h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Green Lanes, London</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="employers-list-position">
-                                        <a class="btn btn-sm btn-dark" href="#">25 Open position</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Top Companies -->
 @endsection

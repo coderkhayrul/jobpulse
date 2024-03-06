@@ -9,13 +9,6 @@
                 <span key="t-dashboard">Dashboard</span>
             </a>
         </li>
-        <li class="">
-            <a href="" class="waves-effect" aria-expanded="false">
-                <i class="bx bx-briefcase-alt"></i>
-                <span key="t-Jobs">Jobs</span>
-            </a>
-        </li>
-
         <li>
             <a href="javascript: void(0);" class="waves-effect has-arrow"">
                 <i class="bx bx-briefcase-alt"></i>
@@ -30,7 +23,6 @@
                             class="bx bx-purchase-tag-alt"></i>Jobs Categories</a></li>
             </ul>
         </li>
-
         <li class="">
             <a href="{{ route('admin.job-types.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-briefcase-alt"></i>

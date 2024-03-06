@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Page;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class PageController extends Controller
 {
@@ -13,7 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::latest()->get();
+         $pages = Page::all();
         return view('admin.components.page.index', compact('pages'));
     }
 
@@ -30,7 +32,19 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Page::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'thumbnail' => saveImage($request->thumbnail,'uploads/pages/'),
+            'content' => $request->content,
+
+        ]);
+        $notification = [
+            'message' => 'Page Created Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('admin.pages.index')->with($notification);
     }
 
     /**
@@ -38,7 +52,8 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
+    //    $pages = Page::get();
+    //     return view('admin.components.page.show', compact('pages'));
     }
 
     /**
@@ -46,7 +61,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        return view('admin.components.page.edit');
+         return response()->json($page);
     }
 
     /**
@@ -54,7 +69,25 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        //
+        if ($request->old_Img !== '') {
+            deleteImage($page->thumbnail);
+            $image = saveImage($request->thumbnail,'uploads/pages/');
+        }else{
+            $image = $page->thumbnail;
+        }
+            $page->update([
+                'title' => $request->title,
+                'slug' => Str::slug($request->title),
+                'thumbnail' => $image,
+               
+            ]);
+    
+        $notification = [
+            'message' => 'page Updated Successfully',
+            'alert-type' => 'success',
+        ];
+
+         return redirect()->route('admin.pages.index')->with($notification);
     }
 
     /**
@@ -62,6 +95,12 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        File::delete($page);
+        $page->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Page Deleted Successfully',
+        ]);
     }
 }

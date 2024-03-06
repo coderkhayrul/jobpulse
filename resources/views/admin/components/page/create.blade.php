@@ -8,15 +8,15 @@
                     <h3>Create Page</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ route('admin.pages.store') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input name="name" type="text" class="form-control" id="name"
-                                        placeholder="Enter Type Name">
-                                    @error('name')
+                                    <label for="title" class="form-label">Title</label>
+                                    <input name="title" type="text" class="form-control" id="title"
+                                        placeholder="Enter Type title">
+                                    @error('title')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -32,9 +32,9 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="remarks" class="form-label">Content</label>
-                            <textarea name="remarks" class="form-control" id="remarks" rows="3" placeholder="Enter Remarks"></textarea>
-                            @error('remarks')
+                            <label for="content" class="form-label">Content</label>
+                            <textarea name="content" class="form-control" id="content" rows="3" placeholder="Enter content"></textarea>
+                            @error('content')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>

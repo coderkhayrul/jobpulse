@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Job;
 use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,23 +13,27 @@ class WebsiteController extends Controller
 {
     public function home()
     {
-        return view('frontend.home');
+         $jobs = Job::all();
+        $categories = Category::all();
+        $positions =Position::all();
+        return view('frontend.home', compact('jobs','categories', 'positions'));
     }
 
     public function jobs()
     {
-        return view('frontend.jobs');
+          $jobs = Job::get();
+        return view('frontend.jobs',compact('jobs'));
     }
     public function blogs()
     {
          $blogs = Blog::get();
-
         return view('frontend.blogs', compact('blogs'));
         
     }
-    public function blogShow(Blog $blog)
+    public function singleBlog($slug)
     {
-        return view('frontend.blogShow', compact('blog'));
+        $blog = Blog::where('slug', $slug)->first();
+        return view('frontend.singleBlog', compact('blog'));
 
     }
 

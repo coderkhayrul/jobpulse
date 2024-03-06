@@ -1,11 +1,15 @@
 @extends('admin.layouts.app')
 @section('title', 'Blogs')
 @section('content')
-    <div class="col-md-8 col-sm-12">
+    <div class="col-md-12 col-sm-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h3>Total {{ count($blogs) }} Blogs</h3>
+                <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary">
+                    <i class="fas fa-edit m-2"></i>Create Blog</a>
             </div>
+
+
             <div class="card-body">
                 <table id="datatable" class="table table-bordered dt-responsive wrap w-100  dataTable" role="grid"
                     aria-describedby="datatable_info" style="width: 1048px;">
@@ -60,42 +64,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-sm-12">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <h3>Create A blog</h3>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{ route('admin.blogs.store') }}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="img" class="form-label">Image</label>
-                        <input type="file" id="img" class="form-control " name="img">
-                        @error('img')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input name="title" type="text" class="form-control" id="title"
-                            placeholder="Enter Type Title">
-                        @error('title')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="body" class="form-label">description</label>
-                        <textarea name="body" class="form-control" id="body" rows="10" placeholder="Enter description"></textarea>
-                        @error('body')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
 
-                    <button type="submit" class="btn btn-primary w-md">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
     </div>
 
     @include('admin.components.blog.editModal')

@@ -5,8 +5,8 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h3>Total {{ count($pages) }} Page</h3>
-                {{-- <a href="{{ route('admin.pages.create') }}" class="btn btn-primary">
-                    <i class="fas fa-plus me-2"></i>Add Page</a> --}}
+                <a href="{{ route('admin.pages.create') }}" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Add Page</a>
             </div>
             <div class="card-body">
                 <table id="datatable" class="table table-bordered dt-responsive wrap w-100  dataTable" role="grid"
@@ -38,9 +38,11 @@
                                             <i class="mdi mdi-chevron-down"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a href="#" class="dropdown-item">
+                                            <button onclick="pageEdit({{ $page->id }})" class="dropdown-item"
+                                                href="">
                                                 <i class="bx bx-edit align-middle me-2"></i> Edit
-                                            </a>
+                                            </button>
+
                                             <button onclick="pageDelete({{ $page->id }})" class="dropdown-item"
                                                 href="">
                                                 <i class="bx bx-trash-alt align-middle me-2"></i> Delete
@@ -55,4 +57,76 @@
             </div>
         </div>
     </div>
+
+    {{-- @include('admin.components.page.editModal') --}}
 @endsection
+@push('scripts')
+    <script>
+        function pageEdit(id) {
+            var url = "{{ route('admin.pages.edit', ':id') }}";
+            url = url.replace(':id', id);
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: {
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(response) {
+                    $('#pagetitle').val(response.title);
+                    $('#pageThumbnail').val(response.Thumbnail);
+                    $('#pageEditModal form').attr('action', 'pages/' + response.id);
+                    $('#pageEditModal').modal('show');
+                }
+            });
+        }
+
+
+
+        function pageDelete(id) {
+            console.log(id);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4b3e61',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.preventDefault();
+                    let url = "{{ route('admin.pages.destroy', ':id') }}";
+                    url = url.replace(':id', id);
+                    $.ajax({
+                        url: url,
+                        type: 'DELETE',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(response) {
+
+                            if (response.status) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    response.message,
+                                    'success'
+                                ).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                })
+                            } else {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'User has not been deleted.',
+                                    'error'
+                                )
+                            }
+                        }
+                    });
+                }
+            })
+        }
+    </script>
+@endpush

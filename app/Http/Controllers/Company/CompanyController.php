@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
-
+use App\Models\UserProfile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -18,7 +18,9 @@ class CompanyController extends Controller
 {
     public function dashboard()
     {
-        return view('frontend.company.dashboard');
+         $jobs = Auth::user()->jobs()->latest()->paginate(5);
+       
+        return view('frontend.company.dashboard' , compact('jobs'));
     }
 
     public function myProfile()
@@ -48,7 +50,8 @@ class CompanyController extends Controller
         $jobTypes = JobType::all();
         $categories = Category::all();
         $positions = Position::all();
-        return view('frontend.company.job-post', compact('jobTypes', 'categories', 'positions'));
+        $userProfiles = UserProfile::all();
+        return view('frontend.company.job-post', compact('jobTypes', 'categories', 'positions','userProfiles'));
     }
 
     public function jobPostStore(Request $request)

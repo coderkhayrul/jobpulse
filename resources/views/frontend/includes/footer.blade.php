@@ -12,9 +12,15 @@
 <script src="{{ asset('frontend') }}/js/custom.js"></script>
 
 @stack('frontend_scripts')
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Description',
+        tabsize: 2,
+        height: 250
+    });
+</script>
 </body>
-
-
 
 </html>

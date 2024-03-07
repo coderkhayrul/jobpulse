@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             PositionSeeder::class,
             JobTypeSeeder::class,
             CategorySeeder::class,
+            GeneralSettingSeeder::class,
         ]);
     }
 }

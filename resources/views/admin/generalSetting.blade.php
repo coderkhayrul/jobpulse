@@ -7,8 +7,9 @@
                 <h3>Create A Category</h3>
             </div>
             <div class="card-body">
-                <form method="POST" action="#" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.general-setting.update') }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PATCH')
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3">
@@ -47,7 +48,7 @@
                                 <label for="site_title" class="form-label">Site Title</label>
                                 <input name="site_title" type="text"
                                     class="form-control @error('site_title') is-invalid @enderror" id="site_title"
-                                    placeholder="Enter Title">
+                                    placeholder="Enter Title" value="{{ $setting->site_title }}">
                                 @error('site_title')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -58,7 +59,7 @@
                                 <label for="site_email" class="form-label">Site Email</label>
                                 <input name="site_email" type="text"
                                     class="form-control @error('site_email') is-invalid @enderror" id="site_email"
-                                    placeholder="Enter Email">
+                                    placeholder="Enter Email" value="{{ $setting->site_email }}">
                                 @error('site_email')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -69,7 +70,7 @@
                                 <label for="site_phone" class="form-label">Phone</label>
                                 <input name="site_phone" type="text"
                                     class="form-control @error('site_phone') is-invalid @enderror" id="site_phone"
-                                    placeholder="Enter Phone">
+                                    placeholder="Enter Phone" value="{{ $setting->site_phone }}">
                                 @error('site_phone')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -80,7 +81,7 @@
                                 <label for="site_fax" class="form-label">Fax</label>
                                 <input name="site_fax" type="text"
                                     class="form-control @error('site_fax') is-invalid @enderror" id="site_fax"
-                                    placeholder="Enter Fax">
+                                    placeholder="Enter Fax" value="{{ $setting->site_fax }}">
                                 @error('site_fax')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -91,7 +92,7 @@
                                 <label for="site_url" class="form-label">Url</label>
                                 <input name="site_url" type="text"
                                     class="form-control @error('site_url') is-invalid @enderror" id="site_url"
-                                    placeholder="Enter Url">
+                                    placeholder="Enter Url" value="{{ $setting->site_url }}">
                                 @error('site_url')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -102,7 +103,7 @@
                                 <label for="site_author" class="form-label">Author</label>
                                 <input name="site_author" type="text"
                                     class="form-control @error('site_author') is-invalid @enderror" id="site_author"
-                                    placeholder="Enter Author Name">
+                                    placeholder="Enter Author Name" value="{{ $setting->site_author }}">
                                 @error('site_author')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -111,7 +112,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="site_footer" class="form-label">Footer</label>
-                                <textarea name="site_footer" id="" class="form-control"></textarea>
+                                <textarea name="site_footer" id="" class="form-control">{{ $setting->site_footer }}</textarea>
                                 @error('site_footer')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -119,8 +120,17 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
+                                <label for="site_address" class="form-label">Address</label>
+                                <textarea name="site_address" id="" class="form-control">{{ $setting->site_address }}</textarea>
+                                @error('site_address')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
                                 <label for="site_description" class="form-label">Description</label>
-                                <textarea name="site_description" id="" class="form-control"></textarea>
+                                <textarea name="site_description" id="" class="form-control">{{ $setting->site_description }}</textarea>
                                 @error('site_description')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

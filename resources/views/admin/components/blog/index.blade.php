@@ -33,7 +33,7 @@
                                     {{ $blog->created_at->format('d-M-Y') }}
                                 </td>
 
-                                <td>{!! Str::limit($blog->body, 35, '...') !!}</td>
+                                <td>{{ Str::limit($blog->body, 35, '...') }}</td>
 
                                 <td class="text-center">
                                     <div class="btn-group">

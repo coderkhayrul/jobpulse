@@ -39,7 +39,7 @@
                                                 </div>
                                                 <div class="blog-post-description mb-0">
                                                     <p class="mb-0">
-                                                        {{ Str::limit($blog->body, 80, '...') }}
+                                                        {!! Str::limit($blog->body, 80, '...') !!}
                                                     </p>
                                                 </div>
                                                 <div class="blog-post-link justify-content-center d-flex">

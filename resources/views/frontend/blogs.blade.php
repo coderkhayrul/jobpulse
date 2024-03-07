@@ -55,12 +55,9 @@
                                                 </div>
                                                 <div class="blog-post-author">
                                                     <span> By <a href="#"> <img class="img-fluid"
-                                                                src="{{ asset('frontend') }}/images/avatar/01.jpg"
-                                                                alt="">Sara lisbon </a>
+                                                                src="{{ asset($blog->user->profileImage) }}"
+                                                                alt="">{{ $blog->user->name }}</a>
                                                     </span>
-                                                </div>
-                                                <div class="blog-post-comment">
-                                                    <a href="#"> <i class="far fa-comment"></i>(12) </a>
                                                 </div>
                                             </div>
                                         </div>

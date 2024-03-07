@@ -17,7 +17,6 @@
                         <tr class="text-primary" role="row">
                             <th width="10%"> Photo</th>
                             <th width="20%"> Title</th>
-                            <th width="30%"> Description</th>
                             <th class="text-center" width="10%"> Created At</th>
 
                             <th width="10%" class="text-center text-dark">Action</th>
@@ -29,7 +28,6 @@
                                 <td><img class="rounded" alt="" src="{{ asset($blog->img) }}" style="width:100px ">
                                 </td>
                                 <td>{{ $blog->title }}</td>
-                                <td>{{ Str::limit($blog->body, 50, '...') }}</td>
                                 <td class="text-center">
                                     {{ $blog->created_at->format('d-M-Y') }}
                                 </td>

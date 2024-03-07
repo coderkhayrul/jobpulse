@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             JobTypeSeeder::class,
             CategorySeeder::class,
             GeneralSettingSeeder::class,
+            BlogSeeder::class,
         ]);
     }
 }

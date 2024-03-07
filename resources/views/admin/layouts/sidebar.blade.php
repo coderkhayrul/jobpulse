@@ -15,67 +15,64 @@
                 <span key="t-jobs">Jobs</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="job-list.html" key="t-job-list">Job List</a></li>
-                <li><a href="job-grid.html" key="t-job-grid">Job Grid</a></li>
-                <li><a href="job-apply.html" key="t-apply-job">Apply Job</a></li>
-                <li><a href="job-details.html" key="t-job-details">Job Details</a></li>
-                <li><a href="{{ route('admin.categories.index') }}" key="t-Jobs-categories"> <i
-                            class="bx bx-purchase-tag-alt"></i>Jobs Categories</a></li>
-            </ul>
+                <li><a href="#" key="t-job-list">Job List</a></li>
+                <li><a href="#" key="t-job-list">Jobs Categories</a></li>
         </li>
-        <li class="">
-            <a href="{{ route('admin.job-types.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bx-briefcase-alt"></i>
-                <span key="t-job-type">Job Type</span>
-            </a>
-        </li>
+    </ul>
+    </li>
+    <li class="">
+        <a href="{{ route('admin.job-types.index') }}" class="waves-effect" aria-expanded="false">
+            <i class="bx bx-briefcase-alt"></i>
+            <span key="t-job-type">Job Type</span>
+        </a>
+    </li>
 
-        {{-- <li class="">
+    {{-- <li class="">
             <a href="{{ route('admin.categories.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-purchase-tag-alt"></i>
                 <span key="t-categories">Categories</span>
             </a>
         </li> --}}
 
-        <li class="">
-            <a href="{{ route('admin.blogs.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bx-detail"></i>
-                <span key="t-blogs">Blogs</span>
-            </a>
-        </li>
+    <li class="">
+        <a href="{{ route('admin.blogs.index') }}" class="waves-effect" aria-expanded="false">
+            <i class="bx bx-detail"></i>
+            <span key="t-blogs">Blogs</span>
+        </a>
+    </li>
 
 
-        <li>
-            <a href="{{ route('admin.position.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bx-map"></i>
-                <span key="t-positions">Positions</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="waves-effect has-arrow" aria-expanded="false">
-                <i class="bx bx-user"></i>
-                <span key="t-users">Users</span>
-            </a>
-            <ul class="sub-menu" aria-expanded="false">
-                <li><a href="{{ route('admin.user.index') }}" key="t-user">All User</a></li>
-                <li><a href="{{ route('admin.user.index') }}?role=2" key="t-company">Company</a></li>
-                <li><a href="{{ route('admin.user.index') }}?role=3" key="t-candidate">Candidate</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="{{ route('admin.skill.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bxs-brightness"></i>
-                <span key="t-skills">Skills</span>
-            </a>
-        </li>
+    <li>
+        <a href="{{ route('admin.position.index') }}" class="waves-effect" aria-expanded="false">
+            <i class="bx bx-map"></i>
+            <span key="t-positions">Positions</span>
+        </a>
+    </li>
+    <li>
+        <a href="#" class="waves-effect has-arrow" aria-expanded="false">
+            <i class="bx bx-user"></i>
+            <span key="t-users">Users</span>
+        </a>
+        <ul class="sub-menu" aria-expanded="false">
+            <li><a href="{{ route('admin.user.index') }}" key="t-user">All User</a></li>
+            <li><a href="{{ route('admin.user.index') }}?role=2" key="t-company">Company</a></li>
+            <li><a href="{{ route('admin.user.index') }}?role=3" key="t-candidate">Candidate</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="{{ route('admin.skill.index') }}" class="waves-effect" aria-expanded="false">
+            <i class="bx bxs-brightness"></i>
+            <span key="t-skills">Skills</span>
+        </a>
+    </li>
 
-        <li>
-            <a href="{{ route('admin.pages.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bxs-badge-check"></i>
-                <span key="t-pages">Pages</span>
-            </a>
-        </li>
-        {{-- <li>
+    <li>
+        <a href="{{ route('admin.pages.index') }}" class="waves-effect" aria-expanded="false">
+            <i class="bx bxs-badge-check"></i>
+            <span key="t-pages">Pages</span>
+        </a>
+    </li>
+    {{-- <li>
             <a href="{{ route('admin.education.index') }}" class="waves-effect" aria-expanded="false">
                 <i class="bx bxs-institution"></i>
                 <span key="t-educations">Educations</span>
@@ -88,21 +85,21 @@
             </a>
         </li>
          --}}
-        <li>
-            <a href="javascript: void(0);" class="waves-effect has-arrow"">
-                <i class="bx bx-cog"></i>
-                <span key="t-setting">Setting</span>
-            </a>
-            <ul class="sub-menu" aria-expanded="false">
-                <li><a href="{{ route('admin.general-setting') }}" key="t-genaral">General</a></li>
-                <li><a href="#" key="t-banner">Banner</a></li>
-            </ul>
-        </li>
-        <li>
-            <a target="_blank" href="{{ route('web.home') }}" class="waves-effect text-danger" aria-expanded="false">
-                <i class="bx bx-planet"></i>
-                <span key="t-educations">Website</span>
-            </a>
-        </li>
+    <li>
+        <a href="javascript: void(0);" class="waves-effect has-arrow"">
+            <i class="bx bx-cog"></i>
+            <span key="t-setting">Setting</span>
+        </a>
+        <ul class="sub-menu" aria-expanded="false">
+            <li><a href="{{ route('admin.general-setting') }}" key="t-genaral">General</a></li>
+            <li><a href="#" key="t-banner">Banner</a></li>
+        </ul>
+    </li>
+    <li>
+        <a target="_blank" href="{{ route('web.home') }}" class="waves-effect text-danger" aria-expanded="false">
+            <i class="bx bx-planet"></i>
+            <span key="t-educations">Website</span>
+        </a>
+    </li>
     </ul>
 </div>

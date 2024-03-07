@@ -24,7 +24,7 @@
                                         </div>
                                         <div class="form-group mt-0 mb-3 col-md-12">
                                             <label class="form-label">Job Description</label>
-                                            <textarea name="description" class="form-control" rows="4">{{ old('description') }}</textarea>
+                                            <textarea name="description" id="summernote" class="form-control">{{ old('description') }}</textarea>
                                             @error('description')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -197,9 +197,19 @@
 @push('frontend_styles')
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/datetimepicker/datetimepicker.min.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/select2/select2.css" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> --}}
 @endpush
 @push('frontend_scripts')
     <script src="{{ asset('frontend') }}/js/select2/select2.full.js"></script>
     <script src="{{ asset('frontend') }}/js/datetimepicker/moment.min.js"></script>
     <script src="{{ asset('frontend') }}/js/datetimepicker/datetimepicker.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Description',
+            tabsize: 2,
+            height: 250
+        });
+    </script> --}}
 @endpush

@@ -26,6 +26,11 @@ class WebsiteController extends Controller
         $categories = Category::latest()->paginate(4);
         return view('frontend.jobs', compact('jobs', 'categories'));
     }
+    public function singleJob($slug)
+    {
+        $job = Job::where('slug', $slug)->first();
+        return view('frontend.singleJob', compact('job'));
+    }
     public function blogs()
     {
         $blogs = Blog::get();

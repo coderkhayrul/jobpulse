@@ -36,7 +36,7 @@
                     <div class="mb-3">
                         <label for="body" class="form-label">Description</label>
                         <textarea id="blogdescription" name="body" class="form-control @error('body') is-invalid @enderror" rows="10"
-                            id="body" placeholder="Enter description"></textarea>
+                            id="summernote" placeholder="Enter description"></textarea>
                         @error('body')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -50,3 +50,5 @@
         </div>
     </div>
 </div>
+@push('scripts')
+@endpush

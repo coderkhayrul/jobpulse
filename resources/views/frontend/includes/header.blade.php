@@ -28,6 +28,7 @@
     @stack('frontend_styles')
     <!-- Template Style -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
 
 </head>

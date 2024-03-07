@@ -45,8 +45,7 @@
                             <div class="blog-post-content mt-4">
 
                                 <i class="text-primary d-block lead my-3">{{ $blog->title }}..</i>
-                                <p>{{ $blog->body }}.</p>
-
+                                <p>{!! $blog->body !!}.</p>
                                 <p>Making a decision to do something – this is the first step. We all know that nothing
                                     moves until someone makes a decision. The first action is always in making the decision
                                     to proceed. This is a fundamental step, which most people overlook.</p>
@@ -438,3 +437,12 @@
         </div>
     </section>
 @endsection
+@push('scripts')
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Description',
+            tabsize: 2,
+            height: 250
+        });
+    </script>
+@endpush

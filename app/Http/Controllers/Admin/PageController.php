@@ -15,7 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-         $pages = Page::all();
+        $pages = Page::all();
         return view('admin.components.page.index', compact('pages'));
     }
 
@@ -35,7 +35,7 @@ class PageController extends Controller
         Page::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
-            'thumbnail' => saveImage($request->thumbnail,'uploads/pages/'),
+            'thumbnail' => saveImage($request->thumbnail, 'uploads/pages/'),
             'content' => $request->content,
 
         ]);
@@ -52,8 +52,8 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-    //    $pages = Page::get();
-    //     return view('admin.components.page.show', compact('pages'));
+        //    $pages = Page::get();
+        //     return view('admin.components.page.show', compact('pages'));
     }
 
     /**
@@ -61,7 +61,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-         return response()->json($page);
+        return view('admin.components.page.edit', compact('page'));
     }
 
     /**
@@ -69,25 +69,26 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        if ($request->old_Img !== '') {
+        if ($request->hasFile('old_Img')) {
             deleteImage($page->thumbnail);
-            $image = saveImage($request->thumbnail,'uploads/pages/');
-        }else{
+            $image = saveImage($request->thumbnail, 'uploads/pages/');
+        } else {
             $image = $page->thumbnail;
         }
-            $page->update([
-                'title' => $request->title,
-                'slug' => Str::slug($request->title),
-                'thumbnail' => $image,
-               
-            ]);
-    
+        $page->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'thumbnail' => $image,
+            'content' => $request->content,
+
+        ]);
+
         $notification = [
             'message' => 'page Updated Successfully',
             'alert-type' => 'success',
         ];
 
-         return redirect()->route('admin.pages.index')->with($notification);
+        return redirect()->route('admin.pages.index')->with($notification);
     }
 
     /**

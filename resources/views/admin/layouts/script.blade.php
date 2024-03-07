@@ -45,5 +45,11 @@
                     break;
             }
         @endif
+
+        $('#summernote').summernote({
+            placeholder: 'Description',
+            tabsize: 2,
+            height: 250
+        });
     </script>
     @stack('scripts')

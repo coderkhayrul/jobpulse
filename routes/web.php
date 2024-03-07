@@ -18,6 +18,7 @@ use App\Http\Controllers\Frontend\WebsiteController;
 Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('/jobs', 'jobs')->name('jobs');
+    Route::get('/jobs/{slug}', 'singleJob')->name('job.single');
     Route::get('/about', 'about')->name('about');
     Route::get('/blogs', 'blogs')->name('blogs');
     Route::get('/blogs/{slug}', 'singleBlog')->name('blog.single');

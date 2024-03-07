@@ -35,7 +35,7 @@
 
                     <div class="mb-3">
                         <label for="body" class="form-label">description</label>
-                        <textarea name="body" class="form-control" id="body" rows="10" placeholder="Enter description"></textarea>
+                        <textarea name="body" class="form-control" id="summernote" rows="10" placeholder="Enter description"></textarea>
                         @error('body')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -49,3 +49,12 @@
 
 
 @endsection
+@push('scripts')
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Description',
+            tabsize: 2,
+            height: 250
+        });
+    </script>
+@endpush

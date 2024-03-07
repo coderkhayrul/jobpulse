@@ -129,11 +129,14 @@
                                                                     class="job-list-time order-1">${{ $job->minSalary }}</span>-${{ $job->maxSalary }}/{{ $job->salaryType }}
                                                             </li>
                                                         </ul>
-                                                        <div class="job-found ms-auto">
+                                                        <div class="">
                                                             <a href=""><span
                                                                     class="badge badge-lg bg-primary">Apply</span></a>
-
+                                                            <a href="{{ route('web.job.single', $job->slug) }}"><span
+                                                                    class="badge badge-lg bg-primary">View</span></a>
                                                         </div>
+
+
                                                     </div>
                                                 </div>
                                             </div>

@@ -3,7 +3,6 @@
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Intervention\Image\Facades\Image;
 
 
 
@@ -48,7 +47,7 @@ function saveImage($image, $location): string
 {
     makeDirectory($location);
     $image_name = random_int(10000000, 99999999) . '.' . $image->getClientOriginalExtension();
-    $image = Image::make($image)->save(public_path() . $location . $image_name);
+    $image->move(public_path($location), $image_name);
     return $location . $image_name;
 }
 
@@ -58,6 +57,7 @@ function deleteImage($image): void
         File::delete(public_path() . $image);
     }
 }
+
 
 function roleName($role_id)
 {

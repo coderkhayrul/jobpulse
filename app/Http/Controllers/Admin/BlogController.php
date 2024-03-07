@@ -34,21 +34,18 @@ class BlogController extends Controller
      */
     public function store(BlogStoreRequest $request)
     {
-   
 
         if ($request->hasFile('img')) {
-            $img = $request->file('img');
-            $imgName = 'BlogPhoto- '.md5(uniqid()).'.'.$img->getClientOriginalExtension();
-            $img_url = "backend/assets/uploads/{$imgName}";
-            $img->move(public_path('backend/assets/uploads'), $img_url);
+            $image = saveImage($request->file('img'), 'uploads/blogs/');
+        } else {
+            $image = null;
         }
 
         Blog::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
-            'img' => $img_url,
-            'body' => $request->body,
-
+            'img' => $image,
+            'body' => $request->body
         ]);
         $notification = [
             'message' => 'Blog Created Successfully',
@@ -63,9 +60,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        $blogs = Blog::get();
-
-        return view('admin.components.blog.show', compact('blogs'));
+        //
     }
 
     /**
@@ -73,7 +68,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return response()->json($blog);
+        return view('admin.components.blog.edit', compact('blog'));
     }
 
     /**
@@ -82,33 +77,24 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         if ($request->hasFile('img')) {
-            $img = $request->file('img');
-            $imgName = 'BlogPhoto- ' . md5(uniqid()) . '.' . $img->getClientOriginalExtension();
-            $img_url = "backend/assets/uploads/{$imgName}";
-            $img->move(public_path('backend/assets/uploads'), $img_url);
-            //delete file:
-            $filePath = $request->$img_url;
-            File::delete($filePath);
-            $blog->update([
-                'title' => $request->title,
-                'slug' => Str::slug($request->title),
-                'img' => $request->img_url,
-                'body' => $request->body,
-            ]);
-           
-        }else{
-            $blog->update([
-                'title' => $request->title,
-                'slug' => Str::slug($request->title),
-                'body' => $request->body,
-            ]);
+            deleteImage($blog->img);
+            $image = saveImage($request->file('img'), 'uploads/blogs/');
+        } else {
+            $image = $blog->img;
         }
+
+        $blog->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'img' => $image,
+            'body' => $request->body,
+        ]);
         $notification = [
             'message' => 'Blog Updated Successfully',
             'alert-type' => 'success',
         ];
 
-         return redirect()->route('admin.blogs.index')->with($notification);
+        return redirect()->route('admin.blogs.index')->with($notification);
     }
 
     /**
@@ -116,7 +102,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        
+
         File::delete($blog);
         $blog->delete();
 
@@ -124,6 +110,5 @@ class BlogController extends Controller
             'status' => true,
             'message' => 'Blog Deleted Successfully',
         ]);
-
     }
 }

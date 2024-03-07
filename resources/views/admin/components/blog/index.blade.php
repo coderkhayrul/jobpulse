@@ -5,8 +5,8 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h3>Total {{ count($blogs) }} Blogs</h3>
-                <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary">
-                    <i class="fas fa-edit m-2"></i>Create Blog</a>
+                <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus m-2"></i>Add New</a>
             </div>
 
 
@@ -17,8 +17,8 @@
                         <tr class="text-primary" role="row">
                             <th width="10%"> Photo</th>
                             <th width="20%"> Title</th>
-                            <th class="text-center" width="20%"> Created At</th>
                             <th width="30%"> Description</th>
+                            <th class="text-center" width="10%"> Created At</th>
 
                             <th width="10%" class="text-center text-dark">Action</th>
                         </tr>
@@ -29,12 +29,10 @@
                                 <td><img class="rounded" alt="" src="{{ asset($blog->img) }}" style="width:100px ">
                                 </td>
                                 <td>{{ $blog->title }}</td>
+                                <td>{{ Str::limit($blog->body, 50, '...') }}</td>
                                 <td class="text-center">
                                     {{ $blog->created_at->format('d-M-Y') }}
                                 </td>
-
-                                <td>{{ Str::limit($blog->body, 35, '...') }}</td>
-
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-primary waves-effect dropdown-toggle"
@@ -44,12 +42,9 @@
                                             <i class="mdi mdi-chevron-down"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <button onclick="blogView({{ $blog->id }})" class="dropdown-item">
-                                                <i class="bx bx-show align-middle me-2"></i> View
-                                            </button>
-                                            <button onclick="blogEdit({{ $blog->id }})" class="dropdown-item">
+                                            <a href="{{ route('admin.blogs.edit', $blog->id) }}" class="dropdown-item">
                                                 <i class="bx bx-edit align-middle me-2"></i> Edit
-                                            </button>
+                                            </a>
                                             <button onclick="blogDelete({{ $blog->id }})" class="dropdown-item"
                                                 href="#">
                                                 <i class="bx bx-trash-alt align-middle me-2"></i> Delete
@@ -64,36 +59,9 @@
             </div>
         </div>
     </div>
-
-    </div>
-
-    @include('admin.components.blog.editModal')
 @endsection
 @push('scripts')
     <script>
-        function blogEdit(id) {
-            var url = "{{ route('admin.blogs.edit', ':id') }}";
-            url = url.replace(':id', id);
-
-            console.log(url, id);
-            $.ajax({
-                type: "GET",
-                url: url,
-                data: {
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(response) {
-                    $('#blogImg' ?? 'img').attr('src', response.img);
-                    $('#blogTitle').val(response.title);
-                    $('#blogdescription').val(response.body);
-                    $('#blogEditModal form').attr('action', 'blogs/' + response.id);
-                    $('#blogEditModal').modal('show');
-                }
-            });
-        }
-
-
-
         function blogDelete(id) {
             let url = "";
             url = url.replace(':id', id);
@@ -140,25 +108,5 @@
                 }
             })
         }
-
-        function blogView(id) {
-            var url = "{{ route('admin.blogs.show', ':id') }}";
-            url = url.replace(':id', id);
-
-            $.ajax({
-                type: "GET",
-                url: url,
-                data: {
-                    _token: "{{ csrf_token() }}",
-                },
-
-            });
-        }
-
-        $('#summernote').summernote({
-            placeholder: 'Description',
-            tabsize: 2,
-            height: 250
-        });
     </script>
 @endpush

@@ -13,9 +13,8 @@
                     aria-describedby="datatable_info" style="width: 1048px;">
                     <thead>
                         <tr class="text-primary" role="row">
-                            <th width="20%"> Thumbnail</th>
+                            <th width="10%"> Thumbnail</th>
                             <th width="20%"> Title</th>
-                            <th width="10%"> Status</th>
                             <th class="text-center" width="10%"> Created At</th>
                             <th width="15%" class="text-center text-dark">Action</th>
                         </tr>
@@ -23,9 +22,10 @@
                     <tbody>
                         @foreach ($pages as $page)
                             <tr>
-                                <td>{{ $page->thumbnail }}</td>
+                                <td>
+                                    <img width="50px" src="{{ asset($page->thumbnail) }}" alt="">
+                                </td>
                                 <td>{{ $page->title }}</td>
-                                <td>{{ $page->status }}</td>
                                 <td class="text-center">
                                     {{ $page->created_at->format('d-M-Y') }}
                                 </td>
@@ -38,10 +38,9 @@
                                             <i class="mdi mdi-chevron-down"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <button onclick="pageEdit({{ $page->id }})" class="dropdown-item"
-                                                href="">
+                                            <a class="dropdown-item" href="{{ route('admin.pages.edit', $page->id) }}">
                                                 <i class="bx bx-edit align-middle me-2"></i> Edit
-                                            </button>
+                                            </a>
 
                                             <button onclick="pageDelete({{ $page->id }})" class="dropdown-item"
                                                 href="">
@@ -58,7 +57,6 @@
         </div>
     </div>
 
-    {{-- @include('admin.components.page.editModal') --}}
 @endsection
 @push('scripts')
     <script>

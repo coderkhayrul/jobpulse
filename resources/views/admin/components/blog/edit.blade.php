@@ -5,13 +5,14 @@
     <div class="col-md-12 col-sm-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3>Create A blog</h3>
+                <h3>Edit blog</h3>
                 <a href="{{ route('admin.blogs.index') }}" class="btn btn-primary btn-sm">
                     <i class="fas fa-long-arrow-alt-left m-2"></i>Back</a>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.blogs.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.blogs.update', $blog->id) }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PATCH')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -22,28 +23,30 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 text-center">
+                            <div class="mb-3">
+                                <img width="350px" src="{{ asset($blog->img) }}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input name="title" type="text" class="form-control" id="title"
-                                    placeholder="Enter Type Title">
+                                    placeholder="Enter Type Title" value="{{ $blog->title }}">
                                 @error('title')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
                     </div>
-
-
                     <div class="mb-3">
                         <label for="body" class="form-label">description</label>
-                        <textarea name="body" class="form-control" id="summernote" placeholder="Enter description"></textarea>
+                        <textarea name="body" class="form-control" id="summernote" placeholder="Enter description">{{ $blog->body }}</textarea>
                         @error('body')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-
-                    <button type="submit" class="btn btn-primary w-md">Submit</button>
+                    <button type="submit" class="btn btn-primary w-md"> <i class="bx bx-sync"></i> Update</button>
                 </form>
             </div>
         </div>

@@ -98,5 +98,11 @@
                 <li><a href="#" key="t-banner">Banner</a></li>
             </ul>
         </li>
+        <li>
+            <a target="_blank" href="{{ route('web.home') }}" class="waves-effect text-danger" aria-expanded="false">
+                <i class="bx bx-planet"></i>
+                <span key="t-educations">Website</span>
+            </a>
+        </li>
     </ul>
 </div>

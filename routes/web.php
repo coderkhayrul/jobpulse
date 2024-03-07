@@ -42,6 +42,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('jobs', PageController::class);
 
     Route::get('general-setting', [AdminController::class, 'generalSetting'])->name('general-setting');
+    Route::patch('general-setting', [AdminController::class, 'generalSettingUpdate'])->name('general-setting.update');
 });
 
 

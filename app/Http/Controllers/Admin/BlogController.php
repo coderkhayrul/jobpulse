@@ -34,11 +34,10 @@ class BlogController extends Controller
      */
     public function store(BlogStoreRequest $request)
     {
-   
 
         if ($request->hasFile('img')) {
             $img = $request->file('img');
-            $imgName = 'BlogPhoto- '.md5(uniqid()).'.'.$img->getClientOriginalExtension();
+            $imgName = 'BlogPhoto- ' . md5(uniqid()) . '.' . $img->getClientOriginalExtension();
             $img_url = "backend/assets/uploads/{$imgName}";
             $img->move(public_path('backend/assets/uploads'), $img_url);
         }
@@ -95,8 +94,7 @@ class BlogController extends Controller
                 'img' => $request->img_url,
                 'body' => $request->body,
             ]);
-           
-        }else{
+        } else {
             $blog->update([
                 'title' => $request->title,
                 'slug' => Str::slug($request->title),
@@ -108,7 +106,7 @@ class BlogController extends Controller
             'alert-type' => 'success',
         ];
 
-         return redirect()->route('admin.blogs.index')->with($notification);
+        return redirect()->route('admin.blogs.index')->with($notification);
     }
 
     /**
@@ -116,7 +114,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        
+
         File::delete($blog);
         $blog->delete();
 
@@ -124,6 +122,5 @@ class BlogController extends Controller
             'status' => true,
             'message' => 'Blog Deleted Successfully',
         ]);
-
     }
 }

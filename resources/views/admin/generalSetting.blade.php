@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-2 d-flex justify-content-center">
                             <div class="mb-3">
-                                <img src="{{ asset('backend/assets/images/clients/2.png') }}" alt="">
+                                <img width="100px" src="{{ asset($setting->site_logo) }}" alt="">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-2 d-flex justify-content-center">
                             <div class="mb-3">
-                                <img src="{{ asset('backend/assets/images/clients/2.png') }}" alt="">
+                                <img width="75px" src="{{ asset($setting->site_favicon) }}" alt="">
                             </div>
                         </div>
                         <div class="col-md-6">

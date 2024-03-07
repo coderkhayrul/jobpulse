@@ -43,11 +43,13 @@ function makeDirectory($location): void
     }
 }
 
-// function saveImage($image, $location): string
-// {
-//     makeDirectory($location);
-//     $image_name = random_int(10000000, 99999999) . '.' . $image->getClientOriginalExtension();
-// }
+function saveImage($image, $location): string
+{
+    makeDirectory($location);
+    $image_name = random_int(10000000, 99999999) . '.' . $image->getClientOriginalExtension();
+    $image->move(public_path($location), $image_name);
+    return $location . $image_name;
+}
 
 function deleteImage($image): void
 {
@@ -55,6 +57,7 @@ function deleteImage($image): void
         File::delete(public_path() . $image);
     }
 }
+
 
 function roleName($role_id)
 {

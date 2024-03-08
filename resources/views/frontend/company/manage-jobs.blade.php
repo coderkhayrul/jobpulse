@@ -37,8 +37,9 @@
                                             </td>
                                             <td>
                                                 <ul class="list-unstyled mb-0 d-flex">
-                                                    <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                            title="view"><i class="far fa-eye"></i></a></li>
+                                                    <li><a href="{{ route('web.job.single', $job->slug) }}"
+                                                            class="text-primary" data-bs-toggle="tooltip" title="view"><i
+                                                                class="far fa-eye"></i></a></li>
                                                     <li><a href="#" class="text-info" data-bs-toggle="tooltip"
                                                             title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
                                                     <li><a href="#" class="text-danger" data-bs-toggle="tooltip"

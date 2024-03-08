@@ -23,7 +23,7 @@ class WebsiteController extends Controller
     public function jobs()
     {
         $jobs = Job::get();
-        $categories = Category::latest()->paginate(4);
+        $categories = Category::latest()->limit(4);
         return view('frontend.jobs', compact('jobs', 'categories'));
     }
     public function singleJob($slug)

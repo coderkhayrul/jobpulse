@@ -52,7 +52,8 @@
                                                     <i class="mdi mdi-chevron-down"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a href="{{ route('admin.user.edit', $user) }}" class="dropdown-item">
+                                                    <a href="{{ route('admin.user.edit', $user->id) }}"
+                                                        class="dropdown-item">
                                                         <i class="bx bx-edit align-middle me-2"></i> Edit
                                                     </a>
                                                     <button onclick="" class="dropdown-item" href="#">

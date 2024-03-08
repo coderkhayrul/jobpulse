@@ -31,16 +31,12 @@ class CompanyController extends Controller
 
     public function myProfileStore(Request $request)
     {
-        // $this->validate($request, [
-        //     'companyName' => 'required',
-        //     'dateOfFounded' => 'required',
-        //     'firstName' => 'required',
-        //     'lastName' => 'required',
-        //     'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
-        //     'country' => 'required',
-        //     'salary' => 'required',
-        //     'address' => 'required',
-        // ]);
+        if ($request->hasFile('profileImage')) {
+            deleteImage(Auth::user()->profile->profileImage);
+            $image = saveImage($request->file('profileImage'), 'uploads/profile/');
+        } else {
+            $image = Auth::user()->profile->profileImage;
+        }
 
         if (Auth::user()->profile) {
             Auth::user()->update([
@@ -54,7 +50,9 @@ class CompanyController extends Controller
                 'title' => $request->title,
                 'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
                 'gender' => $request->gender,
+                'profileImage' => $image,
                 'country' => $request->country,
+                'website' => $request->website,
                 'salary' => $request->salary,
                 'address' => $request->address,
                 'socialFacebook' => $request->socialFacebook,
@@ -62,7 +60,6 @@ class CompanyController extends Controller
                 'socialLinkedin' => $request->socialLinkedin,
                 'details' => $request->details,
             ]);
-
         } else {
             Auth::user()->update([
                 'name' => $request->firstName . ' ' . $request->lastName,
@@ -76,6 +73,8 @@ class CompanyController extends Controller
                 'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
                 'gender' => $request->gender,
                 'country' => $request->country,
+                'profileImage' => $image,
+                'website' => $request->website,
                 'salary' => $request->salary,
                 'address' => $request->address,
                 'socialFacebook' => $request->socialFacebook,
@@ -148,9 +147,9 @@ class CompanyController extends Controller
         ]);
         notyf()->addSuccess('Job create has been successfully.');
         return redirect()->route('company.manage-jobs');
-      
     }
-    public function jobPostDelete(Job $job){
+    public function jobPostDelete(Job $job)
+    {
         $job->delete();
 
         return response()->json([

@@ -120,9 +120,12 @@ function currencyList()
         'TRY',
     ];
 }
- function setting(){
+function setting()
+{
     return GeneralSetting::first();
- }
- function pages(){
+}
+
+function getPage()
+{
     return Page::all();
- }
+}

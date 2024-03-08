@@ -118,23 +118,16 @@
         <div class="footer-bottom bg-dark mt-5">
             <div class="container">
                 <div class="row">
-                    {{-- @foreach ($pages as $page) --}}
                     <div class="col-md-6 ">
                         <div class="d-flex justify-content-md-start justify-content-center">
                             <ul class="list-unstyled d-flex mb-0">
-                                @foreach (pages() as $page)
-                                    <li><a href="">Privacy
-                                            Policy</a>
-
+                                @foreach (getPage() as $page)
+                                    <li><a href="{{ route('web.page.single', $page->slug) }}">{{ $page->title }}</a>
                                     </li>
                                 @endforeach
-                                {{-- <li><a href="about.html">About</a></li>
-                                <li><a href="#">Team</a></li>
-                                <li><a href="contact-us.html">Contact</a></li> --}}
                             </ul>
                         </div>
                     </div>
-                    {{-- @endforeach --}}
                     <div class="col-md-6 text-center text-md-end mt-4 mt-md-0">
                         <p class="mb-0"> &copy;Copyright <span id="copyright">
                                 <script>

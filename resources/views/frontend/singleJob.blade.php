@@ -132,78 +132,11 @@
                         <h5 class="mb-3 mb-md-4">Job Description</h5>
                         <p>{!! $job->description !!}</p>
                     </div>
-                    <hr>
-                    {{-- <div class="my-4 my-lg-5">
-                        <h5 class="mb-3 mb-md-4">Required Knowledge, Skills, and Abilities</h5>
-                        <ul class="list-unstyled list-style">
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Commitment – understanding the
-                                price and having the willingness to pay that price</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Belief – believing in yourself
-                                and those around you</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Taking action – practice Ready,
-                                Fire, Aim…</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>You will drift aimlessly until
-                                you arrive back at the original dock</li>
-                            <li class="mb-0"><i class="far fa-check-circle font-md text-primary me-2"></i>You will run
-                                aground and become hopelessly stuck in the mud</li>
-                        </ul>
-                    </div> --}}
-                    <hr>
-                    {{-- <div class="mt-4 mt-lg-5">
-                        <h5 class="mb-3 mb-md-4">Education + Experience</h5>
-                        <ul class="list-unstyled list-style mb-4 mb-lg-0">
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>You will sail along until you
-                                collide with an immovable object, after which you will sink to the bottom</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Clarity – developing the
-                                Vision</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Focus – having a plan</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Give yourself the power of
-                                responsibility. Remind yourself the only thing stopping you is yourself.</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Do it today. Remind yourself
-                                of someone you know who died suddenly and the fact that there is no guarantee that tomorrow
-                                will come.</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Now go push your own limits
-                                and succeed!</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Let success motivate you. Find
-                                a picture of what epitomizes success to you and then pull it out when you are in need of
-                                motivation.</li>
-                            <li><i class="far fa-check-circle font-md text-primary me-2"></i>Belief – believing in yourself
-                                and those around you</li>
-                            <li class="mb-0"><i class="far fa-check-circle font-md text-primary me-2"></i>So, make the
-                                decision to move forward. Commit your decision to paper, just to bring it into focus. Then,
-                                go for it!</li>
-                        </ul>
-                    </div> --}}
                 </div>
-                <!--=================================
-                                                                                                                                              sidebar -->
                 <div class="col-lg-4">
                     <div class="sidebar mb-0">
                         <div class="widget d-grid">
                             <a class="btn btn-primary" href="#"><i class="far fa-paper-plane"></i>Apply for job</a>
-                        </div>
-                        <div class="widget">
-                            <div class="company-detail-meta">
-                                <ul class="list-unstyled">
-                                    <li class="linkedin"><a href="#"><i class="fab fa-linkedin-in"></i><span
-                                                class="ps-2">Apply with Linkedin</span></a></li>
-                                    <li>
-                                        <div class="share-box share-dark-bg">
-                                            <a href="#"> <i class="fas fa-share-alt"></i><span
-                                                    class="ps-2">Share</span></a>
-                                            <ul class="list-unstyled share-box-social">
-                                                <li> <a href="#"><i class="fab fa-facebook-f"></i></a> </li>
-                                                <li> <a href="#"><i class="fab fa-twitter"></i></a> </li>
-                                                <li> <a href="#"><i class="fab fa-linkedin"></i></a> </li>
-                                                <li> <a href="#"><i class="fab fa-instagram"></i></a> </li>
-                                                <li> <a href="#"><i class="fab fa-pinterest"></i></a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="#"><i class="fas fa-print"></i><span
-                                                class="ps-2">Print</span></a></li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="widget">
                             <div class="company-address widget-box">
@@ -214,12 +147,12 @@
                                 </div>
                                 <ul class="list-unstyled mt-3">
                                     <li><a href="#"><i class="fas fa-link fa-fw"></i><span
-                                                class="ps-2">www.infojob.com</span></a></li>
-                                    <li><a href="tel:+905389635487"><i
+                                                class="ps-2">{{ $job?->user?->profile?->website }}</span></a></li>
+                                    <li><a href="tel:{{ $job?->user?->mobile }}"><i
                                                 class="fas fa-phone fa-flip-horizontal fa-fw"></i><span
-                                                class="ps-2">+(456) 478-2589</span></a></li>
+                                                class="ps-2">{{ $job?->user?->mobile }}</span></a></li>
                                     <li><a href="mailto:ali.potenza@job.com"><i class="fas fa-envelope fa-fw"></i><span
-                                                class="ps-2">support@jobber.demo</span></a></li>
+                                                class="ps-2">{{ $job?->user?->email }}</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -230,15 +163,16 @@
                                         <div class="widget-box">
                                             <div class="d-flex">
                                                 <i class="flaticon-clock fa-2x fa-fw text-primary"></i>
-                                                <span class="ps-3">35 Days</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="widget-box">
-                                            <div class="d-flex">
-                                                <i class="flaticon-loupe fa-2x fa-fw text-primary"></i>
-                                                <span class="ps-3">35697 Displayed</span>
+                                                <span class="ps-3">
+                                                    @php
+                                                        $date = Carbon\Carbon::now();
+                                                        $expireDate = Carbon\Carbon::createFromFormat(
+                                                            'm-d-Y',
+                                                            $job->expireDate,
+                                                        )->format('Y-m-d');
+                                                        $diff = $date->diffInDays($expireDate);
+                                                    @endphp
+                                                    {{ $diff }} Days</span>
                                             </div>
                                         </div>
                                     </li>
@@ -365,8 +299,6 @@
                         </div>
                     </div>
                 </div>
-                <!--=================================
-                                                                                                                                              sidebar -->
             </div>
         </div>
     </section>

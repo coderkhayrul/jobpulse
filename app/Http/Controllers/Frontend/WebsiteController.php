@@ -18,7 +18,7 @@ class WebsiteController extends Controller
         $categories = Category::all();
         $positions = Position::all();
         $pages = Page::all();
-        return view('frontend.home', compact('jobs', 'categories', 'positions','pages'));
+        return view('frontend.home', compact('jobs', 'categories', 'positions', 'pages'));
     }
 
     public function jobs()
@@ -43,7 +43,8 @@ class WebsiteController extends Controller
         return view('frontend.singleBlog', compact('blog'));
     }
 
-    public function allCategory(){
+    public function allCategory()
+    {
         $categories = Category::all();
         return view('frontend.Categories', compact('categories'));
     }
@@ -51,13 +52,7 @@ class WebsiteController extends Controller
     {
         return view('frontend.about');
     }
-    
-   
-    public function termsCondition($slug)
-    {
-        $page = Page::where('slug', $slug)->first();
-        return view('frontend.termsCondition', compact('page'));
-    }
+
     public function contact()
     {
         return view('frontend.contact');
@@ -67,5 +62,11 @@ class WebsiteController extends Controller
     {
         auth()->logout();
         return redirect()->route('web.home');
+    }
+
+    public function singlePage($slug)
+    {
+        $page = Page::where('slug', $slug)->first();
+        return view('frontend.singlePage', compact('page'));
     }
 }

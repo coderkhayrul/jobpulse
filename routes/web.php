@@ -23,9 +23,9 @@ Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('/blogs', 'blogs')->name('blogs');
     Route::get('/blogs/{slug}', 'singleBlog')->name('blog.single');
     Route::get('/all-category', 'allCategory')->name('all-category');
-    Route::get('/terms-and-conditions/{slug}', 'termsCondition')->name('termsCondition.page');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/sign-out', 'signOut')->name('sign-out');
+    Route::get('page/{slug}', 'singlePage')->name('page.single');
     // Route::get('/all-category', 'allCategory')->name('all-category.show');
     // Route::get('/category/{slug}', 'signOut')->name('sign-out');
 });
@@ -44,8 +44,8 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('award', AwardController::class);
     Route::resource('pages', PageController::class);
     Route::resource('jobs', PageController::class);
-    
-    
+
+
 
     Route::get('general-setting', [AdminController::class, 'generalSetting'])->name('general-setting');
     Route::patch('general-setting', [AdminController::class, 'generalSettingUpdate'])->name('general-setting.update');

@@ -22,8 +22,12 @@ Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('/about', 'about')->name('about');
     Route::get('/blogs', 'blogs')->name('blogs');
     Route::get('/blogs/{slug}', 'singleBlog')->name('blog.single');
+    Route::get('/all-category', 'allCategory')->name('all-category');
+    Route::get('/terms-and-conditions/{slug}', 'termsCondition')->name('termsCondition.page');
     Route::get('/contact', 'contact')->name('contact');
-    Route::get('sign-out', 'signOut')->name('sign-out');
+    Route::get('/sign-out', 'signOut')->name('sign-out');
+    // Route::get('/all-category', 'allCategory')->name('all-category.show');
+    // Route::get('/category/{slug}', 'signOut')->name('sign-out');
 });
 
 // ADMIN ROUTE LIST =======================>

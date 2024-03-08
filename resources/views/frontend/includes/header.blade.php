@@ -10,7 +10,7 @@
     <title>Job Pulse</title>
 
     <!-- Favicon -->
-    <link href="{{ asset('frontend') }}/images/favicon.ico" rel="shortcut icon" />
+    <link href="{{ asset(setting()->site_favicon) }}" />
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">

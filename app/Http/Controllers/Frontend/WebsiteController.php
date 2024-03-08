@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Job;
 use App\Models\Blog;
+use App\Models\Page;
 use App\Models\Category;
 use App\Models\Position;
 use Illuminate\Http\Request;
@@ -16,14 +17,14 @@ class WebsiteController extends Controller
         $jobs = Job::all();
         $categories = Category::all();
         $positions = Position::all();
-      
-        return view('frontend.home', compact('jobs', 'categories', 'positions'));
+        $pages = Page::all();
+        return view('frontend.home', compact('jobs', 'categories', 'positions','pages'));
     }
 
     public function jobs()
     {
         $jobs = Job::get();
-        $categories = Category::latest()->limit(4);
+        $categories = Category::limit(4)->get();
         return view('frontend.jobs', compact('jobs', 'categories'));
     }
     public function singleJob($slug)
@@ -42,12 +43,21 @@ class WebsiteController extends Controller
         return view('frontend.singleBlog', compact('blog'));
     }
 
-
+    public function allCategory(){
+        $categories = Category::all();
+        return view('frontend.Categories', compact('categories'));
+    }
     public function about()
     {
         return view('frontend.about');
     }
-
+    
+   
+    public function termsCondition($slug)
+    {
+        $page = Page::where('slug', $slug)->first();
+        return view('frontend.termsCondition', compact('page'));
+    }
     public function contact()
     {
         return view('frontend.contact');

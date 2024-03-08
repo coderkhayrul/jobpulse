@@ -18,7 +18,8 @@
 
     <!-- Millions of jobs -->
     <section class="space-ptb"
-        style="background-image: url({{ asset('frontend') }}/images/google-map.png); background-position: center center; background-repeat: no-repeat;">
+        style="background-image: url(); background-position: center center; background-repeat: no-repeat;">
+        {{-- {{ asset($page->slug->thumbnail) }} --}}
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-md-6">

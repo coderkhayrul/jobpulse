@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Page;
+use App\Models\GeneralSetting;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -118,3 +120,9 @@ function currencyList()
         'TRY',
     ];
 }
+ function setting(){
+    return GeneralSetting::first();
+ }
+ function pages(){
+    return Page::all();
+ }

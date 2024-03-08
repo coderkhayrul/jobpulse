@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Models\Job;
 use App\Models\JobType;
 use App\Models\Category;
 use App\Models\Position;
+use App\Models\UserProfile;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
-use App\Models\UserProfile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -30,19 +31,16 @@ class CompanyController extends Controller
 
     public function myProfileStore(Request $request)
     {
-
-        $this->validate($request, [
-            'companyName' => 'required',
-            'dateOfFounded' => 'required',
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
-            'gender' => 'required',
-            'country' => 'required',
-            'dateOfBirth' => 'required',
-            'salary' => 'required',
-            'address' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'companyName' => 'required',
+        //     'dateOfFounded' => 'required',
+        //     'firstName' => 'required',
+        //     'lastName' => 'required',
+        //     'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
+        //     'country' => 'required',
+        //     'salary' => 'required',
+        //     'address' => 'required',
+        // ]);
 
         if (Auth::user()->profile) {
             Auth::user()->update([
@@ -64,6 +62,7 @@ class CompanyController extends Controller
                 'socialLinkedin' => $request->socialLinkedin,
                 'details' => $request->details,
             ]);
+
         } else {
             Auth::user()->update([
                 'name' => $request->firstName . ' ' . $request->lastName,
@@ -147,10 +146,18 @@ class CompanyController extends Controller
             'country' => $request->country,
             'address' => $request->address,
         ]);
-
-        return redirect()->back();
+        notyf()->addSuccess('Job create has been successfully.');
+        return redirect()->route('company.manage-jobs');
+      
     }
+    public function jobPostDelete(Job $job){
+        $job->delete();
 
+        return response()->json([
+            'status' => true,
+            'message' => 'Job Deleted Successfully',
+        ]);
+    }
     public function changePasswordPage()
     {
         return view('frontend.company.change-password');

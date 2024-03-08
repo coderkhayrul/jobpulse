@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UserProfileStoreRequest;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserProfileStoreRequest;
 
 class UserProfileController extends Controller
 {
@@ -29,10 +31,67 @@ class UserProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserProfileStoreRequest $request)
+    public function store(Request $request, $id)
     {
-        $userP=UserProfile::create($request->validated());
-        dd($userP);
+        
+        //     'firstName' => 'required',
+        //     'lastName' => 'required',
+        //     'companyName' => 'required',
+        //     'dateOfFounded' => 'required',
+        //     'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
+        //     'gender' => 'required',
+        //     'country' => 'required',
+        //     'salary' => 'required',
+        //     'address' => 'required',
+        // ]);
+      $user = Auth::user();
+        if ($user->profile && $user->profile->id == $id) {
+            Auth::user()->update([
+                'name' => $request->firstName . ' ' . $request->lastName,
+                'mobile' => $request->mobile,
+            ]);
+           $update = $user->profile->update([
+                'companyName' => $request->companyName,
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'title' => $request->title,
+                'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'socialFacebook' => $request->socialFacebook,
+                'socialTwitter' => $request->socialTwitter,
+                'socialLinkedin' => $request->socialLinkedin,
+                'details' => $request->details,
+            ]);
+            dd($update);
+        } else {
+            Auth::user()->update([
+                'name' => $request->firstName . ' ' . $request->lastName,
+                'mobile' => $request->mobile,
+            ]);
+            Auth::user()->profile()->create([
+                'companyName' => $request->companyName,
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'title' => $request->title,
+                'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'socialFacebook' => $request->socialFacebook,
+                'socialTwitter' => $request->socialTwitter,
+                'socialLinkedin' => $request->socialLinkedin,
+                'details' => $request->details,
+            ]);
+        }
+        notyf()->addSuccess('Profile has been updated successfully.');
+        return redirect()->back();
+        
+        // $userP=UserProfile::create($request->validated());
+        // dd($userP);
         // $notification = [
         //     'message' => 'User Profile Created Successfully',
         //     'alert-type' => 'success',
@@ -46,7 +105,7 @@ class UserProfileController extends Controller
      */
     public function show(UserProfile $userProfile)
     {
-        //
+        
     }
 
     /**
@@ -54,7 +113,18 @@ class UserProfileController extends Controller
      */
     public function edit(UserProfile $userProfile)
     {
-        //
+        // UserProfile::validate($userProfile, [
+        //     'firstName' => 'required',
+        //     'lastName' => 'required',
+        //     'companyName' => 'required',
+        //     'dateOfFounded' => 'required',
+        //     'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
+        //     'gender' => 'required',
+        //     'country' => 'required',
+        //     'salary' => 'required',
+        //     'address' => 'required',
+        // ]);
+
     }
 
     /**
@@ -62,7 +132,50 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, UserProfile $userProfile)
     {
-        //
+        
+        // if (Auth::user()->profile) {
+        //     Auth::user()->update([
+        //         'name' => $userProfile->firstName . ' ' . $userProfile->lastName,
+        //         'mobile' => $userProfile->mobile,
+        //     ]);
+        //     Auth::user()->profile->update([
+        //         'companyName' => $request->companyName,
+        //         'firstName' => $request->firstName,
+        //         'lastName' => $request->lastName,
+        //         'title' => $request->title,
+        //         'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
+        //         'gender' => $request->gender,
+        //         'country' => $request->country,
+        //         'salary' => $request->salary,
+        //         'address' => $request->address,
+        //         'socialFacebook' => $request->socialFacebook,
+        //         'socialTwitter' => $request->socialTwitter,
+        //         'socialLinkedin' => $request->socialLinkedin,
+        //         'details' => $request->details,
+        //     ]);
+        // } else {
+        //     Auth::user()->update([
+        //         'name' => $request->firstName . ' ' . $request->lastName,
+        //         'mobile' => $request->mobile,
+        //     ]);
+        //     Auth::user()->profile()->create([
+        //         'companyName' => $request->companyName,
+        //         'firstName' => $request->firstName,
+        //         'lastName' => $request->lastName,
+        //         'title' => $request->title,
+        //         'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
+        //         'gender' => $request->gender,
+        //         'country' => $request->country,
+        //         'salary' => $request->salary,
+        //         'address' => $request->address,
+        //         'socialFacebook' => $request->socialFacebook,
+        //         'socialTwitter' => $request->socialTwitter,
+        //         'socialLinkedin' => $request->socialLinkedin,
+        //         'details' => $request->details,
+        //     ]);
+        // }
+        // notyf()->addSuccess('Profile has been updated successfully.');
+        // return redirect()->back();
     }
 
     /**

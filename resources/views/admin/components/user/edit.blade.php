@@ -10,9 +10,10 @@
                 </div>
                 <div class="card-body">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.user.update', $user->id) }}">
+                        <form method="POST" action="{{ route('admin.user.update', $user->id) }}"
+                            enctype="multipart/form-data">
                             @csrf
-                            @method('PATCH')
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -96,10 +97,10 @@
 
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="dateOfBirth" class="col-md-2 col-form-label">Date Of Birth</label>
-                                        <input name="dateOfBirth" class="form-control" type="date"
-                                            value="{{ $user?->profile?->dateOfBirth }}" id="dateOfBirth">
-                                        @error('dateOfBirth')
+                                        <label for="dateOfFounded" class="col-md-2 col-form-label">Date Of Found</label>
+                                        <input name="dateOfFounded" class="form-control" type="date"
+                                            value="{{ $user?->profile?->dateOfFounded }}" id="dateOfFounded">
+                                        @error('dateOfFounded')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -220,7 +221,8 @@
                             <div class="row">
                                 <div class="mb-3">
                                     <label for="details" class="col-md-2 col-form-label">Details</label>
-                                    <textarea name="details" class="form-control" type="text" rows="5">{{ $user->profile->details }}</textarea>
+                                    <textarea name="details" class="form-control" type="text" rows="5"
+                                        value="{{ $user?->profile?->details }}"></textarea>
                                 </div>
                             </div>
                             <div>

@@ -204,12 +204,4 @@
     <script src="{{ asset('frontend') }}/js/datetimepicker/moment.min.js"></script>
     <script src="{{ asset('frontend') }}/js/datetimepicker/datetimepicker.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
-    <script>
-        $('#summernote').summernote({
-            placeholder: 'Description',
-            tabsize: 2,
-            height: 250
-        });
-    </script> --}}
-@endpush
+    @endpush

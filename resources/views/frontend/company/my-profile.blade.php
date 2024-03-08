@@ -4,7 +4,7 @@
     <section>
         <div class="container">
             <div class="row">
-                <form method="POST" action="{{ route('company.my-profile.store') }}">
+                <form method="POST" action="{{ route('company.my-profile.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-12">
                         <div class="user-dashboard-info-box">

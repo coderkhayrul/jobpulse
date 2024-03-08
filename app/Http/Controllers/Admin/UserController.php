@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
 
-use function Ramsey\Uuid\v1;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -36,14 +38,8 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
+    public function store(Request $reques){}
+   
     public function show(User $user)
     {
         //
@@ -54,15 +50,59 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.components.user.edit', compact('user'));
+        $profile = $user->profile;
+        return view('admin.components.user.edit', compact('user', 'profile'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        return $request->all();
+        $user = Auth::user();
+        if ($user->profile) {
+            Auth::user()->update([
+                'name' => $request->firstName . ' ' . $request->lastName,
+                'mobile' => $request->mobile,
+            ]);
+            $user->profile->update([
+                'companyName' => $request->companyName,
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'title' => $request->title,
+                'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'socialFacebook' => $request->socialFacebook,
+                'socialTwitter' => $request->socialTwitter,
+                'socialLinkedin' => $request->socialLinkedin,
+                'details' => $request->details,
+            ]);
+        } else {
+            Auth::user()->update([
+                'name' => $request->firstName . ' ' . $request->lastName,
+                'mobile' => $request->mobile,
+            ]);
+            Auth::user()->profile()->create([
+                'companyName' => $request->companyName,
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'title' => $request->title,
+                'dateOfFounded' => Carbon::parse($request->dateOfFounded)->format('m-d-Y'),
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'socialFacebook' => $request->socialFacebook,
+                'socialTwitter' => $request->socialTwitter,
+                'socialLinkedin' => $request->socialLinkedin,
+                'details' => $request->details,
+            ]);
+        }
+        notyf()->addSuccess('Profile has been updated successfully.');
+        return redirect()->back();
     }
 
     /**
@@ -70,6 +110,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+          
     }
 }

@@ -107,7 +107,9 @@
                                             <div class="job-list-details">
                                                 <div class="job-list-info">
                                                     <div class="job-list-title">
-                                                        <h6><a href="job-detail.html">{{ $job->title }}</a></h6>
+                                                        <h6><a
+                                                                href="{{ route('web.job.single', $job->slug) }}">{{ $job->title }}</a>
+                                                        </h6>
                                                     </div>
                                                     <div class="job-list-option">
                                                         <ul class="list-unstyled">

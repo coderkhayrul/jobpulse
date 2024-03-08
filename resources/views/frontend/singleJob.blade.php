@@ -133,8 +133,6 @@
                         <p>{!! $job->description !!}</p>
                     </div>
                 </div>
-                <!--=================================
-                                                                                                                                                                                                                                                                          sidebar -->
                 <div class="col-lg-4">
                     <div class="sidebar mb-0">
                         <div class="widget d-grid">
@@ -166,18 +164,15 @@
                                             <div class="d-flex">
                                                 <i class="flaticon-clock fa-2x fa-fw text-primary"></i>
                                                 <span class="ps-3">
-                                                    {{-- {{ $job->created_at->diffInDays(Carbon\Carbon::parse($job->expireDate)) }} --}}
-                                                    {{-- {{ date('d-m-Y') }} --}}
-                                                    {{ Carbon\Carbon::createFromFormat('m-d-Y', $job->expireDate)->format('Y-m-d') }}
-                                                    Days</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="widget-box">
-                                            <div class="d-flex">
-                                                <i class="flaticon-loupe fa-2x fa-fw text-primary"></i>
-                                                <span class="ps-3">35697 Displayed</span>
+                                                    @php
+                                                        $date = Carbon\Carbon::now();
+                                                        $expireDate = Carbon\Carbon::createFromFormat(
+                                                            'm-d-Y',
+                                                            $job->expireDate,
+                                                        )->format('Y-m-d');
+                                                        $diff = $date->diffInDays($expireDate);
+                                                    @endphp
+                                                    {{ $diff }} Days</span>
                                             </div>
                                         </div>
                                     </li>
@@ -304,8 +299,6 @@
                         </div>
                     </div>
                 </div>
-                <!--=================================
-                                                                                                                                                                                                                                                                          sidebar -->
             </div>
         </div>
     </section>

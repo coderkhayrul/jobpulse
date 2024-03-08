@@ -6,23 +6,20 @@
             <div class="row">
                 <form method="POST" action="{{ route('company.my-profile.store') }}" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="oldImage" value="{{ $user?->profile?->profileImage }}">
                     <div class="col-md-12">
                         <div class="user-dashboard-info-box">
                             <div class="section-title-02 mb-4">
                                 <h4>Basic Information</h4>
                             </div>
-                            <div class="cover-photo-contact">
-                                <div class="cover-photo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/bg/cover-bg.png"
-                                        alt="">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                                <div class="upload-file">
-                                    <label for="formFile" class="form-label">Upload Cover Photo</label>
-                                    <input name="coverImage" class="form-control" type="file" id="formFile">
-                                </div>
-                            </div>
                             <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label class="form-label">Profile Image</label>
+                                    <input name="profileImage" type="file" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6 mb-3 text-center">
+                                    <img src="{{ asset($user?->profile?->profileImage) }}" alt="Profile Image">
+                                </div>
                                 <div class="form-group col-md-6 mb-3">
                                     <label class="form-label">Company Name</label>
                                     <input name="companyName" type="text" class="form-control"
@@ -124,7 +121,6 @@
     </section>
 @endsection
 @push('frontend_styles')
-    <!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature)-->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/datetimepicker/datetimepicker.min.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/select2/select2.css" />
 @endpush

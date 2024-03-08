@@ -1,6 +1,5 @@
 @extends('frontend.layouts.app')
 @section('frontend_content')
-    <!-- banner -->
     <section class="header-inner header-inner-big bg-holder text-white"
         style="background-image: url({{ asset('frontend') }}/images/bg/banner-01.jpg);">
         <div class="container">
@@ -34,7 +33,7 @@
             </div>
         </div>
     </section>
-    <!-- banner -->
+
     <section class="space-ptb">
         <div class="container">
             <div class="section-title center">
@@ -54,7 +53,10 @@
                                 <span class="mb-0">542 Open Position </span>
                             </a>
                         @endforeach
-
+                        <div class="col-12 justify-content-center d-flex mt-4">
+                            <a class="btn btn-primary btn-lg" href="{{ route('web.all-category') }}">View More
+                                Category</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -219,7 +221,10 @@
                                             </div>
                                             <div class="job-list-option">
                                                 <ul class="list-unstyled">
-                                                    <li> <span>via</span> <a {{-- href="employer-detail.html">{{ $job->user->profile->companyName }}</a> --}} </li>
+                                                    <li> <span>via</span><span class="text-primary">
+                                                            {{ $job?->user?->profile?->companyName }}</span>
+
+                                                    </li>
                                                     <li><i class="fas fa-map-marker-alt pe-1"></i>{{ $job->address }}</li>
                                                     <li><i class="fas fa-filter pe-1"></i>{{ $job->category->name }}</li>
                                                     <li><a class="freelance" href="#"><i

@@ -8,7 +8,7 @@
                 <span></span>
             </button>
             <a class="navbar-brand" href="{{ route('web.home') }}">
-                <img class="img-fluid" src="{{ asset('frontend') }}/images/logo.svg" alt="logo">
+                <img class="img-fluid" src="{{ asset(setting()->site_logo) }}" alt="logo">
             </a>
             {{-- <div class="navbar-collapse collapse justify-content-start">
                 <ul class="nav navbar-nav">

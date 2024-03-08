@@ -197,11 +197,23 @@
 @push('frontend_styles')
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/datetimepicker/datetimepicker.min.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/select2/select2.css" />
-    {{-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> --}}
+
+    <style>
+        .note-editable {
+            background: whitesmoke !important;
+        }
+
+        .note-dropdown-menu {
+            padding: 0px !important;
+        }
+
+        .note-modal-footer {
+            margin-bottom: 15px !important;
+        }
+    </style>
 @endpush
 @push('frontend_scripts')
     <script src="{{ asset('frontend') }}/js/select2/select2.full.js"></script>
     <script src="{{ asset('frontend') }}/js/datetimepicker/moment.min.js"></script>
     <script src="{{ asset('frontend') }}/js/datetimepicker/datetimepicker.min.js"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    @endpush
+@endpush

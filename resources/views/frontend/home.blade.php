@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 text-lg-end">
-                    <a class="btn btn-dark" href="#">Post Job</a>
+                    <a class="btn btn-dark" href="{{ route('company.job-post') }}">Post Job</a>
                 </div>
             </div>
         </div>
@@ -33,31 +33,35 @@
                     <div class="owl-carousel owl-nav-bottom-center" data-nav-arrow="false" data-nav-dots="true"
                         data-items="4" data-md-items="3" data-sm-items="2" data-xs-items="1" data-xx-items="1"
                         data-space="15" data-autoheight="true">
-
-                        <div class="item">
-                            <div class="employers-grid mb-4 mb-lg-0">
-                                <div class="employers-list-logo">
-                                    <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/07.svg" alt="">
-                                </div>
-                                <div class="employers-list-details">
-                                    <div class="employers-list-info">
-                                        <div class="employers-list-title">
-                                            <h5 class="mb-0"><a href="employer-detail.html">Trout Design Ltd</a>
-                                            </h5>
-                                        </div>
-                                        <div class="employers-list-option">
-                                            <ul class="list-unstyled">
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>Wellesley Rd, London</li>
-                                            </ul>
+                        @foreach ($jobs as $job)
+                            <div class="item">
+                                <div class="employers-grid mb-4 mb-lg-0">
+                                    <div class="employers-list-logo">
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/07.svg"
+                                            alt="">
+                                    </div>
+                                    <div class="employers-list-details">
+                                        <div class="employers-list-info">
+                                            <div class="employers-list-title">
+                                                <h5 class="mb-0"><span>via</span><span class="text-primary">
+                                                        {{ $job?->user?->profile?->companyName }}</span>
+                                                </h5>
+                                            </div>
+                                            <div class="employers-list-option">
+                                                <ul class="list-unstyled">
+                                                    <li><i
+                                                            class="fas fa-map-marker-alt pe-1"></i>{{ $job?->user?->profile?->address }}
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="employers-list-position">
-                                    <a class="btn btn-sm btn-dark" href="#">30 Open position</a>
+                                    <div class="employers-list-position">
+                                        <a class="btn btn-sm btn-dark">30 Open position</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
+                        @endforeach
 
                     </div>
                 </div>
@@ -113,9 +117,8 @@
                                                     </div>
                                                     <div class="job-list-option">
                                                         <ul class="list-unstyled">
-                                                            <li>
-                                                                <span>via</span>
-                                                                <a href="employer-detail.html">Wight Sound Hearing LLC</a>
+                                                            <li> <span>via</span><span class="text-primary">
+                                                                    {{ $job?->user?->profile?->companyName }}</span>
                                                             </li>
                                                             <li><i class="fas fa-map-marker-alt pe-1"></i>
                                                                 {{ $job->address }}
@@ -153,7 +156,7 @@
                                 @endforeach
                             </div>
                             <div class="col-12 justify-content-center d-flex mt-4">
-                                <a class="btn btn-white btn-lg" href="{{ route('web.jobs') }}"">View More Jobs</a>
+                                <a class="btn btn-primary btn-lg" href="{{ route('web.jobs') }}">View More Jobs</a>
                             </div>
                         </div>
 

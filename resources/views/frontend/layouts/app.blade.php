@@ -118,23 +118,30 @@
         <div class="footer-bottom bg-dark mt-5">
             <div class="container">
                 <div class="row">
+                    {{-- @foreach ($pages as $page) --}}
                     <div class="col-md-6 ">
                         <div class="d-flex justify-content-md-start justify-content-center">
                             <ul class="list-unstyled d-flex mb-0">
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="about.html">About</a></li>
+                                @foreach (pages() as $page)
+                                    <li><a href="">Privacy
+                                            Policy</a>
+
+                                    </li>
+                                @endforeach
+                                {{-- <li><a href="about.html">About</a></li>
                                 <li><a href="#">Team</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a href="contact-us.html">Contact</a></li> --}}
                             </ul>
                         </div>
                     </div>
+                    {{-- @endforeach --}}
                     <div class="col-md-6 text-center text-md-end mt-4 mt-md-0">
                         <p class="mb-0"> &copy;Copyright <span id="copyright">
                                 <script>
                                     document.getElementById('copyright').appendChild(document.createTextNode(new Date()
                                         .getFullYear()))
                                 </script>
-                            </span> <a href="#"> Jobber </a> All Rights Reserved </p>
+                            </span> <a href="#"> Job Pulse </a>{{ setting()->site_footer }} </p>
                     </div>
                 </div>
             </div>

@@ -40,9 +40,10 @@
                                                     <li><a href="{{ route('web.job.single', $job->slug) }}"
                                                             class="text-primary" data-bs-toggle="tooltip" title="view"><i
                                                                 class="far fa-eye"></i></a></li>
-                                                    <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                            title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                    <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
+                                                    <li><a href="{{ route('company.job-post.edit', $job) }}"
+                                                            class="text-info" data-bs-toggle="tooltip" title="Edit"><i
+                                                                class="fas fa-pencil-alt"></i></a></li>
+                                                    <li><a href="" class="text-danger" data-bs-toggle="tooltip"
                                                             title="Delete"><i class="far fa-trash-alt"></i></a></li>
                                                 </ul>
                                             </td>
@@ -63,3 +64,53 @@
         </div>
     </section>
 @endsection
+{{-- @push('scripts')
+    <script>
+        function blogDelete(id) {
+            let url = "";
+            url = url.replace(':id', id);
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to delete this blog!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2f4cdd',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.preventDefault();
+                    let url = "{{ route('web.job-post.delete', ':id') }}";
+                    url = url.replace(':id', id);
+                    $.ajax({
+                        url: url,
+                        type: 'DELETE',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(response) {
+                            if (response.status) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'blog has been deleted.',
+                                    'success'
+                                ).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                })
+                            } else {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'blog has not been deleted.',
+                                    'error'
+                                )
+                            }
+                        }
+                    });
+                }
+            })
+        }
+    </script>
+@endpush --}}

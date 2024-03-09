@@ -7,8 +7,10 @@ use App\Models\Blog;
 use App\Models\Page;
 use App\Models\Category;
 use App\Models\Position;
+use App\Models\Subscribe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 
 class WebsiteController extends Controller
 {
@@ -62,6 +64,24 @@ class WebsiteController extends Controller
     {
         auth()->logout();
         return redirect()->route('web.home');
+    }
+    public function subscribe(Request $request){
+        Subscribe::create([
+            'email' => $request->email,
+        ]);
+       notyf()->addSuccess('You have been subscribe successfully.');
+        return redirect()->back();
+    }
+    public function contactStore(Request $request){
+        Contact::create([
+            'firstName'=> $request->firstname,
+            'lastName'=> $request->lastName,
+            'email'=> $request->email,
+            'phone'=> $request->phone,
+            'subject'=> $request->subject,
+        ]);
+       notyf()->addSuccess('We contact you very soon.');
+        return redirect()->back();
     }
 
     public function singlePage($slug)

@@ -4,12 +4,12 @@
             <div class="col-12">
                 <div class="jobber-user-info">
                     <div class="profile-avatar">
-                        <img class="img-fluid " src="{{ asset(Auth::user()->profile->profileImage) }}" alt="">
+                        <img class="img-fluid " src="{{ asset(Auth::user()?->profile?->profileImage) }}" alt="">
                         <i class="fas fa-pencil-alt"></i>
                     </div>
                     <div class="profile-avatar-info ms-4">
                         <h3>
-                            {{ Auth::user()->profile->companyName }}
+                            {{ Auth::user()?->profile?->companyName }}
                         </h3>
                     </div>
                 </div>

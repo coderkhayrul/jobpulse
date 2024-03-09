@@ -79,17 +79,21 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-                    <h5 class="text-dark mb-4">Subscribe Us</h5>
-                    <div class="footer-subscribe">
-                        <p>Sign Up to our Newsletter to get the latest news and offers.</p>
-                        <form>
-                            <div class="form-group mb-3">
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    placeholder="Enter email">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-md">Get Notified</button>
-                        </form>
-                    </div>
+                    <form method="POST" action="{{ route('web.subscribe') }}">
+                        @csrf
+                        <h5 class="text-dark mb-4">Subscribe Us</h5>
+                        <div class="footer-subscribe">
+                            <p>Sign Up to our Newsletter to get the latest news and offers.</p>
+                            <form>
+                                <div class="form-group mb-3">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Enter email">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-md">Get Notified</button>
+                            </form>
+                        </div>
+                    </form>
+
                 </div>
                 <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
                     <h5 class="text-dark mb-4">Download App</h5>

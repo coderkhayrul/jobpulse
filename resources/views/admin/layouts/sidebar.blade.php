@@ -16,7 +16,7 @@
             </a>
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="#" key="t-job-list">Job List</a></li>
-                <li><a href="#" key="t-job-list">Jobs Categories</a></li>
+                <li><a href="{{ route('admin.subscribe.index') }}" key="t-job-list">Jobs subscribes</a></li>
         </li>
     </ul>
     </li>
@@ -27,12 +27,7 @@
         </a>
     </li>
 
-    {{-- <li class="">
-            <a href="{{ route('admin.categories.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bx-purchase-tag-alt"></i>
-                <span key="t-categories">Categories</span>
-            </a>
-        </li> --}}
+
 
     <li class="">
         <a href="{{ route('admin.blogs.index') }}" class="waves-effect" aria-expanded="false">
@@ -101,5 +96,12 @@
             <span key="t-educations">Website</span>
         </a>
     </li>
+    <li>
+        <a href="{{ route('admin.contact.index') }}" class="waves-effect" aria-expanded="false">
+            <i class="bx bx-phone-call"></i>
+            <span key="t-contact">Contact</span>
+        </a>
+    </li>
+
     </ul>
 </div>

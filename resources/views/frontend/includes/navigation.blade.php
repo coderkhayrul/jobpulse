@@ -40,9 +40,9 @@
                     <li class="nav-item dropdown {{ routeMatch('web.blogs') }}">
                         <a class="nav-link" href="{{ route('web.blogs') }}">Blog</a>
                     </li>
-                    <li class="nav-item dropdown {{ routeMatch('web.about') }}">
+                    {{-- <li class="nav-item dropdown {{ routeMatch('web.about') }}">
                         <a class="nav-link" href="{{ route('web.about') }}">About</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown {{ routeMatch('web.contact') }}">
                         <a class="nav-link" href="{{ route('web.contact') }}">Contact</a>
                     </li>

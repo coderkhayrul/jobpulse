@@ -28,8 +28,8 @@
                         </div>
                         <div class="feature-info-content">
                             <h5 class="text-black">Address</h5>
-                            <span class="d-block">214 West Arnold St. </span>
-                            <span>New York, NY 10002</span>
+                            <span class="d-block">{{ setting()->site_address }}</span>
+                            <span></span>
                         </div>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
                         </div>
                         <div class="feature-info-content">
                             <h5 class="text-black">Phone Number</h5>
-                            <span class="d-block">(123) 345-6789</span>
-                            <span>(456) 478-2589</span>
+                            <span class="d-block">{{ setting()->site_phone }}</span>
+
                         </div>
                     </div>
                 </div>
@@ -52,8 +52,8 @@
                         </div>
                         <div class="feature-info-content">
                             <h5 class="text-black">Email</h5>
-                            <span class="d-block">support@jobber.demo</span>
-                            <span>gethelp@jobber.demo</span>
+                            <span class="d-block">{{ setting()->site_email }}</span>
+
                         </div>
                     </div>
                 </div>
@@ -64,8 +64,8 @@
                         </div>
                         <div class="feature-info-content">
                             <h5 class="text-black">Fax</h5>
-                            <span class="d-block">(123) 345-6789</span>
-                            <span>(456) 478-2589</span>
+                            <span class="d-block">{{ setting()->site_fax }}</span>
+
                         </div>
                     </div>
                 </div>
@@ -85,26 +85,33 @@
                     </div>
                 </div>
             </div>
-            <form>
+            <form method="POST" action="{{ route('web.contactStore') }}">
+                @csrf
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
-                        <input type="text" class="form-control" id="Username" placeholder="Enter Your Name">
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter Your Fast Name"
+                            name="firstName">
                     </div>
                     <div class="form-group col-md-6 mb-3">
-                        <input type="text" class="form-control" id="email" placeholder="Subject">
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter Your Last Name"
+                            name="lastName">
                     </div>
                     <div class="form-group col-md-6 mb-3">
-                        <input type="text" class="form-control" id="Password" placeholder="Enter Your Email Address">
+                        <input type="email" class="form-control" id="email" placeholder="Enter Your Email Address"
+                            name="email">
                     </div>
+
                     <div class="form-group col-md-6 mb-3">
-                        <input type="text" class="form-control" id="phone" placeholder="Enter Your Phone Number">
+                        <input type="text" class="form-control" id="phone" placeholder="Enter Your Phone Number"
+                            name="phone">
                     </div>
                     <div class="form-group col-12 mb-0">
-                        <textarea rows="5" class="form-control" id="sector" placeholder="Subject"></textarea>
+                        <textarea rows="5" class="form-control" id="subject" placeholder="Subject" name="subject"></textarea>
                     </div>
-                    <div class="col-12 text-center mt-4">
-                        <a class="btn btn-primary" href="#">Send your message</a>
+                    <div class="form-group col-12 mt-2">
+                        <button type="submit" class="btn btn-primary btn-md">Send your message</button>
                     </div>
+
                 </div>
             </form>
         </div>
@@ -119,7 +126,7 @@
                         <div class="feature-info-content ps-4">
                             <h5>Chat To Us Online</h5>
                             <p class="mb-0">Chat to us online if you have any question.</p>
-                            <a class="mt-2 mb-0 d-block" href="#">Click here to open chat</a>
+
                         </div>
                     </div>
                 </div>
@@ -129,7 +136,7 @@
                         <div class="feature-info-content ps-4">
                             <h5>Call Us</h5>
                             <p class="mb-0">Our support agent will work with you to meet your lending needs.</p>
-                            <h5 class="mt-2 mb-0">(123) 345-6789</h5>
+                            <h5 class="mt-2 mb-0">{{ setting()->site_phone }}</h5>
                         </div>
                     </div>
                 </div>
@@ -139,7 +146,7 @@
                         <div class="feature-info-content ps-4">
                             <h5>Read our latest news</h5>
                             <p class="mb-0">Visit our Blog page and know more about news and career tips</p>
-                            <a class="mt-2 mb-0 d-block" href="#">Read Blog post </a>
+                            <a class="mt-2 mb-0 d-block" href="{{ route('web.blogs') }}">Read Blog post </a>
                         </div>
                     </div>
                 </div>

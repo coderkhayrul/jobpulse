@@ -3,16 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BlogController;
 
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AwardController;
+use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\EducationController;
-use App\Http\Controllers\Admin\ExperienceController;
-use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PositionController;
-use App\Http\Controllers\Admin\SkillController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\SubscribeController;
+use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Frontend\WebsiteController;
 
 Route::name('web.')->controller(WebsiteController::class)->group(function () {
@@ -26,6 +28,9 @@ Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/sign-out', 'signOut')->name('sign-out');
     Route::get('page/{slug}', 'singlePage')->name('page.single');
+    Route::post('subscribe', 'subscribe')->name('subscribe');
+    Route::post('contact', 'contactStore')->name('contactStore');
+
     // Route::get('/all-category', 'allCategory')->name('all-category.show');
     // Route::get('/category/{slug}', 'signOut')->name('sign-out');
 });
@@ -44,6 +49,9 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('award', AwardController::class);
     Route::resource('pages', PageController::class);
     Route::resource('jobs', PageController::class);
+    Route::resource('subscribe', SubscribeController::class);
+    Route::resource('contact', ContactController::class);
+
 
 
 

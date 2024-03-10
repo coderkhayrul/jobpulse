@@ -66,13 +66,24 @@ class WebsiteController extends Controller
         return redirect()->route('web.home');
     }
     public function subscribe(Request $request){
+        $this->validate($request,[
+            'email' => 'required',
+        ]);
         Subscribe::create([
             'email' => $request->email,
         ]);
+        
        notyf()->addSuccess('You have been subscribe successfully.');
         return redirect()->back();
     }
     public function contactStore(Request $request){
+        $this->validate($request, [
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            
+        ]);
         Contact::create([
             'firstName'=> $request->firstname,
             'lastName'=> $request->lastName,

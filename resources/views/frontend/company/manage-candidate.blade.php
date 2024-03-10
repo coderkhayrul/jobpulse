@@ -2,10 +2,10 @@
 @section('frontend_content')
     @include('frontend.company.company-nav')
     <!--=================================
-                  Dashboard Nav -->
+                                      Dashboard Nav -->
 
     <!--=================================
-                  Manage Candidates -->
+                                      Manage Candidates -->
     <section>
         <div class="container">
             <div class="row">
@@ -169,12 +169,12 @@
                                             <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
                                                     title="" data-original-title="view"><i
                                                         class="far fa-eye"></i></a></li>
-                                            <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="Edit"><i
+                                            <li><a href="{{ route('company.jobPostEdit') }}" class="text-info"
+                                                    data-bs-toggle="tooltip" title="" data-original-title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></a></li>
-                                            <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="Delete"><i
-                                                        class="far fa-trash-alt"></i></a></li>
+                                            <li><a href="{{ route('company.job-delete') }}" class="text-danger"
+                                                    data-bs-toggle="tooltip" title=""
+                                                    data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -243,5 +243,5 @@
         </div>
     </section>
     <!--=================================
-                  Manage Candidates -->
+                                      Manage Candidates -->
 @endsection

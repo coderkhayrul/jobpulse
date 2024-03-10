@@ -27,7 +27,7 @@
                                     <td>{{ $contact->id }}</td>
                                     <td>{{ $contact->firstName }}{{ $contact->lastName }}</td>
                                     <td>{{ $contact->phone }}</td>
-                                    <td>{{ $contact->subject }}</td>
+                                    <td>{{ Str::limit($contact->subject, 30, '...') ?? 'N/A' }}</td>
                                     <td> {{ $contact->created_at->format('d-M-Y') }}</td>
                                     <td><a href="">
                                             <i class="far fa-eye"></i> View

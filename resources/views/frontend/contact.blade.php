@@ -91,22 +91,37 @@
                     <div class="form-group col-md-6 mb-3">
                         <input type="text" class="form-control" id="firstName" placeholder="Enter Your Fast Name"
                             name="firstName">
+                        @error('firstName')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <input type="text" class="form-control" id="lastName" placeholder="Enter Your Last Name"
                             name="lastName">
+                        @error('lastName')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <input type="email" class="form-control" id="email" placeholder="Enter Your Email Address"
                             name="email">
+                        @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
                         <input type="text" class="form-control" id="phone" placeholder="Enter Your Phone Number"
                             name="phone">
+                        @error('phone')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-12 mb-0">
                         <textarea rows="5" class="form-control" id="subject" placeholder="Subject" name="subject"></textarea>
+                        @error('subject')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-12 mt-2">
                         <button type="submit" class="btn btn-primary btn-md">Send your message</button>

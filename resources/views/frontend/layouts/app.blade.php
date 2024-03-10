@@ -88,6 +88,9 @@
                                 <div class="form-group mb-3">
                                     <input type="email" class="form-control" id="email" name="email"
                                         placeholder="Enter email">
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-md">Get Notified</button>
                             </form>

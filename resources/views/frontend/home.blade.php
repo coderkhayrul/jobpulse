@@ -30,7 +30,7 @@
                         <h2 class="title">Top Companies</h2>
                         <p>Data trends and insights, tips for employers, product updates and best practices</p>
                     </div>
-                    <div class="owl-carousel owl-nav-bottom-center" data-nav-arrow="false" data-nav-dots="true"
+                    <div class="owl-carousel owl-nav-bottom-center" data-nav-arrow="true" data-nav-dots="true"
                         data-items="4" data-md-items="3" data-sm-items="2" data-xs-items="1" data-xx-items="1"
                         data-space="15" data-autoheight="true">
                         @foreach ($jobs as $job)

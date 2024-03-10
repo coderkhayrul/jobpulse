@@ -30,6 +30,7 @@ Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::get('page/{slug}', 'singlePage')->name('page.single');
     Route::post('subscribe', 'subscribe')->name('subscribe');
     Route::post('contact', 'contactStore')->name('contactStore');
+    Route::get('category/{id}/jobList', 'jobCategory')->name('jobCategoryList');
 
     // Route::get('/all-category', 'allCategory')->name('all-category.show');
     // Route::get('/category/{slug}', 'signOut')->name('sign-out');

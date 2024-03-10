@@ -16,7 +16,7 @@ class WebsiteController extends Controller
 {
     public function home()
     {
-        $jobs = Job::all();
+        $jobs = Job::latest()->limit(4)->get();
         $categories = Category::all();
         $positions = Position::all();
         $pages = Page::all();
@@ -26,30 +26,50 @@ class WebsiteController extends Controller
     public function jobs()
     {
         $jobs = Job::get();
-        $categories = Category::limit(4)->get();
+        $categories = Category::inRandomOrder()->limit(4)->get();
         return view('frontend.jobs', compact('jobs', 'categories'));
     }
+
     public function singleJob($slug)
     {
         $job = Job::where('slug', $slug)->first();
         return view('frontend.singleJob', compact('job'));
     }
+
     public function blogs()
     {
         $blogs = Blog::get();
         return view('frontend.blogs', compact('blogs'));
     }
+
     public function singleBlog($slug)
     {
         $blog = Blog::where('slug', $slug)->first();
         return view('frontend.singleBlog', compact('blog'));
     }
 
+     public function jobCategory($id)
+    {
+        $jobs = Job::where('category_id', $id)->get();
+        return view('frontend.jobsCategoryList', compact('jobs'));
+
+        
+        
+    }
+
+
+
+
+
+
+
     public function allCategory()
     {
         $categories = Category::all();
         return view('frontend.Categories', compact('categories'));
     }
+
+
     public function about()
     {
         return view('frontend.about');
@@ -65,6 +85,7 @@ class WebsiteController extends Controller
         auth()->logout();
         return redirect()->route('web.home');
     }
+
     public function subscribe(Request $request){
         $this->validate($request,[
             'email' => 'required',
@@ -76,6 +97,7 @@ class WebsiteController extends Controller
        notyf()->addSuccess('You have been subscribe successfully.');
         return redirect()->back();
     }
+
     public function contactStore(Request $request){
         $this->validate($request, [
             'firstName' => 'required',
@@ -94,6 +116,7 @@ class WebsiteController extends Controller
        notyf()->addSuccess('We contact you very soon.');
         return redirect()->back();
     }
+
 
     public function singlePage($slug)
     {

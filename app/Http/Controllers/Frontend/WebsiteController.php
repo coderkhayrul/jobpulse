@@ -26,7 +26,7 @@ class WebsiteController extends Controller
     public function jobs()
     {
         $jobs = Job::get();
-        $categories = Category::inRandomOrder()->limit(4)->get();
+        $categories = Category::inRandomOrder()->limit(8)->get();
         return view('frontend.jobs', compact('jobs', 'categories'));
     }
 
@@ -48,10 +48,11 @@ class WebsiteController extends Controller
         return view('frontend.singleBlog', compact('blog'));
     }
 
-     public function jobCategory($id)
+     public function jobCategory($slug)
     {
-        $jobs = Job::where('category_id', $id)->get();
-        return view('frontend.jobsCategoryList', compact('jobs'));
+        $category = Category::where('slug', $slug)->first();
+        $jobs = $category->jobs;
+        return view('frontend.jobsCategoryList', compact('category', 'jobs'));
 
         
         

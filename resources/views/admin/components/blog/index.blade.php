@@ -17,6 +17,7 @@
                         <tr class="text-primary" role="row">
                             <th width="10%"> Photo</th>
                             <th width="20%"> Title</th>
+                            <th width="10%"> Creator</th>
                             <th class="text-center" width="10%"> Created At</th>
 
                             <th width="10%" class="text-center text-dark">Action</th>
@@ -29,7 +30,8 @@
                                 </td>
                                 <td>{{ $blog->title }}</td>
                                 <td class="text-center">
-                                    {{ $blog->created_at->format('d-M-Y') }}
+                                <td>{{ $blog?->user?->name }}</td>
+                                {{ $blog?->created_at->format('d-M-Y') }}
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group">

@@ -43,6 +43,7 @@ class BlogController extends Controller
 
         Blog::create([
             'title' => $request->title,
+            'user_id' => auth()->id(),
             'slug' => Str::slug($request->title),
             'img' => $image,
             'body' => $request->body
@@ -85,6 +86,7 @@ class BlogController extends Controller
 
         $blog->update([
             'title' => $request->title,
+            'user_id' => auth()->id(),
             'slug' => Str::slug($request->title),
             'img' => $image,
             'body' => $request->body,

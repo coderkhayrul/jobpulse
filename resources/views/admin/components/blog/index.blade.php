@@ -29,10 +29,9 @@
                                 <td><img class="rounded" alt="" src="{{ asset($blog->img) }}" style="width:100px ">
                                 </td>
                                 <td>{{ $blog->title }}</td>
-                                <td class="text-center">
-                                <td>{{ $blog?->user?->name }}</td>
-                                {{ $blog?->created_at->format('d-M-Y') }}
-                                </td>
+                                <td class="text-center">{{ $blog?->user?->name }}</td>
+                                <td>{{ $blog?->created_at->format('d-M-Y') }}</td>
+
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-primary waves-effect dropdown-toggle"

@@ -93,7 +93,7 @@
                     <div class="category-style text-center">
 
                         @foreach ($categories as $category)
-                            <a href="{{ route('web.jobCategoryList', $category) }}" class="category-item">
+                            <a href="{{ route('web.jobCategoryList', $category->slug) }}" class="category-item">
                                 <div class="category-icon mb-1 ">
                                     <i class="flaticon-money"></i>
                                 </div>

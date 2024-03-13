@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Resume extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'cover_letter',
+    ];
      public function user()
     {
         return $this->belongsTo(User::class);

@@ -15,7 +15,6 @@ class CandidateController extends Controller
 
     public function dashboard()
     {
-        
         return view('frontend.candidate.dashboard');
     }
 
@@ -124,8 +123,6 @@ class CandidateController extends Controller
     {
         
 
-        
-        
         //  notyf()->addSuccess('Resume has been create successfully.');
         // return redirect()->route('candidate.my-profile');
     }

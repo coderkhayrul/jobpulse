@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('company.job-post.update') }}" method="POST">
+                    <form action="#" method="POST">
                         @csrf
                         <div class="user-dashboard-info-box">
                             <div class="section-title-02 mb-4 d-inline-block">
@@ -49,8 +49,8 @@
                                             <label class="form-label">Job Type</label>
                                             <select name="job_type_id" class="form-control basic-select">
                                                 <option value="" selected disabled>Select Type</option>
-                                                @if ($jobTypes)
-                                                    @foreach ($jobTypes as $jobType)
+                                                @if ($job->jobTypes)
+                                                    @foreach ($job_type as $jobType)
                                                         <option value="{{ $jobType->id }}">{{ $jobType->name }}</option>
                                                     @endforeach
                                                 @endif

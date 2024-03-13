@@ -60,7 +60,6 @@ class CompanyController extends Controller
                 'socialLinkedin' => $request->socialLinkedin,
                 'details' => $request->details,
             ]);
-            
         } else {
             Auth::user()->update([
                 'name' => $request->firstName . ' ' . $request->lastName,
@@ -110,7 +109,7 @@ class CompanyController extends Controller
 
     public function jobPostStore(Request $request)
     {
-         $this->validate($request, [
+        $this->validate($request, [
             'title' => 'required',
             'category_id' => 'required',
             'job_type_id' => 'required',
@@ -127,7 +126,7 @@ class CompanyController extends Controller
             'country' => 'required',
             'address' => 'required',
         ]);
-       
+
         //     Auth::user()->jobs()->update([
         //         //
         //          'title' => $request->title,
@@ -149,7 +148,7 @@ class CompanyController extends Controller
         //      notyf()->addSuccess('Job Update has been successfully.');
         //      return redirect()->route('company.manage-jobs');
         // }else{
-            Auth::user()->jobs()->create([
+        Auth::user()->jobs()->create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'category_id' => $request->category_id,
@@ -167,48 +166,27 @@ class CompanyController extends Controller
             'country' => $request->country,
             'address' => $request->address,
         ]);
-         notyf()->addSuccess('Job create has been successfully.');
+        notyf()->addSuccess('Job create has been successfully.');
         return redirect()->route('company.manage-jobs');
-        
-       
     }
-    public function jobPostEdit(Job $job){
-        $job = Job::find($job);
-        $jobTypes =$job->jobtype;
-         $categories = $job->categories;
-        $positions =$job->positions;
-        $userProfiles =$job->userProfiles;
-        return view('frontend.company.job-edit', compact('job','jobTypes','categories', 'positions', 'userProfiles'));
-    }
-     public function jobPostUpdate(Request $request, Job $job)
+    public function jobPostEdit(Job $job)
     {
-      
-        
-            Auth::user()->jobs()->update($request->all());
-            //     [
-            //     //
-            //      'title' => $request->title,
-            //     'slug' => Str::slug($request->title),
-            //     'category_id' => $request->category_id,
-            //     'job_type_id' => $request->job_type_id,
-            //     'position_id' => $request->position_id,
-            //     'expireDate' => Carbon::parse($request->expireDate)->format('m-d-Y'),
-            //     'description' => $request->description,
-            //     'salaryType' => $request->salaryType,
-            //     'minSalary' => $request->minSalary,
-            //     'maxSalary' => $request->maxSalary,'currency' => $request->currency,
-            //     'qualification' => $request->qualification,
-            //     'experience' => $request->experience,
-            //     'gender' => $request->gender,
-            //     'country' => $request->country,
-            //     'address' => $request->address,
-            // ]);
-             notyf()->addSuccess('Job Update has been successfully.');
-             return redirect()->route('company.manage-jobs');
-        }
-        // else{
-        //     Auth::user()->jobs()->create([
-        //     'title' => $request->title,
+        $job = Job::find($job);
+        $job = $job->load('jobType');
+
+        return $job->jobType;
+
+        return view('frontend.company.job-edit', compact('job'));
+    }
+
+    public function jobPostUpdate(Request $request, Job $job)
+    {
+
+
+        Auth::user()->jobs()->update($request->all());
+        //     [
+        //     //
+        //      'title' => $request->title,
         //     'slug' => Str::slug($request->title),
         //     'category_id' => $request->category_id,
         //     'job_type_id' => $request->job_type_id,
@@ -217,19 +195,40 @@ class CompanyController extends Controller
         //     'description' => $request->description,
         //     'salaryType' => $request->salaryType,
         //     'minSalary' => $request->minSalary,
-        //     'maxSalary' => $request->maxSalary,
-        //     'currency' => $request->currency,
+        //     'maxSalary' => $request->maxSalary,'currency' => $request->currency,
         //     'qualification' => $request->qualification,
         //     'experience' => $request->experience,
         //     'gender' => $request->gender,
         //     'country' => $request->country,
         //     'address' => $request->address,
         // ]);
-        //  notyf()->addSuccess('Job create has been successfully.');
-        // return redirect()->route('company.manage-jobs');
-        
-       
-    
+        notyf()->addSuccess('Job Update has been successfully.');
+        return redirect()->route('company.manage-jobs');
+    }
+    // else{
+    //     Auth::user()->jobs()->create([
+    //     'title' => $request->title,
+    //     'slug' => Str::slug($request->title),
+    //     'category_id' => $request->category_id,
+    //     'job_type_id' => $request->job_type_id,
+    //     'position_id' => $request->position_id,
+    //     'expireDate' => Carbon::parse($request->expireDate)->format('m-d-Y'),
+    //     'description' => $request->description,
+    //     'salaryType' => $request->salaryType,
+    //     'minSalary' => $request->minSalary,
+    //     'maxSalary' => $request->maxSalary,
+    //     'currency' => $request->currency,
+    //     'qualification' => $request->qualification,
+    //     'experience' => $request->experience,
+    //     'gender' => $request->gender,
+    //     'country' => $request->country,
+    //     'address' => $request->address,
+    // ]);
+    //  notyf()->addSuccess('Job create has been successfully.');
+    // return redirect()->route('company.manage-jobs');
+
+
+
     public function jobPostDelete(Job $job)
     {
         $job->delete();

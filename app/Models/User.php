@@ -85,22 +85,22 @@ class User extends Authenticatable
 
     public function education()
     {
-        return $this->hasMany(Education::class);
+        return $this->hasOne(Education::class);
     }
 
-    public function experiences()
+    public function experience()
     {
-        return $this->hasMany(Experience::class);
+        return $this->hasOne(Experience::class);
     }
 
-    public function skills()
+    public function skill()
     {
-        return $this->hasMany(Skill::class);
+        return $this->hasOne(Skill::class);
     }
 
-    public function awards()
+    public function award()
     {
-        return $this->hasMany(Award::class);
+        return $this->hasOne(Award::class);
     }
     public function resume()
     {

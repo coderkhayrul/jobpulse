@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
-            $table->string('title');
-            $table->string('company');
-            $table->string('start_date');
-            $table->string('end_date');
-            $table->string('description');
+            $table->string('title')->nullable();
+            $table->string('company')->nullable();
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

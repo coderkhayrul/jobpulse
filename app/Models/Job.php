@@ -27,7 +27,7 @@ class Job extends Model
 
     public function jobType()
     {
-        return $this->belongsTo(JobType::class);
+        return $this->hasOne(JobType::class, 'id', 'job_type_id');
     }
 
     public function position()

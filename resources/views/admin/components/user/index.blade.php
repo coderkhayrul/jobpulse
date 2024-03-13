@@ -21,8 +21,9 @@
                             <thead class="table-light">
                                 <tr class="text-primary" role="row">
                                     <th width="10%">Image</th>
-                                    <th width="20%">Name</th>
+                                    <th width="10%">Name</th>
                                     <th width="20%">Email</th>
+                                    <th width="20%">Google Id</th>
                                     <th width="10%">Role</th>
                                     <th width="10%">Status</th>
                                     <th class="text-center" width="10%"> Created At</th>
@@ -35,6 +36,7 @@
                                         <td>Image</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->google_id }}</td>
                                         <td>
                                             {{ roleName($user->role) }}
                                         </td>
@@ -56,7 +58,7 @@
                                                         class="dropdown-item">
                                                         <i class="bx bx-edit align-middle me-2"></i> Edit
                                                     </a>
-                                                    <button onclick="" class="dropdown-item" href="#">
+                                                    <button onclick="userDelete()" class="dropdown-item" href="#">
                                                         <i class="bx bx-trash-alt align-middle me-2"></i> Delete
                                                     </button>
                                                 </div>
@@ -73,3 +75,53 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function userDelete(id) {
+            let url = "";
+            url = url.replace(':id', id);
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to delete this user!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2f4cdd',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.preventDefault();
+                    let url = "{{ route('admin.user.destroy', ':id') }}";
+                    url = url.replace(':id', id);
+                    $.ajax({
+                        url: url,
+                        type: 'DELETE',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(response) {
+                            if (response.status) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'award has been deleted.',
+                                    'success'
+                                ).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                })
+                            } else {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'User has not been deleted.',
+                                    'error'
+                                )
+                            }
+                        }
+                    });
+                }
+            })
+        }
+    </script>
+@endpush

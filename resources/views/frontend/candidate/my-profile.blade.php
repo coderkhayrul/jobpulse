@@ -1,7 +1,6 @@
 @extends('frontend.layouts.app')
 @section('frontend_content')
-    Dashboard Nav -->
-    @include('frontend.candidate.candidate-nav') My Profile -->
+    @include('frontend.candidate.candidate-nav')
     <section>
         <div class="container">
             <div class="row">
@@ -14,8 +13,9 @@
                             </div>
                             <div class="cover-photo-contact">
                                 <div class="upload-file">
-                                    <label for="formFile" class="form-label">Upload Cover Photo</label>
-                                    <input name="coverImage" class="form-control" type="file" id="formFile">
+                                    <label for="profileImage" class="form-label">Upload Profile Photo</label>
+                                    <input name="profileImage" class="form-control" type="file" id="profileImage"
+                                        value="{{ $user?->profile?->profileImage }}">
                                 </div>
                             </div>
                             <div class="row">

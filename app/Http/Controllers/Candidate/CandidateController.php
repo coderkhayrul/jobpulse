@@ -26,10 +26,17 @@ class CandidateController extends Controller
 
     public function myProfileStore(Request $request)
     {
+         if ($request->hasFile('profileImage')) {
+            deleteImage(Auth::user()->profile->profileImage);
+            $image = saveImage($request->file('profileImage'), 'uploads/profile/');
+        } else {
+            $image = Auth::user()->profile->profileImage;
+        }
+
         $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
-            'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
+            // 'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
             'gender' => 'required',
             'country' => 'required',
             'dateOfBirth' => 'required',
@@ -46,6 +53,7 @@ class CandidateController extends Controller
                 'firstName' => $request->firstName,
                 'lastName' => $request->lastName,
                 'title' => $request->title,
+                'profileImage' => $image,
                 'dateOfBirth' => Carbon::parse($request->dateOfBirth)->format('m-d-Y'),
                 'gender' => $request->gender,
                 'country' => $request->country,
@@ -65,6 +73,7 @@ class CandidateController extends Controller
                 'firstName' => $request->firstName,
                 'lastName' => $request->lastName,
                 'title' => $request->title,
+                 'profileImage' => $image,
                 'dateOfBirth' => Carbon::parse($request->dateOfBirth)->format('m-d-Y'),
                 'gender' => $request->gender,
                 'country' => $request->country,
@@ -76,7 +85,8 @@ class CandidateController extends Controller
                 'details' => $request->details,
             ]);
         }
-        return redirect()->back();
+         notyf()->addSuccess('Profile has been update successfully.');
+        return redirect()->route('candidate.my-profile');
     }
 
     public function changePasswordPage()
@@ -109,6 +119,66 @@ class CandidateController extends Controller
     {
         return view('frontend.candidate.my-resume');
     }
+    public function myResumeStore(Request $request)
+    {
+         
+
+        $this->validate($request, [
+            'firstName' => 'required',
+            'lastName' => 'required',
+            // 'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
+            'gender' => 'required',
+            'country' => 'required',
+            'dateOfBirth' => 'required',
+            'salary' => 'required',
+            'address' => 'required',
+        ]);
+
+        if (Auth::user()->profile) {
+            Auth::user()->update([
+                'name' => $request->firstName . ' ' . $request->lastName,
+                'mobile' => $request->mobile,
+            ]);
+            Auth::user()->profile->update([
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'title' => $request->title,
+                'profileImage' => $image,
+                'dateOfBirth' => Carbon::parse($request->dateOfBirth)->format('m-d-Y'),
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'socialFacebook' => $request->socialFacebook,
+                'socialTwitter' => $request->socialTwitter,
+                'socialLinkedin' => $request->socialLinkedin,
+                'details' => $request->details,
+            ]);
+        } else {
+            Auth::user()->update([
+                'name' => $request->firstName . ' ' . $request->lastName,
+                'mobile' => $request->mobile,
+            ]);
+            Auth::user()->profile()->create([
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'title' => $request->title,
+                 'profileImage' => $image,
+                'dateOfBirth' => Carbon::parse($request->dateOfBirth)->format('m-d-Y'),
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'socialFacebook' => $request->socialFacebook,
+                'socialTwitter' => $request->socialTwitter,
+                'socialLinkedin' => $request->socialLinkedin,
+                'details' => $request->details,
+            ]);
+        }
+         notyf()->addSuccess('Profile has been update successfully.');
+        return redirect()->route('candidate.my-profile');
+    }
+
 
     public function manageJobs()
     {

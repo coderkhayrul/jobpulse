@@ -2,6 +2,8 @@
 
 use App\Models\Page;
 use App\Models\GeneralSetting;
+use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -129,3 +131,8 @@ function getPage()
 {
     return Page::all();
 }
+
+// function profileImage()
+// {
+//     return UserProfile::first();
+// }

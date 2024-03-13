@@ -90,7 +90,7 @@ class UserProfileController extends Controller
         notyf()->addSuccess('Profile has been updated successfully.');
         return redirect()->back();
         
-        // $userP=UserProfile::create($request->validated());
+       
         // dd($userP);
         // $notification = [
         //     'message' => 'User Profile Created Successfully',

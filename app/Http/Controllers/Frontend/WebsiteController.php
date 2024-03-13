@@ -48,12 +48,11 @@ class WebsiteController extends Controller
         return view('frontend.singleBlog', compact('blog'));
     }
 
-     public function jobCategory($slug)
+    public function jobCategory($slug)
     {
         $category = Category::where('slug', $slug)->first();
         $jobs = $category->jobs;
         return view('frontend.jobsCategoryList', compact('category', 'jobs'));
- 
     }
 
     public function allCategory()
@@ -79,34 +78,36 @@ class WebsiteController extends Controller
         return redirect()->route('web.home');
     }
 
-    public function subscribe(Request $request){
-        $this->validate($request,[
+    public function subscribe(Request $request)
+    {
+        $this->validate($request, [
             'email' => 'required',
         ]);
         Subscribe::create([
             'email' => $request->email,
         ]);
-        
-       notyf()->addSuccess('You have been subscribe successfully.');
+
+        notyf()->addSuccess('You have been subscribe successfully.');
         return redirect()->back();
     }
 
-    public function contactStore(Request $request){
+    public function contactStore(Request $request)
+    {
         $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            
+
         ]);
         Contact::create([
-            'firstName'=> $request->firstname,
-            'lastName'=> $request->lastName,
-            'email'=> $request->email,
-            'phone'=> $request->phone,
-            'subject'=> $request->subject,
+            'firstName' => $request->firstname,
+            'lastName' => $request->lastName,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
         ]);
-       notyf()->addSuccess('We contact you very soon.');
+        notyf()->addSuccess('We contact you very soon.');
         return redirect()->back();
     }
 

@@ -24,8 +24,8 @@ Route::name('company.')->prefix('company')->controller(CompanyController::class)
     Route::get('/manage-jobs', 'manageJobs')->name('manage-jobs');
     Route::get('/job-post', 'jobPost')->name('job-post');
     Route::post('/job-post', 'jobPostStore')->name('job-post.store');
-    Route::get('/job-post-edit-page', 'jobPostEdit')->name('job-post.edit');
-    Route::post('/job-post-edit', 'jobPostUpdate')->name('job-post.update');
+    Route::get('/job-post-edit-page/{job}', 'jobPostEdit')->name('job-post.edit');
+    Route::post('/job-post-edit/{job}', 'jobPostUpdate')->name('job-post.update');
     Route::get('/job-post-delete', 'jobPostDelete')->name('job-delete');
     Route::get('/logout', 'logout')->name('logout');
 });

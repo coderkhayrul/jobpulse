@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('profileImage')->nullable();
             $table->string('coverImage')->nullable();
+            $table->longText('coverLetter')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('website')->nullable();
             $table->string('language')->nullable();

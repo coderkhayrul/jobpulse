@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Http\Traits\CandidateTrait;
 use App\Models\Resume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +13,8 @@ use Illuminate\Validation\ValidationException;
 
 class CandidateController extends Controller
 {
+
+    use CandidateTrait;
 
     public function dashboard()
     {
@@ -26,11 +29,11 @@ class CandidateController extends Controller
 
     public function myProfileStore(Request $request)
     {
-         if ($request->hasFile('profileImage')) {
-            deleteImage(Auth::user()->profile->profileImage);
+        if ($request->hasFile('profileImage')) {
+            deleteImage(Auth::user()?->profile?->profileImage);
             $image = saveImage($request->file('profileImage'), 'uploads/profile/');
         } else {
-            $image = Auth::user()->profile->profileImage;
+            $image = Auth::user()->profile->profileImage ?? null;
         }
 
         $this->validate($request, [
@@ -73,7 +76,7 @@ class CandidateController extends Controller
                 'firstName' => $request->firstName,
                 'lastName' => $request->lastName,
                 'title' => $request->title,
-                 'profileImage' => $image,
+                'profileImage' => $image,
                 'dateOfBirth' => Carbon::parse($request->dateOfBirth)->format('m-d-Y'),
                 'gender' => $request->gender,
                 'country' => $request->country,
@@ -85,7 +88,7 @@ class CandidateController extends Controller
                 'details' => $request->details,
             ]);
         }
-         notyf()->addSuccess('Profile has been update successfully.');
+        notyf()->addSuccess('Profile has been update successfully.');
         return redirect()->route('candidate.my-profile');
     }
 
@@ -93,26 +96,25 @@ class CandidateController extends Controller
     {
         return view('frontend.candidate.change-password');
     }
-      public function changePassword(Request $request)
+    public function changePassword(Request $request)
     {
         $request->validate([
-        'current_password' => ['required', 'string'],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'current_password' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-      $user = auth()->user();
+        $user = auth()->user();
 
-      if (!Hash::check($request->current_password, $user->password)) {
-        notyf()->addError('Current password does not match.');
+        if (!Hash::check($request->current_password, $user->password)) {
+            notyf()->addError('Current password does not match.');
             return redirect()->back();
-       }
+        }
 
-      $user->update([
-        'password' => Hash::make($request->password),
-      ]);
-       notyf()->addSuccess('Password has been changed successfully.');
-      return redirect()->route('candidate.dashboard');
-      
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+        notyf()->addSuccess('Password has been changed successfully.');
+        return redirect()->route('candidate.dashboard');
     }
 
     public function myResume()
@@ -121,15 +123,12 @@ class CandidateController extends Controller
     }
     public function myResumeStore(Request $request)
     {
-        
-
-        //  notyf()->addSuccess('Resume has been create successfully.');
-        // return redirect()->route('candidate.my-profile');
     }
 
- public function resumePerview(){
+    public function resumePerview()
+    {
         return view('frontend.candidate.my-resume-preview');
- }
+    }
     public function manageJobs()
     {
         return view('frontend.candidate.manage-jobs');

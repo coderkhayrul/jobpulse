@@ -285,6 +285,7 @@ NOTE: This file contains all scripts for the actual Template.
             $('#datetimepicker-01, #datetimepicker-02, #datetimepicker-05, #datetimepicker-06, #datetimepicker-07, #datetimepicker-08, #datetimepicker-09, #datetimepicker-10, #datetimepicker-11, #datetimepicker-12, #datetimepicker-13, #datetimepicker-14').datetimepicker({
                 format: 'L'
             });
+            
             $('#datetimepicker-03, #datetimepicker-04').datetimepicker({
                 format: 'LT',
                 minuteStep: 15

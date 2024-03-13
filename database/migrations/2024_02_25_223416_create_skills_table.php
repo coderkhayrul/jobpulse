@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('percentage');
-            $table->string('color');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->longText('skill_name')->nullable();
             $table->timestamps();
         });
     }

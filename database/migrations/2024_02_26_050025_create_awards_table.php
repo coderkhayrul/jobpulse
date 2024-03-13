@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('awards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
-            $table->string('title');
-            $table->string('date');
-            $table->string('description');
-            $table->string('link');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

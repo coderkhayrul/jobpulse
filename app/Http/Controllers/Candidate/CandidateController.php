@@ -124,23 +124,7 @@ class CandidateController extends Controller
     {
         
 
-        // if (Auth::user()->resume) {
-           
-        //     Auth::user()->resume->update([
-        //         'cover_letter' => $request->cover_letter,
-        //         'education_id' => $request->education_id,
-        //         'experiences_id' => $request->experiences_id,
-        //         'skills_id' => $request->skills_id,
-        //         'awards_id' => $request->awards_id,
-        //     ]);
-        // } else {
-            Resume::create([
-                'cover_letter' => $request->cover_letter,
-                'education_id' => $request->education_id,
-                'experiences_id' => $request->experiences_id,
-                'skills_id' => $request->skills_id,
-                'awards_id' => $request->awards_id,
-            ]);
+        
         
          notyf()->addSuccess('Resume has been create successfully.');
         return redirect()->route('candidate.my-profile');

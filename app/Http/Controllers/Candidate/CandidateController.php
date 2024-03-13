@@ -126,8 +126,8 @@ class CandidateController extends Controller
 
         
         
-         notyf()->addSuccess('Resume has been create successfully.');
-        return redirect()->route('candidate.my-profile');
+        //  notyf()->addSuccess('Resume has been create successfully.');
+        // return redirect()->route('candidate.my-profile');
     }
 
  public function resumePerview(){

@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('language')->nullable();
             $table->string('nationality')->nullable();
             $table->string('salary')->nullable();
-            $table->text('details')->nullable();
+            $table->longText('details')->nullable();
             $table->string('socialFacebook')->nullable();
             $table->string('socialTwitter')->nullable();
             $table->string('socialLinkedin')->nullable();

@@ -17,6 +17,7 @@
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="#" key="t-job-list">Job List</a></li>
                 <li><a href="{{ route('admin.subscribe.index') }}" key="t-job-list">Jobs subscribes</a></li>
+                <li><a href="{{ route('admin.subscribe.index') }}" key="t-job-list">Jobs Category</a></li>
         </li>
     </ul>
     </li>

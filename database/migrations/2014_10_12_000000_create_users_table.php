@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('mobile')->nullable();
             $table->string('role')->default(3)->comment('1: admin, 2: company, 3: candidate');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->string('google_id')->nullable();
             $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();

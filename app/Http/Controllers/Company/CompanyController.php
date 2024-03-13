@@ -85,7 +85,7 @@ class CompanyController extends Controller
             ]);
         }
         notyf()->addSuccess('Profile has been updated successfully.');
-        return redirect()->back();
+        return redirect()->route('admin.user');
     }
 
     public function manageCandidate()
@@ -127,7 +127,7 @@ class CompanyController extends Controller
             'country' => 'required',
             'address' => 'required',
         ]);
-        // if(Auth::user()->jobs()){
+       
         //     Auth::user()->jobs()->update([
         //         //
         //          'title' => $request->title,

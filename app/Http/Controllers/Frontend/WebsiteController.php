@@ -53,16 +53,8 @@ class WebsiteController extends Controller
         $category = Category::where('slug', $slug)->first();
         $jobs = $category->jobs;
         return view('frontend.jobsCategoryList', compact('category', 'jobs'));
-
-        
-        
+ 
     }
-
-
-
-
-
-
 
     public function allCategory()
     {

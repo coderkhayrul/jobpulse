@@ -8,13 +8,14 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AwardController;
 use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Frontend\WebsiteController;
 
 Route::name('web.')->controller(WebsiteController::class)->group(function () {
@@ -60,7 +61,12 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::patch('general-setting', [AdminController::class, 'generalSettingUpdate'])->name('general-setting.update');
 });
 
-
+    Route::get('/google-login-redirect', [SocialLoginController::class, 'googleRedirect'])
+        ->name('google.login');
+        
+    Route::get('/google-login-callback', [SocialLoginController::class, 'googleCallback'])
+        ->name('google.login.callback');
+        
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/company.php';

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\Resume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -121,65 +122,33 @@ class CandidateController extends Controller
     }
     public function myResumeStore(Request $request)
     {
-         
+        
 
-        $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            // 'mobile' => 'required|numeric|unique:users,mobile,' . Auth::id(),
-            'gender' => 'required',
-            'country' => 'required',
-            'dateOfBirth' => 'required',
-            'salary' => 'required',
-            'address' => 'required',
-        ]);
-
-        if (Auth::user()->profile) {
-            Auth::user()->update([
-                'name' => $request->firstName . ' ' . $request->lastName,
-                'mobile' => $request->mobile,
+        // if (Auth::user()->resume) {
+           
+        //     Auth::user()->resume->update([
+        //         'cover_letter' => $request->cover_letter,
+        //         'education_id' => $request->education_id,
+        //         'experiences_id' => $request->experiences_id,
+        //         'skills_id' => $request->skills_id,
+        //         'awards_id' => $request->awards_id,
+        //     ]);
+        // } else {
+            Resume::create([
+                'cover_letter' => $request->cover_letter,
+                'education_id' => $request->education_id,
+                'experiences_id' => $request->experiences_id,
+                'skills_id' => $request->skills_id,
+                'awards_id' => $request->awards_id,
             ]);
-            Auth::user()->profile->update([
-                'firstName' => $request->firstName,
-                'lastName' => $request->lastName,
-                'title' => $request->title,
-                'profileImage' => $image,
-                'dateOfBirth' => Carbon::parse($request->dateOfBirth)->format('m-d-Y'),
-                'gender' => $request->gender,
-                'country' => $request->country,
-                'salary' => $request->salary,
-                'address' => $request->address,
-                'socialFacebook' => $request->socialFacebook,
-                'socialTwitter' => $request->socialTwitter,
-                'socialLinkedin' => $request->socialLinkedin,
-                'details' => $request->details,
-            ]);
-        } else {
-            Auth::user()->update([
-                'name' => $request->firstName . ' ' . $request->lastName,
-                'mobile' => $request->mobile,
-            ]);
-            Auth::user()->profile()->create([
-                'firstName' => $request->firstName,
-                'lastName' => $request->lastName,
-                'title' => $request->title,
-                 'profileImage' => $image,
-                'dateOfBirth' => Carbon::parse($request->dateOfBirth)->format('m-d-Y'),
-                'gender' => $request->gender,
-                'country' => $request->country,
-                'salary' => $request->salary,
-                'address' => $request->address,
-                'socialFacebook' => $request->socialFacebook,
-                'socialTwitter' => $request->socialTwitter,
-                'socialLinkedin' => $request->socialLinkedin,
-                'details' => $request->details,
-            ]);
-        }
-         notyf()->addSuccess('Profile has been update successfully.');
+        
+         notyf()->addSuccess('Resume has been create successfully.');
         return redirect()->route('candidate.my-profile');
     }
 
-
+ public function resumePerview(){
+        return view('frontend.candidate.my-resume-preview');
+ }
     public function manageJobs()
     {
         return view('frontend.candidate.manage-jobs');

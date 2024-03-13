@@ -12,6 +12,8 @@ Route::name('candidate.')->prefix('candidate')->controller(CandidateController::
     Route::get('/change-password', 'changePasswordPage')->name('change-password-page');
     Route::post('/change-password', 'changePassword')->name('change-password');
     Route::get('/my-resume', 'myResume')->name('my-resume');
+    Route::post('/my-resume-update', 'myResumeStore')->name('my-resume.store');
+    Route::get('/my-resume-preview', 'resumePerview')->name('my-resume.preview');
     Route::get('/manage-jobs', 'manageJobs')->name('manage-jobs');
     Route::get('/logout', 'logout')->name('logout');
 });

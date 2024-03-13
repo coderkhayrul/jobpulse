@@ -65,7 +65,7 @@ class UserProfileController extends Controller
                 'socialLinkedin' => $request->socialLinkedin,
                 'details' => $request->details,
             ]);
-            dd($update);
+            
         } else {
             Auth::user()->update([
                 'name' => $request->firstName . ' ' . $request->lastName,

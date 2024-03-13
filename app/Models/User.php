@@ -102,4 +102,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Award::class);
     }
+    public function resume()
+    {
+        return $this->hasOne(Resume::class);
+    }
 }

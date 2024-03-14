@@ -7,26 +7,10 @@
                 <div class="col-12">
                     <div class="job-search-field">
                         <div class="job-search-item">
-                            <form class="form row">
-                                <div class="col-lg-5">
-                                    <div class="form-group left-icon mb-3">
-                                        <input type="text" class="form-control" name="job_title" placeholder="What?">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="form-group left-icon mb-3">
-                                        <input type="text" class="form-control" name="job_title" placeholder="Where?">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-12">
-                                    <div class="form-group form-action">
-                                        <button type="submit" class="btn btn-primary mt-0"><i
-                                                class="fas fa-search-location"></i> Find Job</button>
-                                    </div>
-                                </div>
-                            </form>
+                            <div class="form-group left-icon mb-3 ">
+                                <h1 class="text-white">Browse Jobs</h1>
+                                <h6 class="text-white">Create an account and access your saved settings on any device.</h6>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,7 +82,7 @@
                                     <i class="flaticon-money"></i>
                                 </div>
                                 <h6>{{ $category->name }}</h6>
-                                <span class="mb-0">542 Open Position </span>
+                                <span class="mb-0">{{ count($category->jobs) }}</span>
                             </a>
                         @endforeach
                         <div class="col-12 justify-content-center d-flex mt-4">

@@ -127,27 +127,7 @@ class CompanyController extends Controller
             'address' => 'required',
         ]);
 
-        //     Auth::user()->jobs()->update([
-        //         //
-        //          'title' => $request->title,
-        //         'slug' => Str::slug($request->title),
-        //         'category_id' => $request->category_id,
-        //         'job_type_id' => $request->job_type_id,
-        //         'position_id' => $request->position_id,
-        //         'expireDate' => Carbon::parse($request->expireDate)->format('m-d-Y'),
-        //         'description' => $request->description,
-        //         'salaryType' => $request->salaryType,
-        //         'minSalary' => $request->minSalary,
-        //         'maxSalary' => $request->maxSalary,'currency' => $request->currency,
-        //         'qualification' => $request->qualification,
-        //         'experience' => $request->experience,
-        //         'gender' => $request->gender,
-        //         'country' => $request->country,
-        //         'address' => $request->address,
-        //     ]);
-        //      notyf()->addSuccess('Job Update has been successfully.');
-        //      return redirect()->route('company.manage-jobs');
-        // }else{
+        
         Auth::user()->jobs()->create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
@@ -184,48 +164,11 @@ class CompanyController extends Controller
 
 
         Auth::user()->jobs()->update($request->all());
-        //     [
-        //     //
-        //      'title' => $request->title,
-        //     'slug' => Str::slug($request->title),
-        //     'category_id' => $request->category_id,
-        //     'job_type_id' => $request->job_type_id,
-        //     'position_id' => $request->position_id,
-        //     'expireDate' => Carbon::parse($request->expireDate)->format('m-d-Y'),
-        //     'description' => $request->description,
-        //     'salaryType' => $request->salaryType,
-        //     'minSalary' => $request->minSalary,
-        //     'maxSalary' => $request->maxSalary,'currency' => $request->currency,
-        //     'qualification' => $request->qualification,
-        //     'experience' => $request->experience,
-        //     'gender' => $request->gender,
-        //     'country' => $request->country,
-        //     'address' => $request->address,
-        // ]);
+        //    
         notyf()->addSuccess('Job Update has been successfully.');
         return redirect()->route('company.manage-jobs');
     }
-    // else{
-    //     Auth::user()->jobs()->create([
-    //     'title' => $request->title,
-    //     'slug' => Str::slug($request->title),
-    //     'category_id' => $request->category_id,
-    //     'job_type_id' => $request->job_type_id,
-    //     'position_id' => $request->position_id,
-    //     'expireDate' => Carbon::parse($request->expireDate)->format('m-d-Y'),
-    //     'description' => $request->description,
-    //     'salaryType' => $request->salaryType,
-    //     'minSalary' => $request->minSalary,
-    //     'maxSalary' => $request->maxSalary,
-    //     'currency' => $request->currency,
-    //     'qualification' => $request->qualification,
-    //     'experience' => $request->experience,
-    //     'gender' => $request->gender,
-    //     'country' => $request->country,
-    //     'address' => $request->address,
-    // ]);
-    //  notyf()->addSuccess('Job create has been successfully.');
-    // return redirect()->route('company.manage-jobs');
+    
 
 
 

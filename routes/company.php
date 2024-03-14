@@ -26,6 +26,6 @@ Route::name('company.')->prefix('company')->controller(CompanyController::class)
     Route::post('/job-post', 'jobPostStore')->name('job-post.store');
     Route::get('/job-post-edit-page/{job}', 'jobPostEdit')->name('job-post.edit');
     Route::post('/job-post-edit/{job}', 'jobPostUpdate')->name('job-post.update');
-    Route::get('/job-post-delete', 'jobPostDelete')->name('job-delete');
+    Route::get('/job-post-delete/{job}', 'jobPostDelete')->name('job-delete');
     Route::get('/logout', 'logout')->name('logout');
 });

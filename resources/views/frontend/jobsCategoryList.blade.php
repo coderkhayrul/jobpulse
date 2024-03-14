@@ -8,24 +8,13 @@
                     <div class="job-search-field">
                         <div class="job-search-item">
                             <form class="form row">
-                                <div class="col-lg-5">
-                                    <div class="form-group left-icon mb-3">
-                                        <input type="text" class="form-control" name="job_title" placeholder="What?">
-                                        <i class="fas fa-search"></i>
-                                    </div>
+                                <div class="col-lg-6">
+                                    <h1 class="text-white">Listing Job</h1>
+                                    <h6 class="text-white">Your next career move starts here. Choose Job from thousands of
+                                        companies</h6>
+
                                 </div>
-                                <div class="col-lg-5">
-                                    <div class="form-group left-icon mb-3">
-                                        <input type="text" class="form-control" name="job_title" placeholder="Where?">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-12">
-                                    <div class="form-group form-action">
-                                        <button type="submit" class="btn btn-primary mt-0"><i
-                                                class="fas fa-search-location"></i> Find Job</button>
-                                    </div>
-                                </div>
+
                             </form>
                         </div>
                     </div>

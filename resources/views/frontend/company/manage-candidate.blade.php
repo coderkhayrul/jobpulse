@@ -2,10 +2,10 @@
 @section('frontend_content')
     @include('frontend.company.company-nav')
     <!--=================================
-                                      Dashboard Nav -->
+                                                      Dashboard Nav -->
 
     <!--=================================
-                                      Manage Candidates -->
+                                                      Manage Candidates -->
     <section>
         <div class="container">
             <div class="row">
@@ -172,7 +172,7 @@
                                             <li><a href="{{ route('company.jobPostEdit') }}" class="text-info"
                                                     data-bs-toggle="tooltip" title="" data-original-title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></a></li>
-                                            <li><a href="{{ route('company.job-delete') }}" class="text-danger"
+                                            <li><a href="{{ route('company.job-delete', $job) }}" class="text-danger"
                                                     data-bs-toggle="tooltip" title=""
                                                     data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
                                         </ul>
@@ -243,5 +243,5 @@
         </div>
     </section>
     <!--=================================
-                                      Manage Candidates -->
+                                                      Manage Candidates -->
 @endsection

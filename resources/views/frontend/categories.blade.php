@@ -22,7 +22,8 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="category-style-02">
                             <a href="{{ route('web.jobCategoryList', $category->slug) }}">
-                                <h6 class="category-title">{{ $category->name }}</h6> <span class="category-count">0</span>
+                                <h6 class="category-title">{{ $category->name }}</h6> <span
+                                    class="category-count">{{ count($category->jobs) }}</span>
                             </a>
                         </div>
                     </div>

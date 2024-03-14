@@ -99,7 +99,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        File::delete($category);
+        
         $category->delete();
 
         return response()->json([

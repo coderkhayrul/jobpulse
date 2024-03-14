@@ -10,21 +10,20 @@
                         <div class="job-search-item">
                             <form class="form row">
                                 <div class="col-lg-5">
-                                    <div class="form-group left-icon mb-3">
-                                        <input type="text" class="form-control" name="job_title" placeholder="What?">
-                                        <i class="fas fa-search"></i>
+                                    <div class="form-group left-icon mb-3 ">
+                                        <h1 class="text-white">Find Your Vacancy</h1>
+                                        <h6 class="text-white">Don't just find. Be found. Put your CV in front of great
+                                            employers.</h6>
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="form-group left-icon mb-3">
-                                        <input type="text" class="form-control" name="job_title" placeholder="Where?">
-                                        <i class="fas fa-search"></i>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-sm-12">
                                     <div class="form-group form-action">
-                                        <button type="submit" class="btn btn-primary mt-0"><i
-                                                class="fas fa-search-location"></i> Find Job</button>
+
                                     </div>
                                 </div>
                             </form>

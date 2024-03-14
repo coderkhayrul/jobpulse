@@ -2,10 +2,10 @@
 @section('frontend_content')
     @include('frontend.candidate.candidate-nav')
     <!--=================================
-                          Dashboard Nav -->
+                              Dashboard Nav -->
 
     <!--=================================
-                          Manage Jobs -->
+                              Manage Jobs -->
     <section>
         <div class="container">
             <div class="row">
@@ -132,6 +132,4 @@
             </div>
         </div>
     </section>
-    <!--=================================
-                          Manage Jobs -->
 @endsection

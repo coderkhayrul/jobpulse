@@ -127,7 +127,8 @@ class CandidateController extends Controller
 
     public function resumePerview()
     {
-        return view('frontend.candidate.my-resume-preview');
+        $user = Auth::user()->load('profile');
+        return view('frontend.candidate.my-resume-preview',compact('user'));
     }
     public function manageJobs()
     {

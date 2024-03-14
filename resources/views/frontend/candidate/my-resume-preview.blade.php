@@ -2,32 +2,38 @@
 <section class="space-ptb">
     <div class="container">
         <div class="row justify-content-center">
+            <div class=" text-lg-end">
+                <a class="btn btn-primary btn-md mb-4 mb-lg-0" href="{{ route('candidate.my-resume.preview') }}"><i
+                        class="fa fa-download" aria-hidden="true"></i>
+                    Download</a>
+            </div>
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="resume-base bg-light user-dashboard-info-box">
                             <div class="profile">
                                 <div class="jobber-user-info">
-                                    <div class="profile-avatar">
-                                        <img class="img-fluid " src="images/avatar/04.jpg" alt="">
+                                    <div class="profile-avatar ">
+                                        <img class="img-fluid" src="{{ asset(Auth::user()?->profile?->profileImage) }}"
+                                            alt="profile_image">
                                     </div>
                                     <div class="profile-avatar-info mt-3">
-                                        <h5>Felica Queen</h5>
+                                        <h5>{{ $user?->profile?->firstName }} {{ $user?->profile?->lastName }}</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="about-candidate border-top">
                                 <div class="candidate-info">
                                     <h6>Name:</h6>
-                                    <p>Anne Smith</p>
+                                    <p> {{ $user?->profile?->firstName }} {{ $user?->profile?->lastName }}</p>
                                 </div>
                                 <div class="candidate-info">
                                     <h6>Email:</h6>
-                                    <p>test04@gmail.com</p>
+                                    <p>{{ $user?->email }}</p>
                                 </div>
                                 <div class="candidate-info">
                                     <h6>Phone:</h6>
-                                    <p>(123) 345-6789</p>
+                                    <p>{{ $user?->mobile }}</p>
                                 </div>
                                 <div class="candidate-info">
                                     <h6>Date Of Birth:</h6>
@@ -35,16 +41,17 @@
                                 </div>
                                 <div class="candidate-info">
                                     <h6>Address:</h6>
-                                    <p>Maine Turnpike, Hallowell, ME, USA</p>
+                                    <p>{{ $user?->profile?->address }}</p>
                                 </div>
                                 <div class="candidate-info">
                                     <h6>Gender:</h6>
-                                    <p>Female</p>
+                                    <p>{{ $user?->profile?->gender }}</p>
                                 </div>
-                                <p>The old expression is absolutely true – whether you think you can or you can’t,
-                                    you’re right! One of the main areas that I work on with my clients is shedding these
-                                    non-supportive beliefs and replacing them with beliefs that will help them to
-                                    accomplish their desires.</p>
+                                <div class="candidate-info">
+                                    <h6>About Me:</h6>
+                                    <p>{{ $user?->profile?->details }}</p>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -59,12 +66,13 @@
                                         </div>
                                         <div class="jobber-timeline-info">
                                             <div class="dashboard-timeline-info">
-                                                <span class="jobber-timeline-time">2014 - 2018</span>
-                                                <h6 class="mb-2">Diploma in Graphics Design</h6>
-                                                <span>- Graphic Arts Institute</span>
-                                                <p class="mt-2">Have some fun and hypnotize yourself to be your very
-                                                    own “Ghost of Christmas future” and see what the future holds for
-                                                    you.</p>
+                                                <span class="jobber-timeline-time">
+                                                    <p> {{ Auth::user()?->education?->start_date }} -
+                                                        {{ Auth::user()?->education?->end_date }} </p>
+                                                </span>
+                                                <h6 class="mb-2">{{ Auth::user()?->education?->title }}</h6>
+                                                <span> - {{ Auth::user()?->education?->institute }}</span>
+                                                <p class="mt-2">{{ Auth::user()?->education?->description }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -80,12 +88,13 @@
                                         </div>
                                         <div class="jobber-timeline-info">
                                             <div class="dashboard-timeline-info">
-                                                <span class="jobber-timeline-time">2020-6-01 to 2020-6-01</span>
-                                                <h6 class="mb-2">Web Designer</h6>
-                                                <span>- Inwave Studio</span>
-                                                <p class="mt-2">One of the main areas that I work on with my clients
-                                                    is shedding these non-supportive beliefs and replacing them with
-                                                    beliefs that will help them to accomplish their desires.</p>
+                                                <span
+                                                    class="jobber-timeline-time">{{ Auth::user()?->experience?->start_date }}
+                                                    -
+                                                    {{ Auth::user()?->experience?->end_date }}</span>
+                                                <h6 class="mb-2">{{ Auth::user()?->experience?->title }}</h6>
+                                                <span>- {{ Auth::user()?->experience?->company }}</span>
+                                                <p class="mt-2">{{ Auth::user()?->experience?->description }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -95,35 +104,16 @@
                             <div class="mt-4">
                                 <h5>Professional Skill:</h5>
 
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width:55%" aria-valuenow="55"
-                                        aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar-title">Photoshop</div>
-                                        <span class="progress-bar-number">70%</span>
-                                    </div>
-                                </div>
-                                <div class="progress mb-md-0">
-                                    <div class="progress-bar" role="progressbar" style="width:80%" aria-valuenow="55"
-                                        aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar-title">JavaScript</div>
-                                        <span class="progress-bar-number">80%</span>
-                                    </div>
-                                </div>
 
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width:55%" aria-valuenow="55"
-                                        aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar-title">HTML/CSS</div>
-                                        <span class="progress-bar-number">55%</span>
-                                    </div>
-                                </div>
-                                <div class="progress mb-md-0">
-                                    <div class="progress-bar" role="progressbar" style="width:60%" aria-valuenow="100"
-                                        aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar-title">PHP</div>
-                                        <span class="progress-bar-number">60%</span>
-                                    </div>
+                                <div class="progress ">
+                                    <div class="progress-bar dashboard-timeline-info" role="progressbar"
+                                        style="width:85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar-title ">
+                                            <h6 class="mb-2">{{ Auth::user()?->skill?->skill_name }}</h6>
 
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                             <div class="timeline-box mt-4">
@@ -135,12 +125,10 @@
                                         </div>
                                         <div class="jobber-timeline-info">
                                             <div class="dashboard-timeline-info">
-                                                <span class="jobber-timeline-time">2020-6-01 to 2020-6-01</span>
-                                                <h6 class="mb-2">Web Designer</h6>
-                                                <span>- Inwave Studio</span>
-                                                <p class="mt-2">One of the main areas that I work on with my clients
-                                                    is shedding these non-supportive beliefs and replacing them with
-                                                    beliefs that will help them to accomplish their desires.</p>
+
+                                                <h6 class="mb-2">{{ Auth::user()?->award?->title }}</h6>
+
+                                                <p class="mt-2">{{ Auth::user()?->award?->description }}</p>
                                             </div>
                                         </div>
                                     </div>

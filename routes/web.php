@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\JobController;
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
@@ -50,7 +51,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('experience', ExperienceController::class);
     Route::resource('award', AwardController::class);
     Route::resource('pages', PageController::class);
-    Route::resource('jobs', PageController::class);
+    Route::resource('jobs', JobController::class);
     Route::resource('subscribe', SubscribeController::class);
     Route::resource('contact', ContactController::class);
 

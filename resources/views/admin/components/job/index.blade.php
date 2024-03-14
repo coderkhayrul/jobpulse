@@ -5,12 +5,12 @@
         <div class="col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h3>Total {{ count($experiences) }} experience</h3>
-                    <button type="btn" class="btn btn-primary w-md">
-                        <a href="{{ route('admin.experience.create') }}" class="dropdown-item">
+                    <h3>Total {{ count($jobs) }} Jobs</h3>
+                    {{-- <button type="btn" class="btn btn-primary w-md">
+                        <a href="{{ route('admin.job.create') }}" class="dropdown-item">
                             Create
                         </a>
-                    </button>
+                    </button> --}}
                 </div>
 
                 <div class="card-body">
@@ -21,24 +21,20 @@
                         <thead>
                             <tr class="text-primary" role="row">
                                 <th width="20%"> Title</th>
-                                <th width="20%"> Company</th>
-                                <th width="15%"> start_date</th>
-                                <th width="15%"> end_date</th>
-                                <th width="20%"> description</th>
+                                <th width="20%"> Expire Date</th>
+                                <th width="20%"> Address</th>
                                 <th class="text-center" width="10%"> Created At</th>
                                 <th width="10%" class="text-center text-dark">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($experiences as $experience)
+                            @foreach ($jobs as $job)
                                 <tr>
-                                    <td>{{ $experience->title }}</td>
-                                    <td>{{ $experience->company }}</td>
-                                    <td>{{ $experience->start_date }}</td>
-                                    <td>{{ $experience->end_date }}</td>
-                                    <td>{{ $experience->description }}</td>
+                                    <td>{{ $job?->title }}</td>
+                                    <td>{{ $job?->expireDate }}</td>
+                                    <td>{{ $job?->address }}</td>
                                     <td class="text-center">
-                                        {{ $experience->created_at->format('d-M-Y') }}
+                                        {{ $job->created_at->format('d-M-Y') }}
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
@@ -50,11 +46,10 @@
                                                 <i class="mdi mdi-chevron-down"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a href="{{ route('admin.experience.edit', $experience) }}"
-                                                    class="dropdown-item">
+                                                <a href="" class="dropdown-item">
                                                     <i class="bx bx-edit align-middle me-2"></i> Edit
                                                 </a>
-                                                <button onclick="experienceDelete()" class="dropdown-item" href="#">
+                                                <button onclick="" class="dropdown-item" href="#">
                                                     <i class="bx bx-trash-alt align-middle me-2"></i> Delete
                                                 </button>
                                             </div>
@@ -72,9 +67,9 @@
 
 
 @endsection
-@push('scripts')
+{{-- @push('scripts')
     <script>
-        function experienceDelete(id) {
+        function jobDelete(id) {
             let url = "";
             url = url.replace(':id', id);
 
@@ -89,7 +84,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     event.preventDefault();
-                    let url = "{{ route('admin.experience.destroy', ':id') }}";
+                    let url = "{{ route('admin.job.destroy', ':id') }}";
                     url = url.replace(':id', id);
                     $.ajax({
                         url: url,
@@ -101,7 +96,7 @@
                             if (response.status) {
                                 Swal.fire(
                                     'Deleted!',
-                                    'experience has been deleted.',
+                                    'job has been deleted.',
                                     'success'
                                 ).then((result) => {
                                     if (result.isConfirmed) {
@@ -121,4 +116,4 @@
             })
         }
     </script>
-@endpush
+@endpush --}}

@@ -11,9 +11,8 @@
                     aria-describedby="datatable_info" style="width: 1048px;">
                     <thead>
                         <tr class="text-primary" role="row">
-                            <th width="20%"> Name</th>
-                            <th width="20%"> percentage</th>
-                            <th width="20%"> color</th>
+                            <th width="80%"> Name</th>
+
                             <th class="text-center" width="10%"> Created At</th>
                             <th width="10%" class="text-center text-dark">Action</th>
                         </tr>
@@ -21,9 +20,9 @@
                     <tbody>
                         @foreach ($skills as $skill)
                             <tr>
-                                <td>{{ $skill->name }}</td>
-                                <td>{{ $skill->percentage }}</td>
-                                <td>{{ $skill->color }}</td>
+                                <td>{{ $skill->skill_name }}</td>
+
+
                                 <td class="text-center">
                                     {{ $skill->created_at->format('d-M-Y') }}
                                 </td>

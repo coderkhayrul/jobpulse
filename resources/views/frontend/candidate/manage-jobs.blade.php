@@ -2,10 +2,10 @@
 @section('frontend_content')
     @include('frontend.candidate.candidate-nav')
     <!--=================================
-                              Dashboard Nav -->
+                                      Dashboard Nav -->
 
     <!--=================================
-                              Manage Jobs -->
+                                      Manage Jobs -->
     <section>
         <div class="container">
             <div class="row">
@@ -31,7 +31,7 @@
                                         <th scope="col">Job Title</th>
                                         <th scope="col">Applications</th>
                                         <th scope="col">Featured</th>
-                                        <th scope="col">Status</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,16 +42,7 @@
                                         </th>
                                         <td>Applications</td>
                                         <td><i class="far fa-star"></i></td>
-                                        <td>
-                                            <ul class="list-unstyled mb-0 d-flex">
-                                                <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                        title="view"><i class="far fa-eye"></i></a></li>
-                                                <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                        title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                            </ul>
-                                        </td>
+
                                     </tr>
                                     <tr>
                                         <th scope="row">Job 02
@@ -60,16 +51,7 @@
                                         </th>
                                         <td>Applications</td>
                                         <td><i class="far fa-star"></i></td>
-                                        <td>
-                                            <ul class="list-unstyled mb-0 d-flex">
-                                                <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                        title="view"><i class="far fa-eye"></i></a></li>
-                                                <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                        title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                            </ul>
-                                        </td>
+
                                     </tr>
                                     <tr>
                                         <th scope="row">Job 03
@@ -78,16 +60,7 @@
                                         </th>
                                         <td>Applications</td>
                                         <td><i class="far fa-star"></i></td>
-                                        <td>
-                                            <ul class="list-unstyled mb-0 d-flex">
-                                                <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                        title="view"><i class="far fa-eye"></i></a></li>
-                                                <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                        title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                            </ul>
-                                        </td>
+
                                     </tr>
                                     <tr>
                                         <th scope="row">Job 04
@@ -96,16 +69,7 @@
                                         </th>
                                         <td>Applications</td>
                                         <td><i class="far fa-star"></i></td>
-                                        <td>
-                                            <ul class="list-unstyled mb-0 d-flex">
-                                                <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                        title="view"><i class="far fa-eye"></i></a></li>
-                                                <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                                <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                        title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                            </ul>
-                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>

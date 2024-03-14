@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class=" text-lg-end">
-                <a class="btn btn-primary btn-md mb-4 mb-lg-0" href="{{ route('candidate.my-resume.preview') }}"><i
+                <a class="btn btn-primary btn-md mb-4 mb-lg-0" href="{{ route('candidate.my-resume.download') }}"><i
                         class="fa fa-download" aria-hidden="true"></i>
                     Download</a>
             </div>
@@ -14,7 +14,8 @@
                             <div class="profile">
                                 <div class="jobber-user-info">
                                     <div class="profile-avatar ">
-                                        <img class="img-fluid" src="{{ asset(Auth::user()?->profile?->profileImage) }}"
+                                        <img class="img-fluid"
+                                            src="public_path/uploads/profile{{ Auth::user()?->profile?->profileImage }}"
                                             alt="profile_image">
                                     </div>
                                     <div class="profile-avatar-info mt-3">

@@ -19,7 +19,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group mb-md-0 justify-content-center">
                                             <input type="text" class="form-control" name="job_title"
-                                                placeholder="Job Title, Skill or Company">
+                                                placeholder="Job Title, Skill">
                                             <button type="submit" class="btn btn-primary btn-lg m-0"><i
                                                     class="fas fa-search"></i> Find Jobs</button>
                                         </div>

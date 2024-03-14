@@ -1,8 +1,6 @@
 <div id="sidebar-menu">
     <!-- Left Menu Start -->
     <ul class="metismenu list-unstyled" id="side-menu">
-        <li class="menu-title" key="t-menu">Menu</li>
-
         <li class="">
             <a href="" class="waves-effect" aria-expanded="false">
                 <i class="bx bx-home-circle"></i>
@@ -10,27 +8,51 @@
             </a>
         </li>
         <li>
-            <a href="javascript: void(0);" class="waves-effect has-arrow"">
+            <a href="javascript: void(0);" class="waves-effect has-arrow" aria-expanded="false">
                 <i class="bx bx-briefcase-alt"></i>
                 <span key="t-jobs">Jobs</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="#" key="t-job-list">Job List</a></li>
-                <li><a href="{{ route('admin.subscribe.index') }}" key="t-job-list">Jobs subscribes</a></li>
-                <li><a href="{{ route('admin.subscribe.index') }}" key="t-job-list">Jobs Category</a></li>
+                <li><a href="{{ route('admin.jobs.index') }}" key="t-job-list"><span key="t-joblist">Job
+                            List</span></a></li>
+                <li><a href="{{ route('admin.categories.index') }}"><span key="t-category">Jobs Category</span></a></li>
+                <li>
+                    <a href="{{ route('admin.job-types.index') }}"><span key="t-job-type">Job Type</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.skill.index') }}" class="waves-effect" aria-expanded="false">
+                        {{-- <i class="bx bxs-brightness"></i> --}}
+                        <span key="t-skills">Skills</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.education.index') }}" class="waves-effect" aria-expanded="false">
+                        {{-- <i class="bx bxs-institution"></i> --}}
+                        <span key="t-educations">Educations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.experience.index') }}" class="waves-effect" aria-expanded="false">
+                        {{-- <i class="bx bx-calendar"></i> --}}
+                        <span key="t-experiences">Experiences</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.position.index') }}" class="waves-effect" aria-expanded="false">
+                        {{-- <i class="bx bx-map"></i> --}}
+                        <span key="t-positions">Positions</span>
+                    </a>
+                </li>
+
         </li>
+
     </ul>
-    </li>
-    <li class="">
-        <a href="{{ route('admin.job-types.index') }}" class="waves-effect" aria-expanded="false">
-            <i class="bx bx-briefcase-alt"></i>
-            <span key="t-job-type">Job Type</span>
-        </a>
-    </li>
 
 
 
-    <li class="">
+
+
+    <li>
         <a href="{{ route('admin.blogs.index') }}" class="waves-effect" aria-expanded="false">
             <i class="bx bx-detail"></i>
             <span key="t-blogs">Blogs</span>
@@ -38,12 +60,7 @@
     </li>
 
 
-    <li>
-        <a href="{{ route('admin.position.index') }}" class="waves-effect" aria-expanded="false">
-            <i class="bx bx-map"></i>
-            <span key="t-positions">Positions</span>
-        </a>
-    </li>
+
     <li>
         <a href="#" class="waves-effect has-arrow" aria-expanded="false">
             <i class="bx bx-user"></i>
@@ -55,12 +72,7 @@
             <li><a href="{{ route('admin.user.index') }}?role=3" key="t-candidate">Candidate</a></li>
         </ul>
     </li>
-    <li>
-        <a href="{{ route('admin.skill.index') }}" class="waves-effect" aria-expanded="false">
-            <i class="bx bxs-brightness"></i>
-            <span key="t-skills">Skills</span>
-        </a>
-    </li>
+
 
     <li>
         <a href="{{ route('admin.pages.index') }}" class="waves-effect" aria-expanded="false">
@@ -68,19 +80,9 @@
             <span key="t-pages">Pages</span>
         </a>
     </li>
-    {{-- <li>
-            <a href="{{ route('admin.education.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bxs-institution"></i>
-                <span key="t-educations">Educations</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.experience.index') }}" class="waves-effect" aria-expanded="false">
-                <i class="bx bx-calendar"></i>
-                <span key="t-experiences">Experiences</span>
-            </a>
-        </li>
-         --}}
+
+
+
     <li>
         <a href="javascript: void(0);" class="waves-effect has-arrow"">
             <i class="bx bx-cog"></i>
@@ -92,17 +94,19 @@
         </ul>
     </li>
     <li>
-        <a target="_blank" href="{{ route('web.home') }}" class="waves-effect text-danger" aria-expanded="false">
+        <a target="_blank" href="{{ route('web.home') }}" class="waves-effect text-danger">
             <i class="bx bx-planet"></i>
             <span key="t-educations">Website</span>
         </a>
     </li>
+
     <li>
-        <a href="{{ route('admin.contact.index') }}" class="waves-effect" aria-expanded="false">
-            <i class="bx bx-phone-call"></i>
-            <span key="t-contact">Contact</span>
+        <a href="{{ route('admin.subscribe.index') }}" class="waves-effect" aria-expanded="false">
+            <i class="bx bx-bell"></i>
+            <span key="">Subscribes</span> </a>
         </a>
     </li>
 
-    </ul>
+
+
 </div>

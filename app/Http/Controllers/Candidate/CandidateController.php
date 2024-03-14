@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Candidate;
 
+use App\Models\Resume;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
+use Spatie\LaravelPdf\Facades\Pdf;
 use App\Http\Traits\CandidateTrait;
-use App\Models\Resume;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -128,7 +129,7 @@ class CandidateController extends Controller
     public function resumePerview()
     {
         $user = Auth::user()->load('profile');
-        return view('frontend.candidate.my-resume-preview',compact('user'));
+        return view('frontend.candidate.my-resume-preview', compact('user'));
     }
     public function manageJobs()
     {
@@ -144,5 +145,9 @@ class CandidateController extends Controller
     public function applyJob()
     {
         return view('frontend.candidate.apply-job');
+    }
+    public function getPdf(){
+         $user = Auth::user()->load('profile');
+        return Pdf::view('frontend.candidate.my-resume-preview', compact('user')) ->format('a4')->save('invoice.pdf');
     }
 }

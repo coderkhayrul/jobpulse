@@ -2,10 +2,10 @@
 @section('frontend_content')
     @include('frontend.company.company-nav')
     <!--=================================
-                                                      Dashboard Nav -->
+                                                                          Dashboard Nav -->
 
     <!--=================================
-                                                      Manage Candidates -->
+                                                                          Manage Candidates -->
     <section>
         <div class="container">
             <div class="row">
@@ -16,7 +16,7 @@
                                 <tr>
                                     <th>Candidate Name</th>
                                     <th class="text-center">Status</th>
-                                    <th class="action text-end">Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,18 +46,7 @@
                                                 class="fas fa-heart"></i></a>
                                         <span class="candidate-list-time order-1">Shortlisted</span>
                                     </td>
-                                    <td>
-                                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                                            <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="view"><i class="far fa-eye"></i></a>
-                                            </li>
-                                            <li><a href="#" class="text-info" data-bs-toggle="tooltip" title=""
-                                                    data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                            <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="Delete"><i
-                                                        class="far fa-trash-alt"></i></a></li>
-                                        </ul>
-                                    </td>
+
                                 </tr>
                                 <tr class="candidates-list">
                                     <td class="title">
@@ -85,18 +74,7 @@
                                                 class="fas fa-heart"></i></a>
                                         <span class="candidate-list-time order-1">Shortlisted</span>
                                     </td>
-                                    <td>
-                                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                                            <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="view"><i class="far fa-eye"></i></a>
-                                            </li>
-                                            <li><a href="#" class="text-info" data-bs-toggle="tooltip" title=""
-                                                    data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                                            <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="Delete"><i
-                                                        class="far fa-trash-alt"></i></a></li>
-                                        </ul>
-                                    </td>
+
                                 </tr>
                                 <tr class="candidates-list">
                                     <td class="title">
@@ -124,19 +102,7 @@
                                                 class="fas fa-heart"></i></a>
                                         <span class="candidate-list-time order-1">Shortlisted</span>
                                     </td>
-                                    <td>
-                                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                                            <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="view"><i
-                                                        class="far fa-eye"></i></a></li>
-                                            <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="Edit"><i
-                                                        class="fas fa-pencil-alt"></i></a></li>
-                                            <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="Delete"><i
-                                                        class="far fa-trash-alt"></i></a></li>
-                                        </ul>
-                                    </td>
+
                                 </tr>
                                 <tr class="candidates-list">
                                     <td class="title">
@@ -164,19 +130,7 @@
                                                 class="fas fa-heart"></i></a>
                                         <span class="candidate-list-time order-1">Shortlisted</span>
                                     </td>
-                                    <td>
-                                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                                            <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="view"><i
-                                                        class="far fa-eye"></i></a></li>
-                                            <li><a href="{{ route('company.jobPostEdit') }}" class="text-info"
-                                                    data-bs-toggle="tooltip" title="" data-original-title="Edit"><i
-                                                        class="fas fa-pencil-alt"></i></a></li>
-                                            <li><a href="{{ route('company.job-delete', $job) }}" class="text-danger"
-                                                    data-bs-toggle="tooltip" title=""
-                                                    data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                                        </ul>
-                                    </td>
+
                                 </tr>
                                 <tr class="candidates-list">
                                     <td class="title">
@@ -205,19 +159,7 @@
                                                 class="fas fa-heart"></i></a>
                                         <span class="candidate-list-time order-1">Shortlisted</span>
                                     </td>
-                                    <td>
-                                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                                            <li><a href="#" class="text-primary" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="view"><i
-                                                        class="far fa-eye"></i></a></li>
-                                            <li><a href="#" class="text-info" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="Edit"><i
-                                                        class="fas fa-pencil-alt"></i></a></li>
-                                            <li><a href="#" class="text-danger" data-bs-toggle="tooltip"
-                                                    title="" data-original-title="Delete"><i
-                                                        class="far fa-trash-alt"></i></a></li>
-                                        </ul>
-                                    </td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -243,5 +185,5 @@
         </div>
     </section>
     <!--=================================
-                                                      Manage Candidates -->
+                                                                          Manage Candidates -->
 @endsection

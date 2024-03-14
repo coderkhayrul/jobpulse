@@ -66,4 +66,5 @@ trait CandidateTrait
         notyf()->addSuccess('Skills Updated Successfully!');
         return back();
     }
+    
 }

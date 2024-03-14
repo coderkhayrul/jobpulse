@@ -19,32 +19,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 mb-4 mb-lg-0">
-                            <div class="candidates-feature-info bg-success">
-                                <div class="candidates-info-icon text-white">
-                                    <i class="fas fa-thumbs-up"></i>
-                                </div>
-                                <div class="candidates-info-content">
-                                    <h6 class="candidates-info-title text-white">Shortlisted Applications</h6>
-                                </div>
-                                <div class="candidates-info-count">
-                                    <h3 class="mb-0 text-white">00</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-4 mb-lg-0">
-                            <div class="candidates-feature-info bg-danger">
-                                <div class="candidates-info-icon text-white">
-                                    <i class="fas fa-thumbs-down"></i>
-                                </div>
-                                <div class="candidates-info-content">
-                                    <h6 class="candidates-info-title text-white">Rejected Applications</h6>
-                                </div>
-                                <div class="candidates-info-count">
-                                    <h3 class="mb-0 text-white">00</h3>
-                                </div>
-                            </div>
-                        </div>
+
+
                     </div>
                     <div class="user-dashboard-info-box">
                         <div id="chart">
@@ -137,9 +113,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="job-list-favourite-time"> <a class="mb-3 d-block order-2"
-                                            href="#"><i class="far fa-edit"></i></a> <span
-                                            class="job-list-time order-1"><i class="far fa-clock pe-1"></i>2W ago</span>
+                                    <div class="job-list-favourite-time"> <a class="mb-3 d-block order-2" href="#"><i
+                                                class="far fa-edit"></i></a> <span class="job-list-time order-1"><i
+                                                class="far fa-clock pe-1"></i>2W ago</span>
                                     </div>
                                 </div>
                             </div>
@@ -226,5 +202,5 @@
         </div>
     </section>
     <!--=================================
-                                                          Change Password -->
+                                                                      Change Password -->
 @endsection

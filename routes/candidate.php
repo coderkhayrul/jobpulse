@@ -13,6 +13,7 @@ Route::name('candidate.')->prefix('candidate')->controller(CandidateController::
     Route::post('/change-password', 'changePassword')->name('change-password');
     Route::get('/my-resume', 'myResume')->name('my-resume');
     Route::get('/my-resume-preview', 'resumePerview')->name('my-resume.preview');
+
     Route::get('/manage-jobs', 'manageJobs')->name('manage-jobs');
     Route::get('/logout', 'logout')->name('logout');
     Route::post('/education', 'educationUpdate')->name('education.update');
@@ -21,4 +22,6 @@ Route::name('candidate.')->prefix('candidate')->controller(CandidateController::
     Route::post('/award', 'awardUpdate')->name('award.update');
     Route::post('/cover-letter', 'coverLetterUpdate')->name('coverLetter.update');
     Route::post('/skills', 'skillsUpdate')->name('skills.update');
+
+    Route::get('/my-resume-download', 'getPdf')->name('my-resume.download');
 });

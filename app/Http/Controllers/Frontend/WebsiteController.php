@@ -23,6 +23,12 @@ class WebsiteController extends Controller
         return view('frontend.home', compact('jobs', 'categories', 'positions', 'pages'));
     }
 
+    public function search(Request $request)
+    {
+        $jobs = Job::where('title', 'like', '%' . $request->search . '%')->get();
+        return view('frontend.search', compact('jobs'));
+    }
+
     public function jobs()
     {
         $jobs = Job::get();

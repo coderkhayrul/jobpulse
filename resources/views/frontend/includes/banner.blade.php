@@ -15,7 +15,7 @@
                             needs. You can always exchange out jobs, upgrade or scale down when you need to.</p>
                         <div class="job-search-field">
                             <div class="job-search-item">
-                                <form>
+                                <form method="GET" action="{{ route('web.search') }}">
                                     <div class="col-sm-12">
                                         <div class="form-group mb-md-0 justify-content-center">
                                             <input type="text" class="form-control" name="job_title"

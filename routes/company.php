@@ -20,7 +20,7 @@ Route::name('company.')->prefix('company')->controller(CompanyController::class)
     Route::post('/my-profile', 'myProfileStore')->name('my-profile.store');
     Route::get('/change-password', 'changePasswordPage')->name('change-password-page');
     Route::post('/change-password', 'changePassword')->name('change-password');
-    Route::get('/manage-candidate', 'manageCandidate')->name('manage-candidate');
+    Route::get('/manage-candidate/{id}', 'manageCandidate')->name('manage-candidate');
     Route::get('/manage-jobs', 'manageJobs')->name('manage-jobs');
     Route::get('/job-post', 'jobPost')->name('job-post');
     Route::post('/job-post', 'jobPostStore')->name('job-post.store');

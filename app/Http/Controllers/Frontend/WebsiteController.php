@@ -117,4 +117,15 @@ class WebsiteController extends Controller
         $page = Page::where('slug', $slug)->first();
         return view('frontend.singlePage', compact('page'));
     }
+
+    public function applyStore($slug)
+    {
+        $job = Job::where('slug', $slug)->first();
+
+        $apply = auth()->user()->apply()->create([
+            'job_id' => $job->id,
+        ]);
+        notyf()->addSuccess('You have been applied successfully.');
+        return back();
+    }
 }

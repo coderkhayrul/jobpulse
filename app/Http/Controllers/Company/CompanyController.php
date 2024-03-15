@@ -32,7 +32,10 @@ class CompanyController extends Controller
     public function myProfileStore(Request $request)
     {
         if ($request->hasFile('profileImage')) {
-            deleteImage(Auth::user()->profile->profileImage);
+            // public folder image exiest check
+            if (Auth::user()->profile && file_exists(Auth::user()->profile->profileImage)) {
+                deleteImage(Auth::user()->profile->profileImage);
+            }
             $image = saveImage($request->file('profileImage'), 'uploads/profile/');
         } else {
             $image = Auth::user()->profile->profileImage;
@@ -84,12 +87,14 @@ class CompanyController extends Controller
             ]);
         }
         notyf()->addSuccess('Profile has been updated successfully.');
-        return redirect()->route('admin.user');
+        return back();
     }
 
-    public function manageCandidate()
+    public function manageCandidate($id)
     {
-        return view('frontend.company.manage-candidate');
+
+        $applies = Job::find($id)->applies()->get();
+        return view('frontend.company.manage-candidate', compact('applies'));
     }
 
     public function manageJobs()
@@ -127,7 +132,7 @@ class CompanyController extends Controller
             'address' => 'required',
         ]);
 
-        
+
         Auth::user()->jobs()->create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
@@ -164,11 +169,11 @@ class CompanyController extends Controller
 
 
         Auth::user()->jobs()->update($request->all());
-        //    
+        //
         notyf()->addSuccess('Job Update has been successfully.');
         return redirect()->route('company.manage-jobs');
     }
-    
+
 
 
 

@@ -55,7 +55,7 @@
                                             <ul class="list-unstyled">
                                                 <li><i class="fas fa-map-marker-alt pe-1"></i>{{ $job->address }}</li>
                                                 <li><i class="fas fa-phone fa-flip-horizontal fa-fw"></i><span
-                                                        class="ps-2">(123) 345-6789</span></li>
+                                                        class="ps-2">{{ $job?->user?->mobile }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@
                                     <i class="font-xll text-primary align-self-center flaticon-bar-chart"></i>
                                     <div class="feature-info-content ps-3">
                                         <label class="mb-1">Career Level</label>
-                                        <span class="mb-0 fw-bold d-block text-dark">Executive</span>
+                                        <span class="mb-0 fw-bold d-block text-dark">{{ $job?->position?->name }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                     <i class="font-xll text-primary align-self-center flaticon-apartment"></i>
                                     <div class="feature-info-content ps-3">
                                         <label class="mb-1">Industry</label>
-                                        <span class="mb-0 fw-bold d-block text-dark">Management</span>
+                                        <span class="mb-0 fw-bold d-block text-dark">{{ $job?->category?->name }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +135,21 @@
                 <div class="col-lg-4">
                     <div class="sidebar mb-0">
                         <div class="widget d-grid">
-                            <a class="btn btn-primary" href="#"><i class="far fa-paper-plane"></i>Apply for job</a>
+
+                            @if (Auth::user()->role == 3)
+                                @php
+                                    $apply = App\Models\Apply::where('job_id', $job->id)
+                                        ->where('user_id', Auth::id())
+                                        ->first();
+                                @endphp
+                                @if ($apply)
+                                    <a class="btn btn-secondary" href="#"><i class="far fa-paper-plane"></i>Already
+                                        Applies</a>
+                                @else
+                                    <a class="btn btn-primary" href="{{ route('web.applyStore', $job->slug) }}"><i
+                                            class="far fa-paper-plane"></i>Apply for job</a>
+                                @endif
+                            @endif
                         </div>
                         <div class="widget">
                             <div class="company-address widget-box">
@@ -179,7 +193,8 @@
                                         <div class="widget-box">
                                             <div class="d-flex">
                                                 <i class="flaticon-personal-profile fa-2x fa-fw text-primary"></i>
-                                                <span class="ps-3">300-500 Application</span>
+                                                <span class="ps-3">{{ $job->applies->count() }} Application</span>
+
                                             </div>
                                         </div>
                                     </li>

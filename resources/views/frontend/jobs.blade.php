@@ -18,53 +18,6 @@
         </div>
     </section>
 
-
-    {{-- <section class="space-ptb">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center">
-                    <div class="section-title center">
-                        <h2 class="title">Choose Your Category</h2>
-                        <p>What made each of these people so successful? Motivation.</p>
-                    </div>
-                    <div class="owl-carousel owl-nav-bottom-center" data-nav-arrow="false" data-nav-dots="true"
-                        data-items="4" data-md-items="3" data-sm-items="2" data-xs-items="1" data-xx-items="1"
-                        data-space="15" data-autoheight="true">
-                        @foreach ($categories as $category)
-                            <div class="item">
-                                <div class="employers-grid mb-4 mb-lg-0">
-                                    <div class="employers-list-logo">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/07.svg"
-                                            alt="">
-                                    </div>
-                                    <div class="employers-list-details">
-                                        <div class="employers-list-info">
-                                            <div class="employers-list-title">
-                                                <h5 class="mb-0"><span>via</span><span class="text-primary">
-                                                        {{ $category->name }}</span>
-                                                </h5>
-                                            </div>
-                                            <div class="employers-list-option">
-                                                <ul class="list-unstyled">
-                                                    <li><i class="fas fa-map-marker-alt pe-1"></i>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="employers-list-position">
-                                        <a class="btn btn-sm btn-dark">30 Open position</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
     <section class="space-ptb">
         <div class="container">
             <div class="section-title center">
@@ -79,7 +32,7 @@
                         @foreach ($categories as $category)
                             <a href="{{ route('web.jobCategoryList', $category->slug) }}" class="category-item">
                                 <div class="category-icon mb-1 ">
-                                    <i class="flaticon-money"></i>
+                                    <i class="flaticon-job"></i>
                                 </div>
                                 <h6>{{ $category->name }}</h6>
                                 <span class="mb-0">{{ count($category->jobs) }}</span>
@@ -108,141 +61,17 @@
                     <!-- sidebar -->
                     <div class="row mb-4">
                         <div class="col-12">
-                            <h6 class="mb-0">Showing 1-12 of <span class="text-primary">28 Jobs</span></h6>
+                            <h6 class="mb-0">Showing 1-12 of <span class="text-primary">{{ count($jobs) }} Jobs</span>
+                            </h6>
                         </div>
                     </div>
-                    <div class="job-filter mb-4 d-sm-flex align-items-center">
-                        <div class="job-alert-bt"> <a class="btn btn-md btn-dark" href="#"><i
-                                    class="fa fa-envelope"></i>Get job alert </a> </div>
-                        <div class="job-shortby ms-sm-auto d-flex align-items-center">
-                            <form class="form-inline">
-                                <div class="d-sm-flex align-items-center mb-0">
-                                    <label class="justify-content-start me-2 mb-2 mb-sm-0">sort by :</label>
-                                    <div class="short-by">
-                                        <select class="form-control basic-select">
-                                            <option>Newest</option>
-                                            <option>Oldest</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="filter-btn ms-sm-3 ms-auto"> <a class="btn btn-outline-primary"
-                                    data-bs-toggle="collapse" href="#collapsefilter" role="button" aria-expanded="false"
-                                    aria-controls="collapsefilter"><i class="fa fa-filter"></i>Show
-                                    Filter </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collapse" id="collapsefilter">
-                        <div class="row  mb-4">
-                            <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
-                                <h6 class="mb-3">Date Posted</h6>
-                                <div class="widget-content">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="dateposted1">
-                                        <label class="form-check-label" for="dateposted1">Last hour</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="dateposted2">
-                                        <label class="form-check-label" for="dateposted2">Last 24 hour</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="dateposted3">
-                                        <label class="form-check-label" for="dateposted3">Last 7 days</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="dateposted4">
-                                        <label class="form-check-label" for="dateposted4">Last 14 days</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="dateposted5">
-                                        <label class="form-check-label" for="dateposted5">Last 30 days</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
-                                <h6 class="mb-3">Specialism</h6>
-                                <div class="widget-content">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="specialism1">
-                                        <label class="form-check-label" for="specialism1">IT Contractor</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="specialism2">
-                                        <label class="form-check-label" for="specialism2">Charity & Voluntary</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="specialism3">
-                                        <label class="form-check-label" for="specialism3">Digital & Creative</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="specialism4">
-                                        <label class="form-check-label" for="specialism4">Estate Agency</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="specialism5">
-                                        <label class="form-check-label" for="specialism5">Graduate</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 mb-4 mb-sm-0">
-                                <h6 class="mb-3">Job Type</h6>
-                                <div class="widget">
-                                    <div class="widget-content">
-                                        <div class="form-check fulltime-job">
-                                            <input type="checkbox" class="form-check-input" id="jobtype1">
-                                            <label class="form-check-label" for="jobtype1">Full Time</label>
-                                        </div>
-                                        <div class="form-check parttime-job">
-                                            <input type="checkbox" class="form-check-input" id="jobtype2">
-                                            <label class="form-check-label" for="jobtype2">Part-Time</label>
-                                        </div>
-                                        <div class="form-check freelance-job">
-                                            <input type="checkbox" class="form-check-input" id="jobtype3">
-                                            <label class="form-check-label" for="jobtype3">Freelance</label>
-                                        </div>
-                                        <div class="form-check temporary-job">
-                                            <input type="checkbox" class="form-check-input" id="jobtype4">
-                                            <label class="form-check-label" for="jobtype4">Temporary</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6">
-                                <h6 class="mb-3">Experience</h6>
-                                <div class="collapse show" id="experience">
-                                    <div class="widget-content">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="experience1">
-                                            <label class="form-check-label" for="experience1">Fresher</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="experience2">
-                                            <label class="form-check-label" for="experience2">Less than 1 year</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="experience3">
-                                            <label class="form-check-label" for="experience3">2 Year</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="experience4">
-                                            <label class="form-check-label" for="experience4">3 Year</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="experience5">
-                                            <label class="form-check-label" for="experience5">4 Year</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="row">
                         @foreach ($jobs as $job)
                             <div class="col-md-6 col-lg-4">
                                 <div class="job-list job-grid">
                                     <div class="job-list-logo">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/01.svg"
+                                        <img class="img-fluid" src="{{ asset($job?->user?->profile?->profileImage) }}"
                                             alt="">
                                     </div>
                                     <div class="job-list-details">
@@ -254,7 +83,7 @@
                                             </div>
                                             <div class="job-list-option">
                                                 <ul class="list-unstyled">
-                                                    <li> <span>via</span><span class="text-primary">
+                                                    <li> <span>by</span><span class="text-primary">
                                                             {{ $job?->user?->profile?->companyName }}</span>
 
                                                     </li>
@@ -268,8 +97,21 @@
                                                     </li>
                                                 </ul>
                                                 <div class="">
-                                                    <a href=""><span
-                                                            class="badge badge-lg bg-primary">Apply</span></a>
+
+                                                    @if (Auth::user()->role == 3)
+                                                        @php
+                                                            $apply = App\Models\Apply::where('job_id', $job->id)
+                                                                ->where('user_id', Auth::id())
+                                                                ->first();
+                                                        @endphp
+                                                        @if ($apply)
+                                                            <a href="#"><span
+                                                                    class="badge badge-lg bg-secondary">Applies</span></a>
+                                                        @else
+                                                            <a href="{{ route('web.applyStore', $job->slug) }}"><span
+                                                                    class="badge badge-lg bg-primary">Apply</span></a>
+                                                        @endif
+                                                    @endif
                                                     <a href="{{ route('web.job.single', $job->slug) }}"><span
                                                             class="badge badge-lg bg-primary">View</span></a>
                                                 </div>

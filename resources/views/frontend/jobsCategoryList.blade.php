@@ -34,23 +34,6 @@
                         </div>
 
                     </div>
-                    <div class="job-filter mb-4 d-sm-flex align-items-center">
-                        <div class="job-alert-bt"> <a class="btn btn-md btn-dark" href="#"><i
-                                    class="fa fa-envelope"></i>Get job alert </a> </div>
-                        <div class="job-shortby ms-sm-auto d-flex align-items-center">
-                            <form class="form-inline">
-                                <div class="d-sm-flex align-items-center mb-0">
-                                    <label class="justify-content-start me-2 mb-2 mb-sm-0">sort by :</label>
-                                    <div class="short-by">
-                                        <select class="form-control basic-select">
-                                            <option>Newest</option>
-                                            <option>Oldest</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                     <div class="row">
                         @foreach ($jobs as $job)
                             <div class="col-12">
@@ -81,8 +64,20 @@
                                     </div>
                                     <div class="job-list-favourite-time">
                                         <div class="">
-
-                                            <a href=""><span class="badge bg-primary p-2 mb-1">Apply</span></a>
+                                            @if (Auth::user()->role == 3)
+                                                @php
+                                                    $apply = App\Models\Apply::where('job_id', $job->id)
+                                                        ->where('user_id', Auth::id())
+                                                        ->first();
+                                                @endphp
+                                                @if ($apply)
+                                                    <a href="#"><span
+                                                            class="badge bg-secondary p-2 mb-1">Applies</span></a>
+                                                @else
+                                                    <a href="{{ route('web.applyStore', $job->slug) }}"><span
+                                                            class="badge bg-primary p-2 mb-1">Apply</span></a>
+                                                @endif
+                                            @endif
                                             <a href="{{ route('web.job.single', $job->slug) }}"><span
                                                     class="badge bg-primary p-2 ">View</span></a>
                                         </div>

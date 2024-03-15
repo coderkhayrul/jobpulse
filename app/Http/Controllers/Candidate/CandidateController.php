@@ -133,7 +133,9 @@ class CandidateController extends Controller
     }
     public function manageJobs()
     {
-        return view('frontend.candidate.manage-jobs');
+        // Get All Applied Jobs
+        $appliedJobs = Auth::user()->apply()->with('job')->get();
+        return view('frontend.candidate.manage-jobs', compact('appliedJobs'));
     }
 
     public function logout()
@@ -146,8 +148,9 @@ class CandidateController extends Controller
     {
         return view('frontend.candidate.apply-job');
     }
-    public function getPdf(){
-         $user = Auth::user()->load('profile');
-        return Pdf::view('frontend.candidate.my-resume-preview', compact('user')) ->format('a4')->save('invoice.pdf');
+    public function getPdf()
+    {
+        $user = Auth::user()->load('profile');
+        return Pdf::view('frontend.candidate.my-resume-preview', compact('user'))->format('a4')->save('invoice.pdf');
     }
 }

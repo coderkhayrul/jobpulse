@@ -31,7 +31,11 @@
                                                     {{ $job->expireDate }}</p>
                                                 <p class="mb-0">Address: {{ $job->address }}</p>
                                             </th>
-                                            <td>Applications</td>
+                                            <td>
+                                                <a href="{{ route('company.manage-candidate', $job->id) }}"
+                                                    class="text-primary" data-bs-toggle="tooltip" title="Show"><i
+                                                        class="far fa-eye"></i>Applies User</a>
+                                            </td>
                                             <td>
                                                 <span class="badge bg-success">Active</span>
                                             </td>

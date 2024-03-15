@@ -1,11 +1,6 @@
 @extends('frontend.layouts.app')
 @section('frontend_content')
     @include('frontend.company.company-nav')
-    <!--=================================
-                                                                          Dashboard Nav -->
-
-    <!--=================================
-                                                                          Manage Candidates -->
     <section>
         <div class="container">
             <div class="row">
@@ -15,152 +10,49 @@
                             <thead>
                                 <tr>
                                     <th>Candidate Name</th>
+                                    <th>Job Name</th>
                                     <th class="text-center">Status</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="candidates-list">
-                                    <td class="title">
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/avatar/06.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="candidate-list-details">
-                                            <div class="candidate-list-info">
-                                                <div class="candidate-list-title">
-                                                    <h5 class="mb-0"><a href="#">Sara Lisbon</a></h5>
-                                                </div>
-                                                <div class="candidate-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li><i class="fas fa-filter pe-1"></i>Strategy & Consultancy</li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Canyon Village, Ramon
-                                                        </li>
-                                                    </ul>
+                                @foreach ($applies as $apply)
+                                    <tr class="candidates-list">
+                                        <td class="title">
+                                            <div class="thumb">
+                                                <img class="img-fluid" src="{{ asset('frontend') }}/images/avatar/06.jpg"
+                                                    alt="">
+                                            </div>
+                                            <div class="candidate-list-details">
+                                                <div class="candidate-list-info">
+                                                    <div class="candidate-list-title">
+                                                        <h5 class="mb-0"><a href="#">{{ $apply->user->name }}</a>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="candidate-list-option">
+                                                        <ul class="list-unstyled">
+                                                            <li><i
+                                                                    class="fas fa-filter pe-1"></i>{{ $apply?->job?->category?->name }}
+                                                            </li>
+                                                            <li><i
+                                                                    class="fas fa-map-marker-alt pe-1"></i>{{ $apply?->user?->profile?->address }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="candidate-list-favourite-time text-center">
-                                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
-                                                class="fas fa-heart"></i></a>
-                                        <span class="candidate-list-time order-1">Shortlisted</span>
-                                    </td>
+                                        </td>
+                                        <td class="candidate-list-favourite-time text-center">
+                                            <span class="candidate-list-time order-1">{{ $apply->job->title }}</span>
+                                        </td>
+                                        <td class="candidate-list-favourite-time text-center">
+                                            <span class="candidate-list-time order-1">{{ $apply->status }}</span>
+                                        </td>
 
-                                </tr>
-                                <tr class="candidates-list">
-                                    <td class="title">
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/avatar/02.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="candidate-list-details">
-                                            <div class="candidate-list-info">
-                                                <div class="candidate-list-title">
-                                                    <h5 class="mb-0"><a href="#">Paul Flavius</a></h5>
-                                                </div>
-                                                <div class="candidate-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li><i class="fas fa-filter pe-1"></i>General Insurance</li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Ormskirk Rd, Wigan
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="candidate-list-favourite-time text-center">
-                                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
-                                                class="fas fa-heart"></i></a>
-                                        <span class="candidate-list-time order-1">Shortlisted</span>
-                                    </td>
+                                    </tr>
+                                @endforeach
 
-                                </tr>
-                                <tr class="candidates-list">
-                                    <td class="title">
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/avatar/08.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="candidate-list-details">
-                                            <div class="candidate-list-info">
-                                                <div class="candidate-list-title">
-                                                    <h5 class="mb-0"><a href="#">Carolyn & Dan</a></h5>
-                                                </div>
-                                                <div class="candidate-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li><i class="fas fa-filter pe-1"></i>Recruitment Consultancy</li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Paris, Île-de-France
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="candidate-list-favourite-time text-center">
-                                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
-                                                class="fas fa-heart"></i></a>
-                                        <span class="candidate-list-time order-1">Shortlisted</span>
-                                    </td>
 
-                                </tr>
-                                <tr class="candidates-list">
-                                    <td class="title">
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/avatar/05.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="candidate-list-details">
-                                            <div class="candidate-list-info">
-                                                <div class="candidate-list-title">
-                                                    <h5 class="mb-0"><a href="#">Felica Queen</a></h5>
-                                                </div>
-                                                <div class="candidate-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li><i class="fas fa-filter pe-1"></i>General Insurance</li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Union St, New Delhi
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="candidate-list-favourite-time text-center">
-                                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
-                                                class="fas fa-heart"></i></a>
-                                        <span class="candidate-list-time order-1">Shortlisted</span>
-                                    </td>
-
-                                </tr>
-                                <tr class="candidates-list">
-                                    <td class="title">
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/images/avatar/04.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="candidate-list-details">
-                                            <div class="candidate-list-info">
-                                                <div class="candidate-list-title">
-                                                    <h5 class="mb-0"><a href="#">Melissa Doe</a></h5>
-                                                </div>
-                                                <div class="candidate-list-option">
-                                                    <ul class="list-unstyled">
-                                                        <li><i class="fas fa-filter pe-1"></i>Construction &amp; Property
-                                                        </li>
-                                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Botchergate, Carlisle
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="candidate-list-favourite-time text-center">
-                                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
-                                                class="fas fa-heart"></i></a>
-                                        <span class="candidate-list-time order-1">Shortlisted</span>
-                                    </td>
-
-                                </tr>
                             </tbody>
                         </table>
                         <div class="row">
@@ -185,5 +77,5 @@
         </div>
     </section>
     <!--=================================
-                                                                          Manage Candidates -->
+                                                                                                                                                      Manage Candidates -->
 @endsection

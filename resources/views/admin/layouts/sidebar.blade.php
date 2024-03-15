@@ -26,15 +26,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.education.index') }}" class="waves-effect" aria-expanded="false">
-                        {{-- <i class="bx bxs-institution"></i> --}}
-                        <span key="t-educations">Educations</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.experience.index') }}" class="waves-effect" aria-expanded="false">
-                        {{-- <i class="bx bx-calendar"></i> --}}
-                        <span key="t-experiences">Experiences</span>
+                    <a href="{{ route('admin.applies.index') }}" class="waves-effect" aria-expanded="false">
+                        <span key="t-educations">Applies</span>
                     </a>
                 </li>
                 <li>

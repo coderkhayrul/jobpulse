@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Frontend\WebsiteController;
 
@@ -33,6 +34,8 @@ Route::name('web.')->controller(WebsiteController::class)->group(function () {
     Route::post('subscribe', 'subscribe')->name('subscribe');
     Route::post('contact', 'contactStore')->name('contactStore');
     Route::get('category/{id}/jobList', 'jobCategory')->name('jobCategoryList');
+    Route::get('apply/{slug}', 'applyStore')->name('applyStore');
+    Route::get('/search', 'search')->name('search');
 
     // Route::get('/all-category', 'allCategory')->name('all-category.show');
     // Route::get('/category/{slug}', 'signOut')->name('sign-out');
@@ -54,6 +57,9 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::resource('jobs', JobController::class);
     Route::resource('subscribe', SubscribeController::class);
     Route::resource('contact', ContactController::class);
+    Route::resource('applies', ApplyController::class);
+    Route::get('applies/status/approve/{id}', [ApplyController::class, 'statusApprove'])->name('applies.approve');
+    Route::get('applies/status/rejected/{id}', [ApplyController::class, 'statusRejected'])->name('applies.rejected');
 
 
 
@@ -62,12 +68,12 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
     Route::patch('general-setting', [AdminController::class, 'generalSettingUpdate'])->name('general-setting.update');
 });
 
-    Route::get('/google-login-redirect', [SocialLoginController::class, 'googleRedirect'])
-        ->name('google.login');
-        
-    Route::get('/google-login-callback', [SocialLoginController::class, 'googleCallback'])
-        ->name('google.login.callback');
-        
+Route::get('/google-login-redirect', [SocialLoginController::class, 'googleRedirect'])
+    ->name('google.login');
+
+Route::get('/google-login-callback', [SocialLoginController::class, 'googleCallback'])
+    ->name('google.login.callback');
+
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/company.php';

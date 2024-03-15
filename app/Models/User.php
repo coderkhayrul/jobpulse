@@ -106,4 +106,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Resume::class);
     }
+
+    public function apply()
+    {
+        return $this->hasMany(Apply::class);
+    }
 }

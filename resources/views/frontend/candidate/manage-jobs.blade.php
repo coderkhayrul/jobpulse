@@ -2,10 +2,10 @@
 @section('frontend_content')
     @include('frontend.candidate.candidate-nav')
     <!--=================================
-                                      Dashboard Nav -->
+                                                                                                                                                                      Dashboard Nav -->
 
     <!--=================================
-                                      Manage Jobs -->
+                                                                                                                                                                      Manage Jobs -->
     <section>
         <div class="container">
             <div class="row">
@@ -30,47 +30,26 @@
                                     <tr>
                                         <th scope="col">Job Title</th>
                                         <th scope="col">Applications</th>
-                                        <th scope="col">Featured</th>
+                                        <th scope="col">Status</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">Job 01
-                                            <p class="mb-1 mt-2">Expiry: 2020-04-15</p>
-                                            <p class="mb-0">Address: Wellesley Rd, London</p>
-                                        </th>
-                                        <td>Applications</td>
-                                        <td><i class="far fa-star"></i></td>
+                                    @foreach ($appliedJobs as $applies)
+                                        <tr>
+                                            <th scope="row">{{ $applies?->job?->title }}
+                                                <p class="mb-1 mt-2">Expiry: {{ $applies?->job?->expireDate }}</p>
+                                                <p class="mb-0">{{ $applies?->job?->address }}</p>
+                                            </th>
+                                            <td>
+                                                {{ $applies?->job?->user?->profile?->companyName }}
+                                            </td>
+                                            <td>
+                                                {{ $applies->status }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Job 02
-                                            <p class="mb-1 mt-2">Expiry: 2020-10-20</p>
-                                            <p class="mb-0">Address: Ormskirk Rd, Wigan</p>
-                                        </th>
-                                        <td>Applications</td>
-                                        <td><i class="far fa-star"></i></td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Job 03
-                                            <p class="mb-1 mt-2">Expiry: 2020-11-30</p>
-                                            <p class="mb-0">Address: New Castle, PA</p>
-                                        </th>
-                                        <td>Applications</td>
-                                        <td><i class="far fa-star"></i></td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Job 04
-                                            <p class="mb-1 mt-2">Expiry: 2020-12-14</p>
-                                            <p class="mb-0">Address: Ormskirk Rd, Wigan</p>
-                                        </th>
-                                        <td>Applications</td>
-                                        <td><i class="far fa-star"></i></td>
-
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>

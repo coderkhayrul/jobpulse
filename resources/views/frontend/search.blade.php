@@ -18,37 +18,6 @@
         </div>
     </section>
 
-    <section class="space-ptb">
-        <div class="container">
-            <div class="section-title center">
-                <h2 class="title">Choose Your Category</h2>
-                <p class="mb-0">What made each of these people so successful? Motivation.</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="category-style text-center">
-
-                        @foreach ($categories as $category)
-                            <a href="{{ route('web.jobCategoryList', $category->slug) }}" class="category-item">
-                                <div class="category-icon mb-1 ">
-                                    <i class="flaticon-job"></i>
-                                </div>
-                                <h6>{{ $category->name }}</h6>
-                                <span class="mb-0">{{ count($category->jobs) }}</span>
-                            </a>
-                        @endforeach
-                        <div class="col-12 justify-content-center d-flex mt-4">
-                            <a class="btn btn-primary btn-lg" href="{{ route('web.all-category') }}">View More
-                                Category</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
     <!-- job-grid -->
     <section class="space-ptb">
         <div class="container">
@@ -98,7 +67,7 @@
                                                 </ul>
                                                 <div class="">
 
-                                                    @if (Auth::user()->role == 3)
+                                                    @if (Auth::user()?->role == 3)
                                                         @php
                                                             $apply = App\Models\Apply::where('job_id', $job->id)
                                                                 ->where('user_id', Auth::id())

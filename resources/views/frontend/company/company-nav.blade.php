@@ -30,8 +30,8 @@
                                     href="{{ route('company.my-profile') }}">My Profile</a></li>
                             <li><a class="{{ routeMatch('company.change-password-page') }}"
                                     href="{{ route('company.change-password-page') }}">Change Password</a></li>
-                            <li><a class="{{ routeMatch('company.manage-candidate') }}"
-                                    href="{{ route('company.manage-candidate') }}">Manage Candidates</a></li>
+                            {{-- <li><a class="{{ routeMatch('company.manage-candidate') }}"
+                                    href="{{ route('company.manage-candidate') }}">Manage Candidates</a></li> --}}
                             <li><a class="{{ routeMatch('company.manage-jobs') }}"
                                     href="{{ route('company.manage-jobs') }}">Manage Jobs</a></li>
                             <li><a class="{{ routeMatch('company.job-post') }}"

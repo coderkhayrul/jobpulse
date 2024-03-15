@@ -10,14 +10,7 @@
         <div class="container">
             <div class="row align-items-center">
                 @auth
-                    <div class="col-lg-9 mb-4 mb-sm-4 mb-lg-0">
 
-                        <div class="d-sm-flex">
-
-                            <h4 class="text-white">Create free account to find thousands Jobs, Employment &amp; Career
-                                Opportunities around you!</h4>
-                        </div>
-                    </div>
                     @if (Auth::user()->role == 2)
                         <div class="col-md-3 text-lg-end">
                             <a class="btn btn-dark" href="{{ route('company.job-post') }}">Post Job</a>
@@ -55,13 +48,13 @@
                             <div class="item">
                                 <div class="employers-grid mb-4 mb-lg-0">
                                     <div class="employers-list-logo">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/07.svg"
+                                        <img class="img-fluid" src="{{ asset($job->user->profile->profileImage) }}"
                                             alt="">
                                     </div>
                                     <div class="employers-list-details">
                                         <div class="employers-list-info">
                                             <div class="employers-list-title">
-                                                <h5 class="mb-0"><span>via</span><span class="text-primary">
+                                                <h5 class="mb-0"><span>By</span><span class="text-primary">
                                                         {{ $job?->user?->profile?->companyName }}</span>
                                                 </h5>
                                             </div>
@@ -124,8 +117,8 @@
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="job-list job-grid">
                                             <div class="job-list-logo ">
-                                                <img class="img-fluid" src="{{ asset('frontend') }}/images/svg/10.svg"
-                                                    alt="">
+                                                <img class="img-fluid"
+                                                    src="{{ asset($job?->user?->profile?->profileImage) }}" alt="">
                                             </div>
                                             <div class="job-list-details">
                                                 <div class="job-list-info">
@@ -154,8 +147,20 @@
                                                             </li>
                                                         </ul>
                                                         <div class="">
-                                                            <a href=""><span
-                                                                    class="badge badge-lg bg-primary">Apply</span></a>
+                                                            @if (Auth::user()?->role == 3)
+                                                                @php
+                                                                    $apply = App\Models\Apply::where('job_id', $job->id)
+                                                                        ->where('user_id', Auth::id())
+                                                                        ->first();
+                                                                @endphp
+                                                                @if ($apply)
+                                                                    <a href="#"><span
+                                                                            class="badge badge-lg bg-secondary">Applies</span></a>
+                                                                @else
+                                                                    <a href="{{ route('web.applyStore', $job->slug) }}"><span
+                                                                            class="badge badge-lg bg-primary">Apply</span></a>
+                                                                @endif
+                                                            @endif
                                                             <a href="{{ route('web.job.single', $job->slug) }}"><span
                                                                     class="badge badge-lg bg-primary">View</span></a>
                                                         </div>

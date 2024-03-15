@@ -34,4 +34,14 @@ class Job extends Model
     {
         return $this->belongsTo(Position::class);
     }
+
+    public function applies()
+    {
+        return $this->hasMany(Apply::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

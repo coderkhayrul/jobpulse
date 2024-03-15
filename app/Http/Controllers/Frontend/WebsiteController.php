@@ -23,6 +23,12 @@ class WebsiteController extends Controller
         return view('frontend.home', compact('jobs', 'categories', 'positions', 'pages'));
     }
 
+    public function search(Request $request)
+    {
+        $jobs = Job::where('title', 'like', '%' . $request->search . '%')->get();
+        return view('frontend.search', compact('jobs'));
+    }
+
     public function jobs()
     {
         $jobs = Job::get();
@@ -116,5 +122,16 @@ class WebsiteController extends Controller
     {
         $page = Page::where('slug', $slug)->first();
         return view('frontend.singlePage', compact('page'));
+    }
+
+    public function applyStore($slug)
+    {
+        $job = Job::where('slug', $slug)->first();
+
+        $apply = auth()->user()->apply()->create([
+            'job_id' => $job->id,
+        ]);
+        notyf()->addSuccess('You have been applied successfully.');
+        return back();
     }
 }
